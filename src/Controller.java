@@ -61,7 +61,7 @@ public class Controller extends MyObject {
 					.addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
 			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
 					new Beast(p, new PVector(p.random(100, 200), p.random(100,
-							200)), "beast.png", 0, 0, 64, 100, 4, new Weapon(p,
+							200)), "beast.png", 0, 0, 64, 100, p.random(2,8), new Weapon(p,
 							20, 20, 0, 0), p.level.warrior.location));
 		} else {
 		}
