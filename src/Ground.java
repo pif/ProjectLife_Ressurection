@@ -21,7 +21,7 @@ public class Ground extends StaticObject {
 		dust.tint(color);
 		dust.pushMatrix();
 		dust.translate(position.x, position.y);
-		dust.rotate(p.random(PConstants.PI));
+		dust.rotate(p.random(PConstants.TWO_PI));
 		dust.image(blood, -blood.width / 2, -blood.height / 2);
 		dust.popMatrix();
 		// dust.blend(bloodTinted, 0, 0, blood.width, blood.height,
