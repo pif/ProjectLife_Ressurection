@@ -1,4 +1,5 @@
 package projectlife;
+
 import processing.core.*;
 
 /**
@@ -37,8 +38,10 @@ public class Ground extends StaticObject {
  * 
  */
 	public void drawBackground() {
-		p.background(100);//this.dust);
-		// TODO think about level coordnaties and applet coordinates
+		// TODO GREAT BACKGROUND PROOOOBLEMS
+		p.background(100);// this.dust);
+		// TODO think about level coordnaties and applet coordinates/ this means
+		// that game field can be really huge. not just limited to the screen
 
 	}
 

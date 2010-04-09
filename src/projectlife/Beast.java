@@ -17,7 +17,7 @@ public class Beast extends DynamicObject {
 			Weapon weapon, PVector target) {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
-		// TODO code, that chooses where to put that bastard
+		// code, that chooses where to put that bastard
 		int distFromBorder = 50;
 		location = new PVector(p.random(p.width), p.random(p.height));
 		if ((int) (p.random(2)) == 1) {
@@ -38,8 +38,8 @@ public class Beast extends DynamicObject {
 		followTargets = true;
 	}
 
-	// TODO optimise beasts. don't call turn() every frame better calculate
-	// TODO AI: curveTightness() - the way monsters go to target
+	// optimise beasts. don't call turn() every frame better calculate
+	// AI: curveTightness() - the way monsters go to target
 	public void calcSteps(int stepCount) {
 		if (stepCount <= 0) {
 			followTargets = false;

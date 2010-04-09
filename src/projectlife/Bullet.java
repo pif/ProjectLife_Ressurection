@@ -12,20 +12,24 @@ public class Bullet extends DynamicObject {
 
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
-		// TODO Auto-generated constructor stub
+
 		acceleration = new PVector(maxSpeed * p.cos(angle), maxSpeed
 				* p.sin(angle));
 
-		for (int i = 0; i < zzz.length; i++) {
-			zzz[i] = new PVector();
+		for (int i = 0; i < bulletsTrail.length; i++) {
+			bulletsTrail[i] = location;
 		}
 	}
 
 	public boolean display() {
-		for (int i = zzz.length - 1; i != 0; i--) {
-			p.fill(255, 255 - i * 5);
-			p.ellipse(zzz[i].x, zzz[i].y, radius, radius);
+		for (int i = 0; i < bulletsTrail.length; i++) {
+			p.fill(color,i);
+			p.ellipse(bulletsTrail[i].x, bulletsTrail[i].y, radius, radius);
 		}
+//		for (int i = bulletsTrail.length - 1; i != 0; i--) {
+//			p.fill(255, 255 - i * 5);
+//			p.ellipse(bulletsTrail[i].x, bulletsTrail[i].y, radius, radius);
+//		}
 		return super.display();
 	}
 
@@ -40,13 +44,13 @@ public class Bullet extends DynamicObject {
 			visible = false;
 		}
 		kill();
-		for (int i = 0; i < zzz.length - 2; i++) {
-			zzz[i] = zzz[i + 1];
+		for (int i = 0; i < bulletsTrail.length - 2; i++) {
+			bulletsTrail[i] = bulletsTrail[i + 1];
 		}
-		zzz[zzz.length - 1] = location;
+		bulletsTrail[bulletsTrail.length - 1] = location;
 	}
 
-	public PVector[] zzz = new PVector[50];
+	public PVector[] bulletsTrail = new PVector[200];
 
 	public int kill() {
 		for (int i = 0; i < p.level.beasts.length; i++) {

@@ -51,7 +51,8 @@ public class Controller extends MyObject {
 		if (keys[right]) {
 			p.level.warrior.acceleration.x = +1;// ++;
 		}
-		// TODO cool input, check everything. Grrreat switch!
+		// cool input, check everything. Grrreat switch!/that was todo
+		// no switch available. instead i use a lot of (if) statements
 		if (keys[shoot]) {
 			p.level.warrior.shoot(p.mouseX, p.mouseY);
 			// p.level.ground

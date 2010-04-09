@@ -16,8 +16,6 @@ public class DynamicObject extends StaticObject {
 		this.angle = angle;
 		this.health = health;
 		this.weapon = weapon;
-		// TODO Auto-generated constructor stub
-		// ()
 	}
 
 	/**

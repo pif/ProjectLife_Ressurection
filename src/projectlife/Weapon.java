@@ -39,7 +39,7 @@ public class Weapon extends MyObject {
 	 */
 
 	public boolean reload() {
-		// TODO reload weapon
+		// reload weapon
 		canShoot = false;
 		currentRackSize = rackSize;
 		reloadStart = p.millis();

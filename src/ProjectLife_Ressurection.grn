@@ -11,8 +11,8 @@
       <name="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
       <height="-1"/>
       <width="-1"/>
-      <x="200"/>
-      <y="0"/>
+      <x="138"/>
+      <y="9"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Main.java[Main"/>
@@ -25,8 +25,8 @@
       <name="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
       <height="-1"/>
       <width="-1"/>
-      <x="600"/>
-      <y="0"/>
+      <x="843"/>
+      <y="257"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{MenuManager.java[MenuManager"/>
@@ -114,15 +114,15 @@
    </type>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Bonus.java[Bonus"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Overlay.java[Overlay"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.dependency.DependencyIPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Overlay.java[Overlay"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -130,6 +130,34 @@
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{Bullet.java[Bullet"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Warrior.java[Warrior"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.dependency.DependencyIPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -149,50 +177,8 @@
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Warrior.java[Warrior"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{Warrior.java[Warrior"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Beast.java[Beast"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -205,15 +191,22 @@
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Overlay.java[Overlay"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.association.AssociationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -226,6 +219,13 @@
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Beast.java[Beast"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{MenuManager.java[MenuManager"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
@@ -233,15 +233,15 @@
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Game.java[Game"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.association.AssociationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -253,15 +253,15 @@
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Bonus.java[Bonus"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Overlay.java[Overlay"/>
       <bendpoints>
       </bendpoints>
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Game.java[Game"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
