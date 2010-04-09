@@ -37,8 +37,7 @@ public class Warrior extends DynamicObject {
 		p.translate(location.x, location.y);
 		p.rotate(p.atan2(velocity.y, velocity.x) + p.HALF_PI);
 		p.triangle(-10, -50, 0, -70, 10, -50);
-		p.rectMode(p.CORNERS);
-		p.rect(-5, -40, 5, -50);
+		p.rect(0, -45, 10, 10);
 		p.popMatrix();
 
 		return super.display();

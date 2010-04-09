@@ -37,7 +37,7 @@ public class Ground extends StaticObject {
  * 
  */
 	public void drawBackground() {
-		p.background(this.dust);
+		p.background(100);//this.dust);
 		// TODO think about level coordnaties and applet coordinates
 
 	}

@@ -61,6 +61,10 @@ public class DynamicObject extends StaticObject {
 		// p.rectMode(p.CORNERS);
 		// p.rect(-5, -40, 5, -50);
 		// p.popMatrix();
+		
+		//TODO debug mode
+		p.rect(location.x, location.y-64, health, 10);
+		p.ellipse(location.x, location.y, radius, radius);
 		return super.display();
 	}
 

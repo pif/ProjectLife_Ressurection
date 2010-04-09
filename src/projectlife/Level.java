@@ -1,4 +1,5 @@
 package projectlife;
+
 import processing.core.*;
 
 /**
@@ -21,28 +22,16 @@ public class Level extends MyObject {
 		super(applet);
 
 		warrior = new Warrior(applet, new PVector(applet.width / 2,
-				applet.height / 2), "", 0, 0, 0, 100, 4, new Weapon(applet, 20,
-				10, 10, (float) 0.1), new PVector(), 0);
+				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8,
+				new Weapon(applet, 20,
+				10, 10, (float) 0.1, 10, 5000, 100), new PVector(), 0);
 
 		ground = new Ground("1.png", true, applet);
 
 		beasts = new Beast[0];
 		bonuses = new Bonus[0];
 		overlays = new Overlay[0];
-	}
-
-	public Level(Main applet) {
-		// TODO Auto-generated constructor stub
-		super(applet);
-		warrior = new Warrior(applet, new PVector(applet.width / 2,
-				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new Weapon(
-				applet, 20, 10, 20, (float) 0.1), new PVector(), 0);
-
-		ground = new Ground("1.png", true, applet);
-
-		beasts = new Beast[0];
-		bonuses = new Bonus[0];
-		overlays = new Overlay[0];
+		// TODO bullet problem. if they'r too quick. the overjump bastards
 	}
 
 	public void display() {

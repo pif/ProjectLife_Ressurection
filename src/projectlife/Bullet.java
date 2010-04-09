@@ -1,4 +1,5 @@
 package projectlife;
+
 import processing.core.*;
 
 /**
@@ -22,14 +23,13 @@ public class Bullet extends DynamicObject {
 
 	public boolean display() {
 		for (int i = zzz.length - 1; i != 0; i--) {
-			p.fill(255, i * 5);
-			p.ellipse(zzz[i].x, zzz[i].y, 16, 16);
+			p.fill(255, 255 - i * 5);
+			p.ellipse(zzz[i].x, zzz[i].y, radius, radius);
 		}
 		return super.display();
 	}
 
 	public void move() {
-		kill();
 		// acceleration.normalize();
 		velocity.add(acceleration);
 		velocity.limit(maxSpeed);
@@ -39,7 +39,7 @@ public class Bullet extends DynamicObject {
 				|| location.y > p.height) {
 			visible = false;
 		}
-
+		kill();
 		for (int i = 0; i < zzz.length - 2; i++) {
 			zzz[i] = zzz[i + 1];
 		}
@@ -50,10 +50,12 @@ public class Bullet extends DynamicObject {
 
 	public int kill() {
 		for (int i = 0; i < p.level.beasts.length; i++) {
-			if (location.dist(p.level.beasts[i].location) < weapon.radius) {
+			if (p.dist(this.location.x, this.location.y, p.level.beasts[i].location.x,
+					p.level.beasts[i].location.y) < (this.radius + p.level.beasts[i].radius)) {
 				p.level.beasts[i].health -= this.health;
 				p.level.ground.addBlood(new PVector(this.location.x,
 						this.location.y), 0x88FF0000);
+				this.visible = false;
 				return i;
 			}
 		}

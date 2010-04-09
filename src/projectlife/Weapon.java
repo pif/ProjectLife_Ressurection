@@ -1,4 +1,5 @@
 package projectlife;
+
 import processing.core.*;
 
 /**
@@ -19,11 +20,17 @@ public class Weapon extends MyObject {
 	/**
 */
 	public int rackSize;
+	public int currentRackSize;
 	/**
 */
 	public Bullet[] bullets;
 
 	public int lastShot;
+	public boolean canShoot;
+	public int reloadTime;
+	public int timeBetweenShoots;
+
+	private int reloadStart;
 
 	/**
 	 * 
@@ -33,7 +40,32 @@ public class Weapon extends MyObject {
 
 	public boolean reload() {
 		// TODO reload weapon
-		return false;
+		canShoot = false;
+		currentRackSize = rackSize;
+		reloadStart = p.millis();
+		return canShoot;
+	}
+
+	public void shoot(int x, int y, float angle) {
+		if (canShoot) {
+			if (p.millis() - lastShot >= timeBetweenShoots) {
+				if (currentRackSize > 0) {
+					// you can shoot. you have bullets in rack.
+					Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf",
+							angle + p.random(-jitter, jitter), 0xFFFFFFFF,
+							radius, damage, speed, this, new PVector());
+					this.bullets = (Bullet[]) p.append(this.bullets, b);
+					currentRackSize--;
+					lastShot = p.millis();
+				} else {
+					reload();
+				}
+			}
+		} else {
+			if (p.millis() - reloadStart >= reloadTime) {
+				canShoot = true;
+			}
+		}
 	}
 
 	/**
@@ -58,7 +90,7 @@ public class Weapon extends MyObject {
 	}
 
 	public Weapon(Main applet, float damage, float radius, float speed,
-			float jitter) {
+			float jitter, int rackSize, int reloadTime, int timeBetweenShoots) {
 		super(applet);
 
 		this.damage = damage;
@@ -67,16 +99,12 @@ public class Weapon extends MyObject {
 		this.speed = speed;
 		this.jitter = jitter;
 		this.lastShot = 0;
+		this.reloadTime = reloadTime;
+		this.rackSize = rackSize;
+		this.timeBetweenShoots = timeBetweenShoots;
+		
+		this.currentRackSize=rackSize;
+		this.canShoot = true;
 	}
 
-	public void shoot(int x, int y, float angle) {
-		if (p.millis() - lastShot > 100) {
-			// TODO add new bullet to array
-			Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf", angle
-					+ p.random(-jitter, jitter), 0xFFFFFFFF, radius, damage, speed,
-					this, new PVector());
-			this.bullets = (Bullet[]) p.append(this.bullets, b);
-			lastShot = p.millis();
-		}
-	}
 }

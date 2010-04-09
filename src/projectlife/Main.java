@@ -1,8 +1,6 @@
 package projectlife;
 import processing.core.*;
 
-//TODO import ddf.minim.*; ADD SOUND! Let's rock!
-
 public class Main extends PApplet {
 	/**
 	 * 
@@ -19,9 +17,11 @@ public class Main extends PApplet {
 		smooth();
 		noStroke();
 		cursor(CROSS);
-		background(255);
+		background(100);
+		rectMode(CENTER);
+		ellipseMode(CENTER);
 		// TODO load config.xml file
-		level = new Level(this);
+		level = new Level("",this);
 		controller = new Controller(this, level.warrior);
 		menu = new MenuManager(this);
 	}
