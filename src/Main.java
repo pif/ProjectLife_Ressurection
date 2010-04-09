@@ -1,4 +1,5 @@
 import processing.core.*;
+
 //TODO import ddf.minim.*; ADD SOUND! Let's rock!
 
 public class Main extends PApplet {
@@ -11,14 +12,14 @@ public class Main extends PApplet {
 	MenuManager menu;
 
 	public void setup() {
-		//size(600, 300, P2D);
-		size(screen.width,screen.height,P2D);
+		// size(600, 300, P2D);
+		size(screen.width, screen.height, P2D);
 		frameRate(25);
 		smooth();
 		noStroke();
 		cursor(CROSS);
 		background(255);
-		//TODO load config.xml file
+		// TODO load config.xml file
 		level = new Level(this);
 		controller = new Controller(this, level.warrior);
 		menu = new MenuManager(this);
@@ -33,7 +34,7 @@ public class Main extends PApplet {
 		menu.display();
 
 		if (mousePressed) {
-			line(mouseX, mouseY, pmouseX, pmouseY);
+			controller.press(mouseButton);
 		}
 	}
 
@@ -47,6 +48,10 @@ public class Main extends PApplet {
 
 	public void mousePressed() {
 		controller.press(mouseButton);
+	}
+
+	public void mouseReleased() {
+		controller.release(mouseButton);
 	}
 
 	public void Init(String xmlFile) {

@@ -12,9 +12,10 @@ public class MenuManager extends MyObject {
 				new Overlay(applet, new PVector(p.width / 2, 50), "play.png",
 						PApplet.radians(30), 100, 0, new PVector()),
 				new Overlay(applet, new PVector(p.width / 2, 100),
-						"records.png", PApplet.radians(-10), 10100, 0,new PVector()),
+						"records.png", PApplet.radians(-10), 10100, 0,
+						new PVector()),
 				new Overlay(applet, new PVector(p.width / 2, 150), "exit.png",
-						PApplet.radians(20), 20100, 0,new PVector()) };
+						PApplet.radians(20), 20100, 0, new PVector()) };
 		gameState = true;
 		// overlays = (Overlay[])PApplet.append(overlays, new Overlay(applet,
 		// position, img, angle, color, radius))

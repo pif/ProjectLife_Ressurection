@@ -51,18 +51,19 @@ public class Controller extends MyObject {
 			p.level.warrior.acceleration.x = +1;// ++;
 		}
 		// TODO cool input, check everything. Grrreat switch!
-		if (value == shoot) {
+		if (keys[shoot]) {
 			p.level.warrior.shoot(p.mouseX, p.mouseY);
-			p.level.ground
-					.addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
+			// p.level.ground
+			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
 		}
 		if (value == ' ') {
-			p.level.ground
-					.addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
+			// p.level.ground
+			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
 			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
 					new Beast(p, new PVector(p.random(100, 200), p.random(100,
-							200)), "beast.png", 0, 0, 64, 100, p.random(2,8), new Weapon(p,
-							20, 20, 0, 0), p.level.warrior.location));
+							200)), "beast.png", 0, 0, 64, 100, p.random(2, 8),
+							new Weapon(p, 20, 20, 0, 0),
+							p.level.warrior.location));
 		} else {
 		}
 	}

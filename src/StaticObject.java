@@ -1,5 +1,7 @@
 import processing.core.*;
 
+import java.io.*;
+
 /**
 */
 public class StaticObject extends MyObject {
@@ -28,7 +30,13 @@ public class StaticObject extends MyObject {
 			int color, float radius, PVector target) {
 		super(applet);
 		this.location = position;
-		this.sprite = p.loadImage(img);
+		File f = new File(applet.dataPath(img));
+		if (f.exists()) {
+			this.sprite = p.loadImage(img);
+		} else {
+			this.sprite = null;
+		}
+
 		this.angle = angle;
 		this.color = color;
 		this.radius = radius;
@@ -44,7 +52,7 @@ public class StaticObject extends MyObject {
 	 */
 	public void turn(PVector target) {
 		angle = PApplet.atan2(target.y - location.y, target.x - location.x);
-		//p.rotate(angle);
+		// p.rotate(angle);
 	}
 
 	public void turn() {
@@ -58,19 +66,21 @@ public class StaticObject extends MyObject {
 	 * @return
 	 */
 	public boolean display() {
-		p.pushMatrix();
+		if (visible) {
+			p.pushMatrix();
 
-		p.translate(location.x, location.y);
-		p.rotate(angle);
-		if (sprite == null) {
-			p.fill(color);
-			p.ellipse(0, 0, radius, radius);
-		} else {
-			p.image(sprite, 0 - sprite.width / 2, 0 - sprite.height / 2);
+			p.translate(location.x, location.y);
+			p.rotate(angle);
+			if (sprite == null) {
+				p.fill(color);
+				p.ellipse(0, 0, radius, radius);
+			} else {
+				p.image(sprite, 0 - sprite.width / 2, 0 - sprite.height / 2);
+			}
+
+			p.popMatrix();
 		}
-
-		p.popMatrix();
-		return false;
+		return visible;
 	}
 
 	/**

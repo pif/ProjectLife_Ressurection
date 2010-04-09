@@ -5,7 +5,7 @@ import processing.core.*;
 public class Beast extends DynamicObject {
 
 	public static int spotDistance = 100;
-	
+
 	public int steps;
 	public int currentTarget;
 	public PVector[] targets;
@@ -16,12 +16,25 @@ public class Beast extends DynamicObject {
 			Weapon weapon, PVector target) {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
-		// TODO Auto-generated constructor stub
+		// TODO code, that chooses where to put that bastard
+		int distFromBorder = 50;
+		location = new PVector(p.random(p.width), p.random(p.height));
+		if ((int) (p.random(2)) == 1) {
+			if ((int) (p.random(2)) == 1)
+				location.y = p.height + distFromBorder;
+			else
+				location.y = -distFromBorder;
+		} else {
+			if ((int) (p.random(2)) == 1)
+				location.x = p.width + distFromBorder;
+			else
+				location.x = -distFromBorder;
+		}
+
 		steps = (int) (applet.random(2, 5));
 		calcSteps(steps);
 		currentTarget = 0;
 		followTargets = true;
-
 	}
 
 	// TODO optimise beasts. don't call turn() every frame better calculate
@@ -43,8 +56,8 @@ public class Beast extends DynamicObject {
 				float x = p.curvePoint(p1.x, s.x, f.x, p2.x, t);
 				float y = p.curvePoint(p1.y, s.y, f.y, p2.y, t);
 				targets[i] = new PVector(x, y);
-				
-				//p.curve(p1.x, p1.y, s.x, s.y, f.x, f.y, p2.x, p2.y);   				
+
+				// p.curve(p1.x, p1.y, s.x, s.y, f.x, f.y, p2.x, p2.y);
 			}
 		}
 	}
@@ -53,7 +66,8 @@ public class Beast extends DynamicObject {
 		super.move();
 		acceleration = new PVector(p.cos(angle), p.sin(angle));
 
-		if (location.dist(p.level.warrior.location) < (this.radius+p.level.warrior.radius+spotDistance)) {
+		if (location.dist(p.level.warrior.location) < (this.radius
+				+ p.level.warrior.radius + spotDistance)) {
 			followTargets = false;
 		} else {
 			followTargets = true;
@@ -71,11 +85,11 @@ public class Beast extends DynamicObject {
 		} else {
 			target = p.level.warrior.location;
 		}
-		
-//		if (followTargets) {
-//			p.ellipseMode(p.CENTER);
-//			for (int i = 0; i < steps; ++i)
-//				p.ellipse(targets[i].x, targets[i].y, 32, 32);
-//		}
+
+		// if (followTargets) {
+		// p.ellipseMode(p.CENTER);
+		// for (int i = 0; i < steps; ++i)
+		// p.ellipse(targets[i].x, targets[i].y, 32, 32);
+		// }
 	}
 }

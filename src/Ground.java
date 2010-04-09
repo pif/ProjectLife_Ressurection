@@ -48,7 +48,8 @@ public class Ground extends StaticObject {
 	public Ground(String img, boolean toTile, Main applet) {
 		super(applet, new PVector(0, 0), img, 0, 0, 0, new PVector());
 		if (toTile) {
-			PGraphics pg = applet.createGraphics(p.width, p.height, PConstants.P2D);
+			PGraphics pg = applet.createGraphics(p.width, p.height,
+					PConstants.P2D);
 
 			pg.beginDraw();
 			int xc = pg.width / sprite.width + 1;
@@ -67,7 +68,8 @@ public class Ground extends StaticObject {
 			sprite.updatePixels();
 		} else {
 			// stretch image
-			PGraphics pg = applet.createGraphics(p.width, p.height, PConstants.P2D);
+			PGraphics pg = applet.createGraphics(p.width, p.height,
+					PConstants.P2D);
 			pg.beginDraw();
 			pg.image(sprite, 0, 0, pg.width, pg.height);
 			pg.endDraw();

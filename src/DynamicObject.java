@@ -34,6 +34,7 @@ public class DynamicObject extends StaticObject {
 	/**
 */
 	public Weapon weapon;
+
 	/**
 	 * execurtes a list of actions, which move object accordingly to the list of
 	 * predefined rules
@@ -49,7 +50,9 @@ public class DynamicObject extends StaticObject {
 	}
 
 	public boolean display() {
-		move();
+		if (checkHealth()) {
+			move();
+		}
 		// p.pushMatrix();
 		// p.translate(location.x, location.y);
 		// p.rotate(p.atan2(velocity.y, velocity.x)+p.HALF_PI);
@@ -59,9 +62,15 @@ public class DynamicObject extends StaticObject {
 		// p.popMatrix();
 		return super.display();
 	}
-	
+
 	public boolean gotTarget(float targetRadius) {
-		return p.dist(location.x, location.y, target.x, target.y)<(this.radius+targetRadius);
+		return p.dist(location.x, location.y, target.x, target.y) < (this.radius + targetRadius);
 	}
-	
+
+	public boolean checkHealth() {
+		if (health <= 0) {
+			visible = false;
+		}
+		return super.check();
+	}
 }

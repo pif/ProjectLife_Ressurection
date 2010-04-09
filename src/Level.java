@@ -20,7 +20,8 @@ public class Level extends MyObject {
 		super(applet);
 
 		warrior = new Warrior(applet, new PVector(applet.width / 2,
-				applet.height / 2), "", 0, 0, 0, 100, 4, new Weapon(applet, 20, 10, 10, (float) 0.1), new PVector(), 0);
+				applet.height / 2), "", 0, 0, 0, 100, 4, new Weapon(applet, 20,
+				10, 10, (float) 0.1), new PVector(), 0);
 
 		ground = new Ground("1.png", true, applet);
 
@@ -33,7 +34,8 @@ public class Level extends MyObject {
 		// TODO Auto-generated constructor stub
 		super(applet);
 		warrior = new Warrior(applet, new PVector(applet.width / 2,
-				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new Weapon(applet, 20, 10, 10, (float) 0.1), new PVector(), 0);
+				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new Weapon(
+				applet, 20, 10, 10, (float) 0.1), new PVector(), 0);
 
 		ground = new Ground("1.png", true, applet);
 
@@ -47,7 +49,13 @@ public class Level extends MyObject {
 		ground.drawBackground();
 
 		for (int i = 0; i < beasts.length; i++) {
-			beasts[i].display();
+			if (beasts[i].visible) {
+				beasts[i].display();
+			} else {
+				beasts[i] = beasts[beasts.length - 1];
+				beasts = (Beast[]) (p.shorten(beasts));
+			}
+
 		}
 
 		for (int i = 0; i < bonuses.length; i++) {

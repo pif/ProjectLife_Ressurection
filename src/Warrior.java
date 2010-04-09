@@ -10,14 +10,14 @@ public class Warrior extends DynamicObject {
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, int experience) {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
-				weapon,target);
+				weapon, target);
 		this.experience = experience;
 		// TODO Auto-generated constructor stub
 	}
 
 	public void move() {
 		super.move();
-		
+
 		location.x = PApplet.constrain(location.x, 0, p.width);
 		location.y = PApplet.constrain(location.y, 0, p.height);
 
@@ -25,18 +25,21 @@ public class Warrior extends DynamicObject {
 	}
 
 	public void shoot(int x, int y) {
-		weapon.shoot(x,y);
+		weapon.shoot((int) location.x, (int) location.y, angle);
 	}
-	
+
 	public boolean display() {
+		weapon.displayBullets();
+
 		p.pushMatrix();
+		p.fill(255, 100);
 		p.translate(location.x, location.y);
-		p.rotate(p.atan2(velocity.y, velocity.x)+p.HALF_PI);
+		p.rotate(p.atan2(velocity.y, velocity.x) + p.HALF_PI);
 		p.triangle(-10, -50, 0, -70, 10, -50);
 		p.rectMode(p.CORNERS);
 		p.rect(-5, -40, 5, -50);
 		p.popMatrix();
-		
+
 		return super.display();
 	}
 	/**
