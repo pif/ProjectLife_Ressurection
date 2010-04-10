@@ -4,113 +4,106 @@
       <name="=ProjectLife_Ressurection/src<projectlife{Tweaks.java[Tweaks"/>
       <height="-1"/>
       <width="-1"/>
-      <x="0"/>
-      <y="0"/>
+      <x="98"/>
+      <y="944"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{DynamicObject.java[DynamicObject"/>
       <height="-1"/>
       <width="-1"/>
-      <x="138"/>
-      <y="9"/>
+      <x="1353"/>
+      <y="659"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Main.java[Main"/>
       <height="-1"/>
       <width="-1"/>
-      <x="400"/>
-      <y="0"/>
+      <x="983"/>
+      <y="-225"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
       <height="-1"/>
       <width="-1"/>
-      <x="843"/>
-      <y="257"/>
+      <x="816"/>
+      <y="474"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{MenuManager.java[MenuManager"/>
       <height="-1"/>
       <width="-1"/>
-      <x="0"/>
-      <y="200"/>
+      <x="343"/>
+      <y="96"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Bonus.java[Bonus"/>
       <height="-1"/>
       <width="-1"/>
-      <x="200"/>
-      <y="200"/>
+      <x="53"/>
+      <y="632"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <height="-1"/>
       <width="-1"/>
-      <x="400"/>
-      <y="200"/>
+      <x="991"/>
+      <y="114"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
       <height="-1"/>
       <width="-1"/>
-      <x="600"/>
-      <y="200"/>
+      <x="1766"/>
+      <y="266"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Overlay.java[Overlay"/>
       <height="-1"/>
       <width="-1"/>
-      <x="0"/>
-      <y="400"/>
-   </type>
-   <type>
-      <name="=ProjectLife_Ressurection/src<projectlife{Game.java[Game"/>
-      <height="-1"/>
-      <width="-1"/>
-      <x="200"/>
-      <y="400"/>
+      <x="714"/>
+      <y="657"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
       <height="-1"/>
       <width="-1"/>
-      <x="400"/>
-      <y="400"/>
+      <x="580"/>
+      <y="264"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Warrior.java[Warrior"/>
       <height="-1"/>
       <width="-1"/>
-      <x="600"/>
-      <y="400"/>
+      <x="1046"/>
+      <y="940"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
       <height="-1"/>
       <width="-1"/>
-      <x="0"/>
-      <y="600"/>
+      <x="1972"/>
+      <y="266"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Beast.java[Beast"/>
       <height="-1"/>
       <width="-1"/>
-      <x="200"/>
-      <y="600"/>
+      <x="302"/>
+      <y="944"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{StaticObject.java[StaticObject"/>
       <height="-1"/>
       <width="-1"/>
-      <x="400"/>
-      <y="600"/>
+      <x="1224"/>
+      <y="266"/>
    </type>
    <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Bullet.java[Bullet"/>
       <height="-1"/>
       <width="-1"/>
-      <x="600"/>
-      <y="600"/>
+      <x="1880"/>
+      <y="938"/>
    </type>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
@@ -227,13 +220,6 @@
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{MenuManager.java[MenuManager"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Game.java[Game"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
