@@ -16,6 +16,7 @@ public class Bullet extends DynamicObject {
 		acceleration = new PVector(maxSpeed * p.cos(angle), maxSpeed
 				* p.sin(angle));
 
+		bulletsTrail = new PVector[50];
 		for (int i = 0; i < bulletsTrail.length; i++) {
 			bulletsTrail[i] = location;
 		}
@@ -23,7 +24,7 @@ public class Bullet extends DynamicObject {
 
 	public boolean display() {
 		for (int i = 0; i < bulletsTrail.length; i++) {
-			p.fill(color,i);
+			p.fill(100+i*3);
 			p.ellipse(bulletsTrail[i].x, bulletsTrail[i].y, radius, radius);
 		}
 //		for (int i = bulletsTrail.length - 1; i != 0; i--) {
@@ -50,7 +51,7 @@ public class Bullet extends DynamicObject {
 		bulletsTrail[bulletsTrail.length - 1] = location;
 	}
 
-	public PVector[] bulletsTrail = new PVector[200];
+	public PVector[] bulletsTrail;
 
 	public int kill() {
 		for (int i = 0; i < p.level.beasts.length; i++) {
@@ -60,6 +61,7 @@ public class Bullet extends DynamicObject {
 				p.level.ground.addBlood(new PVector(this.location.x,
 						this.location.y), 0x88FF0000);
 				this.visible = false;
+				//p.level.ground.dust.image(p.level.ground.blood, p.level.beasts[i].location.x, p.level.beasts[i].location.x);		
 				return i;
 			}
 		}

@@ -24,7 +24,7 @@ public class Level extends MyObject {
 		warrior = new Warrior(applet, new PVector(applet.width / 2,
 				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8,
 				new Weapon(applet, 20,
-				10, 10, (float) 0.1, 10, 5000, 100), new PVector(), 0);
+				10, 10, (float) 0.1, 30, 1000, 100), new PVector(), 0);
 
 		ground = new Ground("1.png", true, applet);
 

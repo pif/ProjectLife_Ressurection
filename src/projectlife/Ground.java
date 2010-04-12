@@ -39,7 +39,7 @@ public class Ground extends StaticObject {
  */
 	public void drawBackground() {
 		// TODO GREAT BACKGROUND PROOOOBLEMS
-		p.background(100);// this.dust);
+		p.image(this.dust,0,0);// this.dust);
 		// TODO think about level coordnaties and applet coordinates/ this means
 		// that game field can be really huge. not just limited to the screen
 
@@ -53,7 +53,7 @@ public class Ground extends StaticObject {
 		super(applet, new PVector(0, 0), img, 0, 0, 0, new PVector());
 		if (toTile) {
 			PGraphics pg = applet.createGraphics(p.width, p.height,
-					PConstants.JAVA2D);
+					PConstants.P3D);
 
 			pg.beginDraw();
 			int xc = pg.width / sprite.width + 1;
@@ -73,7 +73,7 @@ public class Ground extends StaticObject {
 		} else {
 			// stretch image
 			PGraphics pg = applet.createGraphics(p.width, p.height,
-					PConstants.JAVA2D);
+					PConstants.P3D);
 			pg.beginDraw();
 			pg.image(sprite, 0, 0, pg.width, pg.height);
 			pg.endDraw();
@@ -87,7 +87,7 @@ public class Ground extends StaticObject {
 
 		blood = p.loadImage("blood.png");
 
-		dust = p.createGraphics(p.width, p.height, PConstants.JAVA2D);
+		dust = p.createGraphics(p.width, p.height, PConstants.P3D);
 		dust.beginDraw();
 		dust.image(sprite, 0, 0);// background(255);
 		dust.endDraw();

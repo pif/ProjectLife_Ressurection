@@ -1,19 +1,22 @@
 package projectlife;
 import processing.core.*;
+import processing.opengl.*;
 
 public class Main extends PApplet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1886093456349654286L;
-	Level level;
+	public Level level;
 	public Controller controller;
-	MenuManager menu;
+	public MenuManager menu;
 
+	public PFont debuggy;
 	public void setup() {
 		// size(600, 300, P2D);
-		size(screen.width, screen.height, JAVA2D);
-		frameRate(25);
+		//int x=screen.width,y=screen.height;
+		size(800, 600, OPENGL);
+		frameRate(30);
 		smooth();
 		noStroke();
 		cursor(CROSS);
@@ -24,19 +27,23 @@ public class Main extends PApplet {
 		level = new Level("",this);
 		controller = new Controller(this, level.warrior);
 		menu = new MenuManager(this);
+		
+		debuggy = createFont("arial", 32);
+		textFont(debuggy);
 	}
 
 	public void draw() {
-
 		// controller.controlMouse();
-
 		level.display();
 
 		menu.display();
-
+		
 		if (mousePressed) {
 			controller.press(mouseButton);
 		}
+		
+		text(((int)frameRate)+" "+level.beasts.length,50,50);
+		
 	}
 
 	public void keyPressed() {
