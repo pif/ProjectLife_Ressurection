@@ -36,13 +36,25 @@ public class Warrior extends MovingObject {
 		p.pushMatrix();
 		p.fill(255, 100);
 		p.translate(location.x, location.y);
-		p.rotate(p.atan2(velocity.y, velocity.x) + p.HALF_PI);
+		p.rotate(PApplet.atan2(velocity.y, velocity.x) + PConstants.HALF_PI);
 		p.triangle(-10, -50, 0, -70, 10, -50);
 		p.rect(0, -45, 10, 10);
 		p.popMatrix();
 
 		return super.display();
 	}
-	/**
-*/
+
+	public void stop() {
+		super.stop();
+		for (int i = 0; i < weapon.bullets.length; i++) {
+			weapon.bullets[i].stop();
+		}
+	}
+	
+	public void letGo() {
+		super.letGo();
+		for (int i = 0; i < weapon.bullets.length; i++) {
+			weapon.bullets[i].letGo();
+		}
+	}	
 }

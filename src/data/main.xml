@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" econding="UTF-8" standalone="yes"?>
+<?xml version="1.0" econding="UTF-8" standalone="yes"?>
 <game>
 	<debug>1</debug>
 	<fps>30</fps>
@@ -11,8 +11,9 @@
 	<levelDir>level</levelDir>
 	<controller up="87" down="83" left="65" right="68" shoot="37" level="39" menu="27" next="101" prev="113" />
 	<menu>
-		<item function="play" src="images/play.png" top="50" left="-1" angle="0" radius="-1"></item><!-- if left==-1 then left will be width/2-->
-		<item function="records" src="images/records.png" top="50" left="-1" angle="0" radius="-1"></item>
-		<item function="exit" src="images/exit.png" top="50" left="-1" angle="0" radius="-1"></item>
+		<item function="play" src="images/play.png" left="-1" top="50" angle="0" radius="-1"></item><!-- if left==-1 then left will be width/2-->
+		<item function="records" src="images/records.png" left="-1" top="100" angle="0" radius="-1"></item>
+		<item function="exit" src="images/exit.png" left="-1" top="150" angle="0" radius="-1"></item>
 	</menu>
+	<records src="records.xml" />
 </game>

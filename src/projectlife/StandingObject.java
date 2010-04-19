@@ -28,8 +28,8 @@ public class StandingObject extends MyObject {
 */
 	public boolean visible;
 
-	public StandingObject(Main applet, PVector position, String img, float angle,
-			int color, float radius, PVector target) {
+	public StandingObject(Main applet, PVector position, String img,
+			float angle, int color, float radius, PVector target) {
 		super(applet);
 		this.location = position;
 		File f = new File(applet.dataPath(img));

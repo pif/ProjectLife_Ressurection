@@ -13,8 +13,8 @@ public class Bullet extends MovingObject {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
 
-		acceleration = new PVector(maxSpeed * p.cos(angle), maxSpeed
-				* p.sin(angle));
+		acceleration = new PVector(maxSpeed * PApplet.cos(angle), maxSpeed
+				* PApplet.sin(angle));
 
 		bulletsTrail = new PVector[50];
 		for (int i = 0; i < bulletsTrail.length; i++) {
@@ -36,26 +36,28 @@ public class Bullet extends MovingObject {
 
 	public void move() {
 		// acceleration.normalize();
-		velocity.add(acceleration);
-		velocity.limit(maxSpeed);
-		location.add(velocity);
+		if (!stopped) {
+			velocity.add(acceleration);
+			velocity.limit(maxSpeed);
+			location.add(velocity);
 
-		if (location.x < 0 || location.x > p.width || location.y < 0
-				|| location.y > p.height) {
-			visible = false;
+			if (location.x < 0 || location.x > p.width || location.y < 0
+					|| location.y > p.height) {
+				visible = false;
+			}
+			kill();
+			for (int i = 0; i < bulletsTrail.length - 2; i++) {
+				bulletsTrail[i] = bulletsTrail[i + 1];
+			}
+			bulletsTrail[bulletsTrail.length - 1] = location;
 		}
-		kill();
-		for (int i = 0; i < bulletsTrail.length - 2; i++) {
-			bulletsTrail[i] = bulletsTrail[i + 1];
-		}
-		bulletsTrail[bulletsTrail.length - 1] = location;
 	}
 
 	public PVector[] bulletsTrail;
 
 	public int kill() {
 		for (int i = 0; i < p.level.beasts.length; i++) {
-			if (p.dist(this.location.x, this.location.y,
+			if (PApplet.dist(this.location.x, this.location.y,
 					p.level.beasts[i].location.x, p.level.beasts[i].location.y) < (this.radius + p.level.beasts[i].radius)) {
 				p.level.beasts[i].health -= this.health;
 				p.level.ground.addBlood(new PVector(this.location.x,

@@ -17,7 +17,7 @@ public class Controller extends MyObject {
 	public int nextWeapon;
 	public int prevWeapon;
 
-	public Controller(Main applet, Warrior warrior) {
+	public Controller(Main applet, MovingObject warrior) {
 		super(applet);
 		// this.warrior = warrior;
 		up = 87;// 'w';//PConstants.UP;
@@ -30,8 +30,8 @@ public class Controller extends MyObject {
 		nextWeapon = (int) 'e';// TODO next, previous weapon
 		prevWeapon = (int) 'q';
 	}
-	
-	public Controller(Main applet, Warrior warrior, XMLElement preferences) {
+
+	public Controller(Main applet, MovingObject warrior, XMLElement preferences) {
 		super(applet);
 		// this.warrior = warrior;
 		up = preferences.getIntAttribute("up");// 'w';//PConstants.UP;
@@ -41,9 +41,11 @@ public class Controller extends MyObject {
 		shoot = preferences.getIntAttribute("shoot");
 		getLevel = preferences.getIntAttribute("level");
 		menu = preferences.getIntAttribute("menu");
-		nextWeapon = preferences.getIntAttribute("next");// TODO next, previous weapon
+		nextWeapon = preferences.getIntAttribute("next");// TODO next, previous
+		// weapon
 		prevWeapon = preferences.getIntAttribute("prev");
 	}
+
 	/**
 */
 	private static boolean[] keys = new boolean[256];
@@ -69,9 +71,22 @@ public class Controller extends MyObject {
 		// cool input, check everything. Grrreat switch!/that was todo
 		// no switch available. instead i use a lot of (if) statements
 		if (keys[shoot]) {
-			p.level.warrior.shoot(p.mouseX, p.mouseY);
-			// p.level.ground
-			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
+			if (p.menu.visible) {
+				p.menu.click(new PVector(p.mouseX, p.mouseY));
+			} else {
+				p.level.warrior.shoot(p.mouseX, p.mouseY);
+			}
+		}
+		if (keys[menu]) {
+			p.key = 0;
+			p.keyCode = 0;
+
+			if (p.menu.visible) {
+				p.menu.hide();
+			} else {
+				p.level.suspend();
+				p.menu.show();
+			}
 		}
 		if (value == ' ') {
 			// p.level.ground
@@ -81,7 +96,9 @@ public class Controller extends MyObject {
 							200)), "beast.png", 0, 0, 32, 100, p.random(2, 8),
 							new Weapon(p, 20, 20, 0, 0, 1000, 1, 1),
 							p.level.warrior.location));
-		} else {
+			if(p.menu.visible){
+				p.level.beasts[p.level.beasts.length-1].stop();
+			}
 		}
 	}
 

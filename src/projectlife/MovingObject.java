@@ -6,6 +6,9 @@ import processing.core.*;
 */
 public class MovingObject extends StandingObject {
 
+	private PVector stopAcceleration;
+	public boolean stopped;
+
 	public MovingObject(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target) {
@@ -17,6 +20,8 @@ public class MovingObject extends StandingObject {
 		this.angle = angle;
 		this.health = health;
 		this.weapon = weapon;
+		this.stopAcceleration = new PVector();
+		this.stopped = false;
 	}
 
 	/**
@@ -42,11 +47,13 @@ public class MovingObject extends StandingObject {
 	 * @param Return
 	 */
 	public void move() {
-		acceleration.normalize();
-		velocity.add(acceleration);
-		velocity.limit(maxSpeed);
-		location.add(velocity);
-		turn();
+		if (!stopped) {
+			acceleration.normalize();
+			velocity.add(acceleration);
+			velocity.limit(maxSpeed);
+			location.add(velocity);
+			turn();
+		}
 	}
 
 	public boolean display() {
@@ -70,7 +77,7 @@ public class MovingObject extends StandingObject {
 	}
 
 	public boolean gotTarget(float targetRadius) {
-		return p.dist(location.x, location.y, target.x, target.y) < (this.radius + targetRadius);
+		return PApplet.dist(location.x, location.y, target.x, target.y) < (this.radius + targetRadius);
 	}
 
 	public boolean checkHealth() {
@@ -78,5 +85,20 @@ public class MovingObject extends StandingObject {
 			visible = false;
 		}
 		return super.check();
+	}
+
+	/**
+	*/
+	public void stop() {
+		stopped = true;
+		// stopAcceleration = acceleration;
+		// acceleration = new PVector(0, 0);
+	}
+
+	public void letGo() {
+		// TODO Auto-generated method stub
+		stopped = false;
+		// TODO Auto-generated method stub
+		// acceleration=stopAcceleration;
 	}
 }

@@ -43,7 +43,7 @@ public class Level extends MyObject {
 				beasts[i].display();
 			} else {
 				beasts[i] = beasts[beasts.length - 1];
-				beasts = (Beast[]) (p.shorten(beasts));
+				beasts = (Beast[]) (PApplet.shorten(beasts));
 			}
 
 		}
@@ -54,5 +54,20 @@ public class Level extends MyObject {
 
 		warrior.display();
 
+	}
+
+	public void start() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < beasts.length; i++) {
+			beasts[i].letGo();
+		}
+		warrior.letGo();
+	}
+
+	public void suspend() {
+		for (int i = 0; i < beasts.length; i++) {
+			beasts[i].stop();
+		}
+		warrior.stop();
 	}
 }

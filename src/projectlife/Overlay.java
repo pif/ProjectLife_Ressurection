@@ -33,4 +33,9 @@ public class Overlay extends StandingObject {
 	public boolean click() {
 		return false;
 	}
+
+	public void act() {
+		// TODO Auto-generated method stub
+
+	}
 }

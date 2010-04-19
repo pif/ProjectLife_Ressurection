@@ -68,7 +68,7 @@ public class Beast extends MovingObject {
 
 	public void move() {
 		super.move();
-		acceleration = new PVector(p.cos(angle), p.sin(angle));
+		acceleration = new PVector(PApplet.cos(angle), PApplet.sin(angle));
 
 		if (location.dist(p.level.warrior.location) < (this.radius
 				+ p.level.warrior.radius + spotDistance)) {
@@ -92,7 +92,7 @@ public class Beast extends MovingObject {
 
 		if (p.debug) {
 			if (followTargets) {
-				p.ellipseMode(p.CENTER);
+				p.ellipseMode(PConstants.CENTER);
 				for (int i = 0; i < steps; ++i)
 					p.ellipse(targets[i].x, targets[i].y, 32, 32);
 			}

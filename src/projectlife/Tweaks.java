@@ -29,6 +29,6 @@ public class Tweaks {
 	 * @param warrior
 	 * @param Return
 	 */
-	public void tweak(Warrior warrior) {
+	public void tweak(MovingObject warrior) {
 	}
 }

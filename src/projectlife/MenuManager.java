@@ -7,7 +7,7 @@ import processing.xml.XMLElement;
 */
 public class MenuManager extends MyObject {
 
-	public boolean gameState;// true == game is on, false == menu is on fire!
+	public boolean visible;// true == game is on, false == menu is on fire!
 
 	public MenuManager(Main applet) {
 		super(applet);
@@ -21,7 +21,7 @@ public class MenuManager extends MyObject {
 				new Overlay(applet, new PVector(p.width / 2, 150), p.dataPath
 						+ "images/exit.png", PApplet.radians(0), 20100, 0,
 						new PVector()) };
-		gameState = true;
+		visible = true;
 		// overlays = (Overlay[])PApplet.append(overlays, new Overlay(applet,
 		// position, img, angle, color, radius))
 	}
@@ -32,45 +32,53 @@ public class MenuManager extends MyObject {
 		for (int i = 0; i < preferences.getChildCount(); i++) {
 			XMLElement item = preferences.getChild(i);
 			// 0=play button 1=records button 2=exit game
-			String function =item.getStringAttribute("function"); 
+			String function = item.getStringAttribute("function");
 			if (function.equals("play")) {
-				overlays[0] = new Overlay(applet, new PVector(item
-						.getFloatAttribute("top"), ((item
+				overlays[0] = new Overlay(applet, new PVector(((item
 						.getFloatAttribute("left") == -1) ? (p.width / 2)
-						: (item.getFloatAttribute("left")))), item
+						: (item.getFloatAttribute("left"))), item
+						.getFloatAttribute("top")), item
 						.getStringAttribute("src"), item
 						.getFloatAttribute("angle"), 0, item
 						.getFloatAttribute("radius"), new PVector());
 			} else if (function.equals("records")) {
-				overlays[1] = new Overlay(applet, new PVector(item
-						.getFloatAttribute("top"), ((item
+				overlays[1] = new Overlay(applet, new PVector(((item
 						.getFloatAttribute("left") == -1) ? (p.width / 2)
-						: (item.getFloatAttribute("left")))), item
+						: (item.getFloatAttribute("left"))), item
+						.getFloatAttribute("top")), item
 						.getStringAttribute("src"), item
 						.getFloatAttribute("angle"), 0, item
 						.getFloatAttribute("radius"), new PVector());
 			} else if (function.equals("exit")) {
-				overlays[2] = new Overlay(applet, new PVector(item
-						.getFloatAttribute("top"), ((item
+				overlays[2] = new Overlay(applet, new PVector(((item
 						.getFloatAttribute("left") == -1) ? (p.width / 2)
-						: (item.getFloatAttribute("left")))), item
+						: (item.getFloatAttribute("left"))), item
+						.getFloatAttribute("top")), item
 						.getStringAttribute("src"), item
 						.getFloatAttribute("angle"), 0, item
 						.getFloatAttribute("radius"), new PVector());
 			} else {
-			// <item name="play" src="images/play.png" top="50" left="-1"
-			// angle="0" radius="-1"></item>
-			overlays = (Overlay[]) PApplet.append(overlays, new Overlay(applet,
-					new PVector(item.getFloatAttribute("top"), ((item
-							.getFloatAttribute("left") == -1) ? (p.width / 2)
-							: (item.getFloatAttribute("left")))), item
-							.getStringAttribute("src"), item
-							.getFloatAttribute("angle"), 0, item
-							.getFloatAttribute("radius"), new PVector()));
+				// <item name="play" src="images/play.png" top="50" left="-1"
+				// angle="0" radius="-1"></item>
+				overlays = (Overlay[]) PApplet
+						.append(
+								overlays,
+								new Overlay(
+										applet,
+										new PVector(
+												((item
+														.getFloatAttribute("left") == -1) ? (p.width / 2)
+														: (item
+																.getFloatAttribute("left"))),
+												item.getFloatAttribute("top")),
+										item.getStringAttribute("src"), item
+												.getFloatAttribute("angle"), 0,
+										item.getFloatAttribute("radius"),
+										new PVector()));
 			}
 		}
 
-		gameState = true;
+		show();
 		// overlays = (Overlay[])PApplet.append(overlays, new Overlay(applet,
 		// position, img, angle, color, radius))
 	}
@@ -83,19 +91,52 @@ public class MenuManager extends MyObject {
 	/**
 	 * @param Return
 	 */
-	public void click() {
+	public void click(PVector point) {
+		for (int i = 0; i < overlays.length; i++) {
+			if (overlays[i].topLeft.x <= point.x
+					&& overlays[i].bottomRight.x >= point.x
+					&& overlays[i].topLeft.y <= point.y
+					&& overlays[i].bottomRight.y >= point.y) {
+				switch (i) {
+				case 0:
+					this.hide();
+					p.level.start();
+					break;
+				case 1:
+					// p.records.show();
+					break;
+				case 2:
+					p.exit();
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 	public void display() {
-		if (!gameState) {
+		if (visible) {
 			p.pushStyle();
 			p.fill(0, 0, 0, 140);
-			p.rect(0, 0, p.width, p.height);
+			p.rect(p.width / 2, p.height / 2, p.width, p.height);
 			p.popStyle();
-		}
 
-		for (int i = 0; i < overlays.length; i++) {
-			overlays[i].display();
+			for (int i = 0; i < overlays.length; i++) {
+				overlays[i].display();
+			}
 		}
 	}
+
+	public void show() {
+		visible = true;
+		p.level.suspend();
+	}
+
+	public void hide() {
+		visible = false;
+		p.level.start();
+	}
+
 }

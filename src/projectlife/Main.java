@@ -26,11 +26,10 @@ public class Main extends PApplet {
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
-
 		XMLElement preferences = new XMLElement(this, dataPath + "main.xml");
-		
+
 		if (Integer.parseInt(preferences.getChild("debug").getContent()) == 1) {
-			debug=true;
+			debug = true;
 		} else {
 			debug = false;
 		}
@@ -45,23 +44,28 @@ public class Main extends PApplet {
 			noStroke();
 		}
 		// image(loadImage(runPath+"../data/beast.png"),0,0);
-		final int cursor = Integer.parseInt(preferences.getChild("cursor").getContent());
-		if(cursor==-1) {
-			cursor(loadImage(preferences.getChild("cursor").getStringAttribute("src")),8,8);
+		final int cursor = Integer.parseInt(preferences.getChild("cursor")
+				.getContent());
+		if (cursor == -1) {
+			cursor(loadImage(preferences.getChild("cursor").getStringAttribute(
+					"src")), 8, 8);
 		} else {
 			cursor(cursor);
 		}
-		
+
 		background(Integer.parseInt(preferences.getChild("bg").getContent()));
 		rectMode(Integer.parseInt(preferences.getChild("rect").getContent()));
-		ellipseMode(Integer.parseInt(preferences.getChild("ellipse").getContent()));
-		
-		levelPath=dataPath+preferences.getChild("levelDir").getContent()+"/";
-		
+		ellipseMode(Integer.parseInt(preferences.getChild("ellipse")
+				.getContent()));
+
+		levelPath = dataPath + preferences.getChild("levelDir").getContent()
+				+ "/";
+
 		// TODO load config.xml file
 		level = new Level("", this);
-		controller = new Controller(this, level.warrior,preferences.getChild("controller"));
-		menu = new MenuManager(this,preferences.getChild("menu"));
+		controller = new Controller(this, level.warrior, preferences
+				.getChild("controller"));
+		menu = new MenuManager(this, preferences.getChild("menu"));
 
 	}
 

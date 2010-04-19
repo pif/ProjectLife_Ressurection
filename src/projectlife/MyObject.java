@@ -16,7 +16,7 @@ public class MyObject {
 	public MyObject(Main applet) {
 		p = applet;
 	}
-	
+
 	public MyObject() {
 		p = null;
 	}

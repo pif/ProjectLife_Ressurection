@@ -54,7 +54,7 @@ public class Weapon extends MyObject {
 					Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf",
 							angle + p.random(-jitter, jitter), 0xFFFFFFFF,
 							radius, damage, speed, this, new PVector());
-					this.bullets = (Bullet[]) p.append(this.bullets, b);
+					this.bullets = (Bullet[]) PApplet.append(this.bullets, b);
 					currentRackSize--;
 					lastShot = p.millis();
 				} else {
@@ -75,7 +75,7 @@ public class Weapon extends MyObject {
 		for (int i = 0; i < bullets.length; ++i)
 			if (!bullets[i].checkHealth()) {
 				bullets[i] = bullets[bullets.length - 1];
-				bullets = (Bullet[]) (p.shorten(bullets));
+				bullets = (Bullet[]) (PApplet.shorten(bullets));
 			}
 	}
 
@@ -106,7 +106,7 @@ public class Weapon extends MyObject {
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
 	}
-	
+
 	public Weapon() {
 		super();
 	}

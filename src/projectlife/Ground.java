@@ -21,7 +21,7 @@ public class Ground extends StandingObject {
 	 * @param int color
 	 */
 	public void addBlood(PVector position, int color) {
-		position.z = p.random(p.TWO_PI);
+		position.z = p.random(PConstants.TWO_PI);
 		bloodSplashes = (PVector[]) PApplet.append(bloodSplashes, position);
 		bloodColors = (int[]) PApplet.append(bloodColors, color);
 		// dust.beginDraw();
