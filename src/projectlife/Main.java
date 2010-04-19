@@ -2,6 +2,7 @@ package projectlife;
 
 import processing.core.*;
 import processing.opengl.*;
+import processing.xml.XMLElement;
 
 public class Main extends PApplet {
 	/**
@@ -11,34 +12,56 @@ public class Main extends PApplet {
 	public Level level;
 	public Controller controller;
 	public MenuManager menu;
-	
+
 	public PFont debuggy;
 	public String runPath;
 	public String dataPath;
+	public String levelPath;
 	public boolean debug;
+
 	public void setup() {
 		// size(600, 300, P2D);
 		// int x=screen.width,y=screen.height;
 		size(800, 600, OPENGL);
+
+		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
+		dataPath = runPath + "../data/";
+
+		XMLElement preferences = new XMLElement(this, dataPath + "main.xml");
 		
-		runPath = Main.class.getResource("./").getPath().substring(1);//toString();
-		dataPath = runPath+"../data/";
+		if (Integer.parseInt(preferences.getChild("debug").getContent()) == 1) {
+			debug=true;
+		} else {
+			debug = false;
+		}
+		debuggy = createFont("arial", 32);
+		textFont(debuggy);
+		// System.out.println(preferences.getChild("fps").getContent());
+		frameRate(Integer.parseInt(preferences.getChild("fps").getContent()));
+		if (Integer.parseInt(preferences.getChild("smooth").getContent()) == 1) {
+			smooth();
+		}
+		if (Integer.parseInt(preferences.getChild("stroke").getContent()) == 0) {
+			noStroke();
+		}
+		// image(loadImage(runPath+"../data/beast.png"),0,0);
+		final int cursor = Integer.parseInt(preferences.getChild("cursor").getContent());
+		if(cursor==-1) {
+			cursor(loadImage(preferences.getChild("cursor").getStringAttribute("src")),8,8);
+		} else {
+			cursor(cursor);
+		}
 		
-		Init(dataPath+"main.xml");
-		frameRate(30);
-		smooth();
-		noStroke();
-		//image(loadImage(runPath+"../data/beast.png"),0,0);
-		cursor(CROSS);
+		background(Integer.parseInt(preferences.getChild("bg").getContent()));
+		rectMode(Integer.parseInt(preferences.getChild("rect").getContent()));
+		ellipseMode(Integer.parseInt(preferences.getChild("ellipse").getContent()));
 		
-		background(100);
-		rectMode(CENTER);
-		ellipseMode(CENTER);
+		levelPath=dataPath+preferences.getChild("levelDir").getContent()+"/";
+		
 		// TODO load config.xml file
 		level = new Level("", this);
-		controller = new Controller(this, level.warrior);
-		menu = new MenuManager(this);
-
+		controller = new Controller(this, level.warrior,preferences.getChild("controller"));
+		menu = new MenuManager(this,preferences.getChild("menu"));
 
 	}
 
@@ -52,7 +75,9 @@ public class Main extends PApplet {
 			controller.press(mouseButton);
 		}
 
-		text(((int) frameRate) + " " + level.beasts.length, 50, 50);
+		if (debug) {
+			text(((int) frameRate) + " " + level.beasts.length, 50, 50);
+		}
 
 	}
 
@@ -73,12 +98,7 @@ public class Main extends PApplet {
 	}
 
 	public void Init(String xmlFile) {
-		debug=false;
-		if(debug){
-			
-		}
-		debuggy = createFont("arial", 32);
-		textFont(debuggy);
+
 	}
 
 	public static void main(String args[]) {

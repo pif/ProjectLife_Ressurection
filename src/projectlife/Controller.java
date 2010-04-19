@@ -1,6 +1,7 @@
 package projectlife;
 
 import processing.core.*;
+import processing.xml.XMLElement;
 
 /**
 */
@@ -29,7 +30,20 @@ public class Controller extends MyObject {
 		nextWeapon = (int) 'e';// TODO next, previous weapon
 		prevWeapon = (int) 'q';
 	}
-
+	
+	public Controller(Main applet, Warrior warrior, XMLElement preferences) {
+		super(applet);
+		// this.warrior = warrior;
+		up = preferences.getIntAttribute("up");// 'w';//PConstants.UP;
+		down = preferences.getIntAttribute("down");// 's';//PConstants.DOWN;
+		left = preferences.getIntAttribute("left");// 'a';//PConstants.LEFT;
+		right = preferences.getIntAttribute("right");// 'd';//PConstants.RIGHT;
+		shoot = preferences.getIntAttribute("shoot");
+		getLevel = preferences.getIntAttribute("level");
+		menu = preferences.getIntAttribute("menu");
+		nextWeapon = preferences.getIntAttribute("next");// TODO next, previous weapon
+		prevWeapon = preferences.getIntAttribute("prev");
+	}
 	/**
 */
 	private static boolean[] keys = new boolean[256];

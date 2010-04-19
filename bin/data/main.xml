@@ -1,0 +1,18 @@
+<?xml version="1.0" econding="UTF-8" standalone="yes"?>
+<game>
+	<debug>1</debug>
+	<fps>30</fps>
+	<smooth>1</smooth>
+	<stroke>0</stroke>
+	<cursor src="">1</cursor>
+	<bg>100</bg>
+	<rect>3</rect><!-- CORNER=0 CORNERS=1 RADIUS=2 CENTER=3-->
+	<ellipse>3</ellipse>
+	<levelDir>level</levelDir>
+	<controller up="87" down="83" left="65" right="68" shoot="37" level="39" menu="27" next="101" prev="113" />
+	<menu>
+		<item name="play" src="images/play.png" top="50" left="-1" angle="0" radius="-1"></item>
+		<item name="records" src="images/records.png" top="50" left="-1" angle="0" radius="-1"></item>
+		<item name="exit" src="images/exit.png" top="50" left="-1" angle="0" radius="-1"></item>
+	</menu>
+</game>
