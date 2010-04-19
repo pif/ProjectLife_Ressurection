@@ -32,7 +32,8 @@ public class MenuManager extends MyObject {
 		for (int i = 0; i < preferences.getChildCount(); i++) {
 			XMLElement item = preferences.getChild(i);
 			// 0=play button 1=records button 2=exit game
-			if (item.getStringAttribute("function") == "play") {
+			String function =item.getStringAttribute("function"); 
+			if (function.equals("play")) {
 				overlays[0] = new Overlay(applet, new PVector(item
 						.getFloatAttribute("top"), ((item
 						.getFloatAttribute("left") == -1) ? (p.width / 2)
@@ -40,7 +41,7 @@ public class MenuManager extends MyObject {
 						.getStringAttribute("src"), item
 						.getFloatAttribute("angle"), 0, item
 						.getFloatAttribute("radius"), new PVector());
-			} else if (item.getStringAttribute("function") == "records") {
+			} else if (function.equals("records")) {
 				overlays[1] = new Overlay(applet, new PVector(item
 						.getFloatAttribute("top"), ((item
 						.getFloatAttribute("left") == -1) ? (p.width / 2)
@@ -48,7 +49,7 @@ public class MenuManager extends MyObject {
 						.getStringAttribute("src"), item
 						.getFloatAttribute("angle"), 0, item
 						.getFloatAttribute("radius"), new PVector());
-			} else if (item.getStringAttribute("function") == "exit") {
+			} else if (function.equals("exit")) {
 				overlays[2] = new Overlay(applet, new PVector(item
 						.getFloatAttribute("top"), ((item
 						.getFloatAttribute("left") == -1) ? (p.width / 2)
