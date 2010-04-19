@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Ground extends StaticObject {
+public class Ground extends StandingObject {
 	/**
 */
 	public boolean tile;
@@ -12,6 +12,8 @@ public class Ground extends StaticObject {
 */
 	public PGraphics dust;
 	public PImage blood;
+	public PVector[] bloodSplashes;
+	public int[] bloodColors;
 
 	/**
 	 * @param position
@@ -19,27 +21,42 @@ public class Ground extends StaticObject {
 	 * @param int color
 	 */
 	public void addBlood(PVector position, int color) {
-		dust.beginDraw();
-		dust.tint(color);
-		dust.pushMatrix();
-		dust.translate(position.x, position.y);
-		dust.rotate(p.random(PConstants.TWO_PI));
-		dust.image(blood, -blood.width / 2, -blood.height / 2);
-		dust.popMatrix();
-		// dust.blend(bloodTinted, 0, 0, blood.width, blood.height,
-		// (int)position.x-blood.width/2, (int)position.y-blood.height/2,
-		// blood.width, blood.height, p.ADD);
-		// p.blend(dust, 0, 0, dust.width, dust.height, 0, 0, p.width, p.height,
-		// p.DARKEST);
-		dust.endDraw();
+		position.z = p.random(p.TWO_PI);
+		bloodSplashes = (PVector[]) PApplet.append(bloodSplashes, position);
+		bloodColors = (int[]) PApplet.append(bloodColors, color);
+		// dust.beginDraw();
+		// dust.tint(color);
+		// dust.pushMatrix();
+		// dust.translate(position.x, position.y);
+		// dust.rotate(p.random(PConstants.TWO_PI));
+		// dust.image(blood, -blood.width / 2, -blood.height / 2);
+		// dust.popMatrix();
+		// // dust.blend(bloodTinted, 0, 0, blood.width, blood.height,
+		// // (int)position.x-blood.width/2, (int)position.y-blood.height/2,
+		// // blood.width, blood.height, p.ADD);
+		// // p.blend(dust, 0, 0, dust.width, dust.height, 0, 0, p.width,
+		// p.height,
+		// // p.DARKEST);
+		// dust.endDraw();
 	}
 
 	/**
  * 
  */
 	public void drawBackground() {
-		// TODO GREAT BACKGROUND PROOOOBLEMS
-		p.image(this.dust,0,0);// this.dust);
+		p.image(sprite, 0, 0);// p.background(sprite);
+
+		for (int i = 0; i < bloodSplashes.length; i++) {
+			p.pushMatrix();
+			p.pushStyle();
+			p.translate(bloodSplashes[i].x, bloodSplashes[i].y);
+			p.rotate(bloodSplashes[i].z);
+			p.tint(bloodColors[i]);
+			p.image(blood, 0, 0);
+			p.popStyle();
+			p.popMatrix();
+		}
+		// p.image(this.dust,0,0);// this.dust);
 		// TODO think about level coordnaties and applet coordinates/ this means
 		// that game field can be really huge. not just limited to the screen
 
@@ -86,6 +103,8 @@ public class Ground extends StaticObject {
 		}
 
 		blood = p.loadImage("blood.png");
+		bloodSplashes = new PVector[0];
+		bloodColors = new int[0];
 
 		dust = p.createGraphics(p.width, p.height, PConstants.P3D);
 		dust.beginDraw();

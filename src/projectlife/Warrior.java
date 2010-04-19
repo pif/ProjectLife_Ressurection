@@ -1,9 +1,10 @@
 package projectlife;
+
 import processing.core.*;
 
 /**
 */
-public class Warrior extends DynamicObject {
+public class Warrior extends MovingObject {
 
 	public int experience;
 

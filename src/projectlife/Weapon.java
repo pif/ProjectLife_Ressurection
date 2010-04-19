@@ -102,9 +102,13 @@ public class Weapon extends MyObject {
 		this.reloadTime = reloadTime;
 		this.rackSize = rackSize;
 		this.timeBetweenShoots = timeBetweenShoots;
-		
-		this.currentRackSize=rackSize;
+
+		this.currentRackSize = rackSize;
 		this.canShoot = true;
+	}
+	
+	public Weapon() {
+		super();
 	}
 
 }

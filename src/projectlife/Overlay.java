@@ -1,7 +1,8 @@
 package projectlife;
+
 import processing.core.*;
 
-public class Overlay extends StaticObject {
+public class Overlay extends StandingObject {
 	public Overlay(Main applet, PVector position, String img, float angle,
 			int color, float radius, PVector target) {
 		super(applet, position, img, angle, color, radius, target);

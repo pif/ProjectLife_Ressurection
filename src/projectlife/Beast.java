@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Beast extends DynamicObject {
+public class Beast extends MovingObject {
 
 	public static int spotDistance = 100;
 
@@ -59,7 +59,9 @@ public class Beast extends DynamicObject {
 				float y = p.curvePoint(p1.y, s.y, f.y, p2.y, t);
 				targets[i] = new PVector(x, y);
 
-				//p.curve(p1.x, p1.y, s.x, s.y, f.x, f.y, p2.x, p2.y);
+				if (p.debug) {
+					p.curve(p1.x, p1.y, s.x, s.y, f.x, f.y, p2.x, p2.y);
+				}
 			}
 		}
 	}
@@ -88,10 +90,12 @@ public class Beast extends DynamicObject {
 			target = p.level.warrior.location;
 		}
 
-//		if (followTargets) {
-//			p.ellipseMode(p.CENTER);
-//			for (int i = 0; i < steps; ++i)
-//				p.ellipse(targets[i].x, targets[i].y, 32, 32);
-//		}
+		if (p.debug) {
+			if (followTargets) {
+				p.ellipseMode(p.CENTER);
+				for (int i = 0; i < steps; ++i)
+					p.ellipse(targets[i].x, targets[i].y, 32, 32);
+			}
+		}
 	}
 }

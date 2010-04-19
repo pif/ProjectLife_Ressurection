@@ -1,0 +1,44 @@
+<?xml version="1.0" econding="UTF-8" standalone="yes"?>
+<game>
+	<fps>30</fps>
+	<smooth>true</smooth>
+	<stroke>false</stroke>
+	<cursor>CROSS</cursor>
+	<bg>100</bg>
+	<rect>CENTER</rect>
+	<ellipse>CENTER</ellipse>
+	<levelDir>level</levelDir>
+	<controller>
+		<up>87</up>
+		<down>83</down>
+		<left>65</left>
+		<right>68</right>
+		<shoot>37</shoot>
+		<level>39</level>
+		<menu>27</menu>
+		<next>101</next>
+		<prev>113</prev>
+	</controller>
+	<menu>
+		<item name="play" src="images/play.png" top="50" left="-1" angle="0" radius="-1"></item>
+		<item name="records" src="images/records.png" top="50" left="-1" angle="0" radius="-1"></item>
+		<item name="exit" src="images/exit.png" top="50" left="-1" angle="0" radius="-1"></item>
+	</menu>
+		menu = new MenuManager(this);
+
+		debuggy = createFont("arial", 32);
+		textFont(debuggy);
+
+    <title>Фукідід</title>
+    <id>1529</id>
+    <revision>
+      <id>4382</id>
+      <timestamp>2006-09-18T22:11:53Z</timestamp>
+      <minor />
+      <comment>Interwiki</comment>
+      <text xml:space="preserve">{{Wikipedia}}
+*Історія — це філософія в прикладах.
+</text>
+    </revision>
+  </page>
+</game>
