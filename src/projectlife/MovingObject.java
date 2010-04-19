@@ -7,8 +7,6 @@ import processing.core.*;
 public class MovingObject extends StandingObject {
 
 	private PVector stopAcceleration;
-	public boolean stopped;
-
 	public MovingObject(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target) {
@@ -68,7 +66,6 @@ public class MovingObject extends StandingObject {
 		// p.rect(-5, -40, 5, -50);
 		// p.popMatrix();
 
-		// TODO debug mode
 		if (p.debug) {
 			p.rect(location.x, location.y - 64, health, 10);
 			p.ellipse(location.x, location.y, radius, radius);
@@ -85,20 +82,5 @@ public class MovingObject extends StandingObject {
 			visible = false;
 		}
 		return super.check();
-	}
-
-	/**
-	*/
-	public void stop() {
-		stopped = true;
-		// stopAcceleration = acceleration;
-		// acceleration = new PVector(0, 0);
-	}
-
-	public void letGo() {
-		// TODO Auto-generated method stub
-		stopped = false;
-		// TODO Auto-generated method stub
-		// acceleration=stopAcceleration;
 	}
 }

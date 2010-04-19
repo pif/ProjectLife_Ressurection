@@ -61,7 +61,6 @@ public class Main extends PApplet {
 		levelPath = dataPath + preferences.getChild("levelDir").getContent()
 				+ "/";
 
-		// TODO load config.xml file
 		level = new Level("", this);
 		controller = new Controller(this, level.warrior, preferences
 				.getChild("controller"));
@@ -104,7 +103,7 @@ public class Main extends PApplet {
 	public void Init(String xmlFile) {
 
 	}
-
+	
 	public static void main(String args[]) {
 		PApplet.main(new String[] { "--present", "Main" });
 	}

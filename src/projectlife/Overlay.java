@@ -6,11 +6,10 @@ public class Overlay extends StandingObject {
 	public Overlay(Main applet, PVector position, String img, float angle,
 			int color, float radius, PVector target) {
 		super(applet, position, img, angle, color, radius, target);
-		topLeft = new PVector(position.x - sprite.width / 2, position.y
-				- sprite.height / 2);
-		bottomRight = new PVector(position.x + sprite.width / 2, position.y
-				+ sprite.height / 2);
-		// TODO think about angle, polar coordinates. maybe in MenuManager
+		topLeft = new PVector(position.x - picture.width / 2, position.y
+				- picture.height / 2);
+		bottomRight = new PVector(position.x + picture.width / 2, position.y
+				+ picture.height / 2);
 	}
 
 	/**

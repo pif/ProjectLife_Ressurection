@@ -10,7 +10,7 @@ public class Weapon extends MyObject {
 	public float damage;
 	/**
 */
-	public float speed;
+	public float bulletSpeed;
 	/**
 */
 	public float radius;
@@ -53,7 +53,7 @@ public class Weapon extends MyObject {
 					// you can shoot. you have bullets in rack.
 					Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf",
 							angle + p.random(-jitter, jitter), 0xFFFFFFFF,
-							radius, damage, speed, this, new PVector());
+							radius, damage, bulletSpeed, this, new PVector());
 					this.bullets = (Bullet[]) PApplet.append(this.bullets, b);
 					currentRackSize--;
 					lastShot = p.millis();
@@ -96,7 +96,7 @@ public class Weapon extends MyObject {
 		this.damage = damage;
 		this.radius = radius;
 		this.bullets = new Bullet[0];
-		this.speed = speed;
+		this.bulletSpeed = speed;
 		this.jitter = jitter;
 		this.lastShot = 0;
 		this.reloadTime = reloadTime;

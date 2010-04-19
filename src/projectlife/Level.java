@@ -18,7 +18,6 @@ public class Level extends MyObject {
 	public Overlay[] overlays;
 
 	public Level(String xmlPath, Main applet) {
-		// TODO Xml parser
 		super(applet);
 
 		warrior = new Warrior(applet, new PVector(applet.width / 2,
@@ -57,7 +56,6 @@ public class Level extends MyObject {
 	}
 
 	public void start() {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < beasts.length; i++) {
 			beasts[i].letGo();
 		}

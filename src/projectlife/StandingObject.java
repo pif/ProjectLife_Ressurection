@@ -12,9 +12,11 @@ public class StandingObject extends MyObject {
 	public PVector location;
 	/**
 */
-	public PImage sprite;
+	public PImage picture;
 	/**
 */
+	public Animation sprite;
+
 	public PVector target;
 
 	public float angle;
@@ -27,6 +29,7 @@ public class StandingObject extends MyObject {
 	/**
 */
 	public boolean visible;
+	public boolean stopped;
 
 	public StandingObject(Main applet, PVector position, String img,
 			float angle, int color, float radius, PVector target) {
@@ -34,9 +37,9 @@ public class StandingObject extends MyObject {
 		this.location = position;
 		File f = new File(applet.dataPath(img));
 		if (f.exists()) {
-			this.sprite = p.loadImage(img);
+			this.picture = p.loadImage(img);
 		} else {
-			this.sprite = null;
+			this.picture = null;
 		}
 
 		this.angle = angle;
@@ -45,6 +48,8 @@ public class StandingObject extends MyObject {
 		this.visible = true;
 
 		this.target = new PVector();
+		
+		this.sprite = new Animation();
 	}
 
 	/**
@@ -73,11 +78,17 @@ public class StandingObject extends MyObject {
 
 			p.translate(location.x, location.y);
 			p.rotate(angle);
-			if (sprite == null) {
-				p.fill(color);
-				p.ellipse(0, 0, radius, radius);
+			if (sprite.sprites.length > 0) {
+				PImage pic = sprite.getNext();
+				p.image(pic, 0 - pic.width / 2, 0 - pic.height / 2);
 			} else {
-				p.image(sprite, 0 - sprite.width / 2, 0 - sprite.height / 2);
+				if (picture == null) {
+					p.fill(color);
+					p.ellipse(0, 0, radius, radius);
+				} else {
+					p.image(picture, 0 - picture.width / 2,
+									0 - picture.height / 2);
+				}
 			}
 
 			p.popMatrix();
@@ -94,5 +105,17 @@ public class StandingObject extends MyObject {
 	 */
 	public boolean check() {
 		return visible;
+	}
+
+	/**
+	*/
+	public void stop() {
+		stopped = true;
+		sprite.pause();
+	}
+
+	public void letGo() {
+		stopped = false;
+		sprite.goOn();
 	}
 }

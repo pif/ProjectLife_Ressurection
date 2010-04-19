@@ -44,7 +44,7 @@ public class Ground extends StandingObject {
  * 
  */
 	public void drawBackground() {
-		p.image(sprite, 0, 0);// p.background(sprite);
+		p.image(picture, 0, 0);// p.background(sprite);
 
 		for (int i = 0; i < bloodSplashes.length; i++) {
 			p.pushMatrix();
@@ -73,33 +73,33 @@ public class Ground extends StandingObject {
 					PConstants.P3D);
 
 			pg.beginDraw();
-			int xc = pg.width / sprite.width + 1;
-			int yc = pg.height / sprite.height + 1;
+			int xc = pg.width / picture.width + 1;
+			int yc = pg.height / picture.height + 1;
 
 			for (int i = 0; i < xc; ++i)
 				for (int j = 0; j < yc; ++j) {
-					pg.image(sprite, i * sprite.width, j * sprite.height);
+					pg.image(picture, i * picture.width, j * picture.height);
 				}
 			pg.endDraw();
 
-			sprite = p.createImage(pg.width, pg.height, PConstants.RGB);
-			sprite.loadPixels();
+			picture = p.createImage(pg.width, pg.height, PConstants.RGB);
+			picture.loadPixels();
 			pg.loadPixels();
-			sprite.pixels = pg.pixels;
-			sprite.updatePixels();
+			picture.pixels = pg.pixels;
+			picture.updatePixels();
 		} else {
 			// stretch image
 			PGraphics pg = applet.createGraphics(p.width, p.height,
 					PConstants.P3D);
 			pg.beginDraw();
-			pg.image(sprite, 0, 0, pg.width, pg.height);
+			pg.image(picture, 0, 0, pg.width, pg.height);
 			pg.endDraw();
 
-			sprite = applet.createImage(pg.width, pg.height, PConstants.RGB);
-			sprite.loadPixels();
+			picture = applet.createImage(pg.width, pg.height, PConstants.RGB);
+			picture.loadPixels();
 			pg.loadPixels();
-			sprite.pixels = pg.pixels;
-			sprite.updatePixels();
+			picture.pixels = pg.pixels;
+			picture.updatePixels();
 		}
 
 		blood = p.loadImage("blood.png");
@@ -108,7 +108,7 @@ public class Ground extends StandingObject {
 
 		dust = p.createGraphics(p.width, p.height, PConstants.P3D);
 		dust.beginDraw();
-		dust.image(sprite, 0, 0);// background(255);
+		dust.image(picture, 0, 0);// background(255);
 		dust.endDraw();
 		// Ground(String txt, boolean state) {
 	}

@@ -33,16 +33,15 @@ public class Controller extends MyObject {
 
 	public Controller(Main applet, MovingObject warrior, XMLElement preferences) {
 		super(applet);
-		// this.warrior = warrior;
-		up = preferences.getIntAttribute("up");// 'w';//PConstants.UP;
-		down = preferences.getIntAttribute("down");// 's';//PConstants.DOWN;
-		left = preferences.getIntAttribute("left");// 'a';//PConstants.LEFT;
-		right = preferences.getIntAttribute("right");// 'd';//PConstants.RIGHT;
+
+		up = preferences.getIntAttribute("up");
+		down = preferences.getIntAttribute("down");
+		left = preferences.getIntAttribute("left");
+		right = preferences.getIntAttribute("right");
 		shoot = preferences.getIntAttribute("shoot");
 		getLevel = preferences.getIntAttribute("level");
 		menu = preferences.getIntAttribute("menu");
-		nextWeapon = preferences.getIntAttribute("next");// TODO next, previous
-		// weapon
+		nextWeapon = preferences.getIntAttribute("next");
 		prevWeapon = preferences.getIntAttribute("prev");
 	}
 
