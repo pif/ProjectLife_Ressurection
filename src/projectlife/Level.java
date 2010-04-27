@@ -18,6 +18,7 @@ public class Level extends MyObject {
 	public Overlay[] overlays;
 
 	public Level(String xmlPath, Main applet) {
+
 		super(applet);
 
 		warrior = new Warrior(applet, new PVector(applet.width / 2,

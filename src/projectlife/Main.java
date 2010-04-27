@@ -1,5 +1,8 @@
 package projectlife;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import processing.core.*;
 import processing.opengl.*;
 import processing.xml.XMLElement;
@@ -22,7 +25,9 @@ public class Main extends PApplet {
 	public void setup() {
 		// size(600, 300, P2D);
 		// int x=screen.width,y=screen.height;
-		size(800, 600, OPENGL);
+		Dimension scr = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		size(scr.width, scr.height, OPENGL);
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
@@ -36,7 +41,9 @@ public class Main extends PApplet {
 		debuggy = createFont("arial", 32);
 		textFont(debuggy);
 		// System.out.println(preferences.getChild("fps").getContent());
-		frameRate(Integer.parseInt(preferences.getChild("fps").getContent()));
+		if(Integer.parseInt(preferences.getChild("fps").getContent())!=-1) {
+			frameRate(Integer.parseInt(preferences.getChild("fps").getContent()));
+		}
 		if (Integer.parseInt(preferences.getChild("smooth").getContent()) == 1) {
 			smooth();
 		}
@@ -100,11 +107,12 @@ public class Main extends PApplet {
 		controller.release(mouseButton);
 	}
 
-	public void Init(String xmlFile) {
-
-	}
-	
 	public static void main(String args[]) {
-		PApplet.main(new String[] { "--present", "Main" });
+	    PApplet.main(new String[] { 
+	    		"--present",
+	    		"--bgcolor=#000000",
+	    		"--present-stop-color=#000000",
+	    		"Main"
+	    	    });
 	}
 }

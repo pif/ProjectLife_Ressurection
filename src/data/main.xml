@@ -1,10 +1,10 @@
 <?xml version="1.0" econding="UTF-8" standalone="yes"?>
 <game>
-	<debug>0</debug>
-	<fps>30</fps>
+	<debug>1</debug>
+	<fps>-1</fps>
 	<smooth>1</smooth>
 	<stroke>0</stroke>
-	<cursor src="">1</cursor>
+	<cursor src="">3</cursor>
 	<bg>100</bg>
 	<rect>3</rect><!-- CORNER=0 CORNERS=1 RADIUS=2 CENTER=3-->
 	<ellipse>3</ellipse>
