@@ -1,8 +1,5 @@
 package projectlife;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 import processing.core.*;
 import processing.opengl.*;
 import processing.xml.XMLElement;
@@ -12,22 +9,24 @@ public class Main extends PApplet {
 	 * 
 	 */
 	private static final long serialVersionUID = -1886093456349654286L;
+	
 	public Level level;
 	public Controller controller;
 	public MenuManager menu;
-
+	
 	public PFont debuggy;
 	public String runPath;
 	public String dataPath;
 	public String levelPath;
 	public boolean debug;
-
+	
 	public void setup() {
 		// size(600, 300, P2D);
 		// int x=screen.width,y=screen.height;
-		Dimension scr = Toolkit.getDefaultToolkit().getScreenSize();
+//		System.out.println(scr.width+"+"+scr.height);
 		
-		size(scr.width, scr.height, OPENGL);
+		//size(screen.width, screen.height, PGraphicsOpenGL.OPENGL);
+		size(800, 600, JAVA2D);//PGraphicsOpenGL.OPENGL);
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
@@ -44,8 +43,10 @@ public class Main extends PApplet {
 		if(Integer.parseInt(preferences.getChild("fps").getContent())!=-1) {
 			frameRate(Integer.parseInt(preferences.getChild("fps").getContent()));
 		}
+		
 		if (Integer.parseInt(preferences.getChild("smooth").getContent()) == 1) {
 			smooth();
+			//hint(ENABLE_OPENGL_4X_SMOOTH);
 		}
 		if (Integer.parseInt(preferences.getChild("stroke").getContent()) == 0) {
 			noStroke();
@@ -72,7 +73,7 @@ public class Main extends PApplet {
 		controller = new Controller(this, level.warrior, preferences
 				.getChild("controller"));
 		menu = new MenuManager(this, preferences.getChild("menu"));
-
+		
 	}
 
 	public void draw() {
@@ -108,7 +109,7 @@ public class Main extends PApplet {
 	}
 
 	public static void main(String args[]) {
-	    PApplet.main(new String[] { 
+	    Main.main(new String[] { 
 	    		"--present",
 	    		"--bgcolor=#000000",
 	    		"--present-stop-color=#000000",
