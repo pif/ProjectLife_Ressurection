@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" econding="UTF-8" standalone="yes"?>
+<?xml version="1.0"?>
 <game>
-	<debug>0</debug>
+	<debug>1</debug>
 	<fps>-1</fps>
 	<smooth>1</smooth>
 	<stroke>0</stroke>

@@ -33,7 +33,8 @@ public class Main extends PApplet {
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
-		System.out.println(dataPath+"main.xml");
+		//System.out.println(dataPath+"main.xml");
+				
 		XMLElement preferences = new XMLElement(this, dataPath + "main.xml");
 
 		if (Integer.parseInt(preferences.getChild("debug").getContent()) == 1) {

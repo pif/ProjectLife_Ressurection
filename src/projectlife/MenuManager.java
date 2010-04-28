@@ -86,8 +86,6 @@ public class MenuManager extends OverlayManager {
 	/**
 	 * 0=play button 1=records button 2=exit game
 	 */
-	public Overlay[] overlays;
-
 	/**
 	 * @param Return
 	 */
@@ -115,11 +113,13 @@ public class MenuManager extends OverlayManager {
 			p.fill(0, 0, 0, 140);
 			p.rect(p.width / 2, p.height / 2, p.width, p.height);
 			p.popStyle();
-
+			
+			super.display();
 			// for (int i = 0; i < overlays.length; i++) {
 			// overlays[i].display();
 			// }
 		}
+
 	}
 
 	public void show() {
