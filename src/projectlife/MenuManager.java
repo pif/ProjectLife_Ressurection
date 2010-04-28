@@ -5,9 +5,9 @@ import processing.xml.XMLElement;
 
 /**
 */
-public class MenuManager extends MyObject {
+public class MenuManager extends OverlayManager {
 
-	public boolean visible;// true == game is on, false == menu is on fire!
+	// visible: true == game is on, false == menu is on fire!
 
 	public MenuManager(Main applet) {
 		super(applet);
@@ -92,27 +92,20 @@ public class MenuManager extends MyObject {
 	 * @param Return
 	 */
 	public void click(PVector point) {
-		for (int i = 0; i < overlays.length; i++) {
-			if (overlays[i].topLeft.x <= point.x
-					&& overlays[i].bottomRight.x >= point.x
-					&& overlays[i].topLeft.y <= point.y
-					&& overlays[i].bottomRight.y >= point.y) {
-				switch (i) {
-				case 0:
-					this.hide();
-					p.level.start();
-					break;
-				case 1:
-					// p.records.show();
-					break;
-				case 2:
-					p.exit();
-					break;
+		switch (this.getClickedOverlay(point)) {
+		case 0:
+			this.hide();
+			p.level.start();
+			break;
+		case 1:
+			// p.records.show();
+			break;
+		case 2:
+			p.exit();
+			break;
 
-				default:
-					break;
-				}
-			}
+		default:
+			break;
 		}
 	}
 
@@ -123,19 +116,19 @@ public class MenuManager extends MyObject {
 			p.rect(p.width / 2, p.height / 2, p.width, p.height);
 			p.popStyle();
 
-			for (int i = 0; i < overlays.length; i++) {
-				overlays[i].display();
-			}
+			// for (int i = 0; i < overlays.length; i++) {
+			// overlays[i].display();
+			// }
 		}
 	}
 
 	public void show() {
-		visible = true;
+		super.show();
 		p.level.suspend();
 	}
 
 	public void hide() {
-		visible = false;
+		super.hide();
 		p.level.start();
 	}
 

@@ -1,35 +1,39 @@
 package projectlife;
 
+import java.io.*;
+import java.net.*;
+
 import processing.core.*;
 import processing.opengl.*;
-import processing.xml.XMLElement;
+import processing.xml.*;
 
 public class Main extends PApplet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1886093456349654286L;
-	
+
 	public Level level;
 	public Controller controller;
 	public MenuManager menu;
-	
+
 	public PFont debuggy;
 	public String runPath;
 	public String dataPath;
 	public String levelPath;
 	public boolean debug;
-	
+
 	public void setup() {
 		// size(600, 300, P2D);
 		// int x=screen.width,y=screen.height;
-//		System.out.println(scr.width+"+"+scr.height);
-		
-		//size(screen.width, screen.height, PGraphicsOpenGL.OPENGL);
-		size(800, 600, JAVA2D);//PGraphicsOpenGL.OPENGL);
+		// System.out.println(scr.width+"+"+scr.height);
+
+		// size(screen.width, screen.height, PGraphicsOpenGL.OPENGL);
+		size(800, 600, OPENGL);// PGraphicsOpenGL.OPENGL);
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
+		System.out.println(dataPath+"main.xml");
 		XMLElement preferences = new XMLElement(this, dataPath + "main.xml");
 
 		if (Integer.parseInt(preferences.getChild("debug").getContent()) == 1) {
@@ -40,13 +44,14 @@ public class Main extends PApplet {
 		debuggy = createFont("arial", 32);
 		textFont(debuggy);
 		// System.out.println(preferences.getChild("fps").getContent());
-		if(Integer.parseInt(preferences.getChild("fps").getContent())!=-1) {
-			frameRate(Integer.parseInt(preferences.getChild("fps").getContent()));
+		if (Integer.parseInt(preferences.getChild("fps").getContent()) != -1) {
+			frameRate(Integer
+					.parseInt(preferences.getChild("fps").getContent()));
 		}
-		
+
 		if (Integer.parseInt(preferences.getChild("smooth").getContent()) == 1) {
 			smooth();
-			//hint(ENABLE_OPENGL_4X_SMOOTH);
+			// hint(ENABLE_OPENGL_4X_SMOOTH);
 		}
 		if (Integer.parseInt(preferences.getChild("stroke").getContent()) == 0) {
 			noStroke();
@@ -74,6 +79,12 @@ public class Main extends PApplet {
 				.getChild("controller"));
 		menu = new MenuManager(this, preferences.getChild("menu"));
 		
+		XMLElement locationByIpData = new XMLElement(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
+//		System.out.println(locationByIpData.getChild("City").getContent());
+		System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather="+locationByIpData.getChild("City").getContent()));
+		
+//		System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather=,,,50000000,24016667"));
+//		System.out.println(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
 	}
 
 	public void draw() {
@@ -108,12 +119,42 @@ public class Main extends PApplet {
 		controller.release(mouseButton);
 	}
 
+	public static String sendGetRequest(String endpoint,
+			String requestParameters) {
+		String result = null;
+		if (endpoint.startsWith("http://")) {
+			// Send a GET request to the servlet
+			try {
+				// Construct data
+				StringBuffer data = new StringBuffer();
+
+				// Send data
+				String urlStr = endpoint;
+				if (requestParameters != null && requestParameters.length() > 0) {
+					urlStr += "?" + requestParameters;
+				}
+				URL url = new URL(urlStr);
+				URLConnection conn = url.openConnection();
+
+				// Get the response
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						conn.getInputStream()));
+				StringBuffer sb = new StringBuffer();
+				String line;
+				while ((line = rd.readLine()) != null) {
+					sb.append(line);
+				}
+				rd.close();
+				result = sb.toString();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	public static void main(String args[]) {
-	    Main.main(new String[] { 
-	    		"--present",
-	    		"--bgcolor=#000000",
-	    		"--present-stop-color=#000000",
-	    		"Main"
-	    	    });
+		Main.main(new String[] { "--present", "--bgcolor=#000000",
+				"--present-stop-color=#000000", "Main" });
 	}
 }
