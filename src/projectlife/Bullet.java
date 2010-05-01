@@ -34,6 +34,8 @@ public class Bullet extends MovingObject {
 		return super.display();
 	}
 
+	//hmm... that seems to me that every weapon should have it's own bullet class..
+	//maybe, we don't even need different weapons...we just need different bullets???
 	public void move() {
 		// acceleration.normalize();
 		if (!stopped) {

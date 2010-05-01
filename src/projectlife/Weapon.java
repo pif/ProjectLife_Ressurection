@@ -35,9 +35,9 @@ public class Weapon extends MyObject {
 	/**
 	 * 
 	 * @param Return
-	 * @return
+	 * @return reloads weapon's rack with new bullets. there's no bullet limit
+	 *         in game.
 	 */
-
 	public boolean reload() {
 		// reload weapon
 		canShoot = false;
@@ -46,17 +46,25 @@ public class Weapon extends MyObject {
 		return canShoot;
 	}
 
+	// classes should implement this method. it is called every time we can
+	// shoot...
+	public void generateBullet(int x, int y, float angle) {
+		//TODO weapon bullet stub. every weapon should have it's own...i suppose
+		Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf", angle
+				+ p.random(-jitter, jitter), 0xFFFFFFFF, radius, damage,
+				bulletSpeed, this, new PVector());
+		this.bullets = (Bullet[]) PApplet.append(this.bullets, b);
+		currentRackSize--;
+		lastShot = p.millis();
+	}
+
+	// shoot in position x,y with the angle=angle
 	public void shoot(int x, int y, float angle) {
 		if (canShoot) {
 			if (p.millis() - lastShot >= timeBetweenShoots) {
 				if (currentRackSize > 0) {
 					// you can shoot. you have bullets in rack.
-					Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf",
-							angle + p.random(-jitter, jitter), 0xFFFFFFFF,
-							radius, damage, bulletSpeed, this, new PVector());
-					this.bullets = (Bullet[]) PApplet.append(this.bullets, b);
-					currentRackSize--;
-					lastShot = p.millis();
+					generateBullet(x, y, angle);
 				} else {
 					reload();
 				}
@@ -70,6 +78,8 @@ public class Weapon extends MyObject {
 
 	/**
 	 * @param Return
+	 *            checks if bullet can be on the board. if it is still needed.
+	 *            if not so - deletes it.
 	 */
 	public void updateBullets() {
 		for (int i = 0; i < bullets.length; ++i)
@@ -81,6 +91,7 @@ public class Weapon extends MyObject {
 
 	/**
 	 * @param Return
+	 *            calls every bullets' display method
 	 */
 	public void displayBullets() {
 		updateBullets();

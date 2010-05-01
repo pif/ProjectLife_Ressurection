@@ -80,9 +80,9 @@ public class Main extends PApplet {
 				.getChild("controller"));
 		menu = new MenuManager(this, preferences.getChild("menu"));
 		
-		XMLElement locationByIpData = new XMLElement(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
+	//	XMLElement locationByIpData = new XMLElement(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
 //		System.out.println(locationByIpData.getChild("City").getContent());
-		System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather="+locationByIpData.getChild("City").getContent()));
+		//System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather="+locationByIpData.getChild("City").getContent()));
 		
 //		System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather=,,,50000000,24016667"));
 //		System.out.println(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
