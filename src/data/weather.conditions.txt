@@ -1,0 +1,34 @@
+  float cover = 20.0f;//coverness  0..255   255=covered 
+  float sharpness = 0.97f;//--->1 => black     ---> <0.5 => straight contours
+
+
+//IT'S RAINING MAN						+RAIN
+images/weather/chance_of_rain.gif	  	3 250	
+images/weather/rain.gif					25 250
+images/weather/mist.gif					25 250
+images/weather/chance_of_storm.gif		40 250
+images/weather/storm.gif				60 240
+images/weather/thunderstorm.gif			60 237
+images/weather/chance_of_tstorm.gif		40 250
+
+//SUN
+images/weather/sunny.gif				0 255
+images/weather/mostly_sunny.gif			2 255
+
+//CLOUDS
+images/weather/partly_cloudy.gif		5 255
+images/weather/mostly_cloudy.gif		12 240
+images/weather/cloudy.gif				35 240
+
+//SNOW
+images/weather/chance_of_snow.gif		3 250	
+images/weather/sleet.gif				25 250
+images/weather/snow.gif					25 250
+images/weather/icy.gif					3 250
+
+//FOG
+images/weather/fog.gif					80 255
+images/weather/smoke.gif				80 255
+images/weather/haze.gif					80 255
+images/weather/dust.gif					80 255
+images/weather/flurries.gif				80 255
