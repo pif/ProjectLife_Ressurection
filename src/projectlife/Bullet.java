@@ -56,15 +56,7 @@ public abstract class Bullet extends MovingObject {
 
 	public abstract void updateLocation();
 
-	public int collide() {
-		for (int i = 0; i < weapon.targets.length; ++i) {
-			if (this.location.dist(weapon.targets[i].getLocation()) < this.caliber
-					+ weapon.targets[i].getRadius()) {
-				return i;
-			}
-		}
-		return -1;
-	}
+	public abstract int collide();
 
 	/**
 	 * calculate damage according to your preference

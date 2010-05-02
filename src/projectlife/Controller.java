@@ -2,6 +2,7 @@ package projectlife;
 
 import processing.core.*;
 import processing.xml.XMLElement;
+import projectlife.weapons.Teeth;
 
 /**
 */
@@ -89,12 +90,13 @@ public class Controller extends MyObject {
 		}
 		if (value == ' ') {
 			// p.level.ground
-			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);
+			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);  
 			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
 					new Beast(p, new PVector(p.random(100, 200), p.random(100,
 							200)), "beast.png", 0, 0, 32, 100, p.random(2, 8),
-							new Weapon(p, 20, 20, 0, 0, 1000, 1, 1),
+							new Teeth(p,null),
 							p.level.warriors[0].location));
+			p.level.beasts[p.level.beasts.length-1].weapon.owner=p.level.beasts[p.level.beasts.length-1];
 			if(p.menu.visible){
 				p.level.beasts[p.level.beasts.length-1].stop();
 			}

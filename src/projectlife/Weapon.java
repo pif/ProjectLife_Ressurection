@@ -17,6 +17,8 @@ public abstract class Weapon extends MyObject implements IShootable{
 	public float caliber;	
 	public float range;
 	
+	public MovingObject owner; 
+	
 	public Bullet[] bullets;
 	public int currentRackSize;
 	public Harmable[] targets;
@@ -95,7 +97,7 @@ public abstract class Weapon extends MyObject implements IShootable{
 
 	//float damage, float radius, float speed,
 	//float jitter, int rackSize, int reloadTime, int timeBetweenShoots) 
-	public Weapon(Main applet) {
+	public Weapon(Main applet, MovingObject owner) {
 		super(applet);
 
 		this.damage = 0;
@@ -107,7 +109,9 @@ public abstract class Weapon extends MyObject implements IShootable{
 		this.reloadTime = 0;
 		this.rackSize = 0;
 		this.timeBetweenShots = 0;
-
+		
+		this.owner = owner;
+		
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
 		

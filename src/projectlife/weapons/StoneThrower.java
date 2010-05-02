@@ -54,6 +54,17 @@ public class StoneThrower extends Weapon {
 			}
 		}
 
+		@Override
+		public int collide()  {
+			for (int i = 0; i < weapon.targets.length; ++i) {
+				if (this.location.dist(weapon.targets[i].getLocation()) < this.caliber
+						+ weapon.targets[i].getRadius()) {
+					return i;
+				}
+			}
+			return -1;
+		}
+
 	}
 
 	@Override
@@ -66,5 +77,9 @@ public class StoneThrower extends Weapon {
 		this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);
 		currentRackSize--;
 		lastShotTime = p.millis();
+	}
+	
+	public StoneThrower(Main applet, MovingObject owner) {
+		super(applet,owner);
 	}
 }
