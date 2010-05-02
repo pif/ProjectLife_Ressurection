@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Beast extends MovingObject {
+public class Beast extends MovingObject implements Harmable{
 
 	public static int spotDistance = 100;
 
@@ -97,5 +97,10 @@ public class Beast extends MovingObject {
 					p.ellipse(targets[i].x, targets[i].y, 32, 32);
 			}
 		}
+	}
+
+	@Override
+	public void harm(int damage) {
+		this.health-=damage;	
 	}
 }

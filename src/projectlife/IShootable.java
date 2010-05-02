@@ -1,5 +1,6 @@
 package projectlife;
 
 public interface IShootable {
-	public void shoot(int x, int y, float angle);
+	void generateBullet(float targetX, float targetY, float startX,
+			float startY, float angle);
 }

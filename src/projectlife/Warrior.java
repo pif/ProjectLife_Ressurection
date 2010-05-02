@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Warrior extends MovingObject {
+public class Warrior extends MovingObject implements Harmable{
 
 	public int experience;
 
@@ -59,5 +59,10 @@ public class Warrior extends MovingObject {
 		for (int i = 0; i < weapon.bullets.length; i++) {
 			weapon.bullets[i].letGo();
 		}
+	}
+
+	@Override
+	public void harm(int damage) {
+		this.health-=damage;		
 	}	
 }

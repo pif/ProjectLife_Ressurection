@@ -25,7 +25,7 @@ public class Level extends MyObject {
 
 		warrior = new Warrior(applet, new PVector(applet.width / 2,
 				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new Weapon(
-				applet, 20, 10, 50, (float) 0.1, 30, 500, 100), new PVector(),
+				applet)/*, 20, 10, 50, (float) 0.1, 30, 500, 100)*/, new PVector(),
 				0);
 
 		ground = new Ground("1.png", true, applet);
@@ -72,5 +72,12 @@ public class Level extends MyObject {
 			beasts[i].stop();
 		}
 		warrior.stop();
+	}
+
+	public boolean isCoordianteOnBoard(PVector coordinates) {
+		if(coordinates.x>0 && coordinates.x<p.width)
+			if(coordinates.y>0 && coordinates.y<p.height)
+				return true;
+		return false;
 	}
 }

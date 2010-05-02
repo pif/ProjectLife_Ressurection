@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Bullet extends MovingObject {
+public abstract class Bullet extends MovingObject {
 
 	public Bullet(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
@@ -28,10 +28,6 @@ public class Bullet extends MovingObject {
 	// draw the bullet...
 	// use Animation class!
 	public boolean display() {
-		for (int i = 0; i < bulletsTrail.length; i++) {
-			p.fill(100 + i * 3);
-			p.ellipse(bulletsTrail[i].x, bulletsTrail[i].y, radius, radius);
-		}
 		// for (int i = bulletsTrail.length - 1; i != 0; i--) {
 		// p.fill(255, 255 - i * 5);
 		// p.ellipse(bulletsTrail[i].x, bulletsTrail[i].y, radius, radius);
@@ -85,5 +81,10 @@ public class Bullet extends MovingObject {
 			}
 		}
 		return -1;
+	}
+	public boolean checkPosition() {
+		if(p.level.isCoordianteOnBoard(this.location))
+			return true;
+		else return false;
 	}
 }

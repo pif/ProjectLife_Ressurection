@@ -1,10 +1,11 @@
 package projectlife;
 
 import processing.core.*;
+import processing.xml.XMLElement;
 
 /**
 */
-public class Weapon extends MyObject {
+public abstract class Weapon extends MyObject implements IShootable{
 
 	public float damage;
 	public float jitter;
@@ -40,15 +41,9 @@ public class Weapon extends MyObject {
 
 	// classes should implement this method. it is called every time we can
 	// shoot...
-	public void generateBullet(float targetX, float targetY, float startX, float startY, float angle) {
 		//TODO weapon bullet stub. every weapon should have it's own...i suppose
-		Bullet b = new Bullet(p, new PVector(startX, startY), "sdf.sdf", angle
-				+ p.random(-jitter, jitter), 0xFFFFFFFF, caliber, damage,
-				bulletSpeed, this, new PVector(), new PVector(startX, startY));
-		this.bullets = (Bullet[]) PApplet.append(this.bullets, b);
-		currentRackSize--;
-		lastShotTime = p.millis();
-	}
+	//public void generateBullet(float targetX, float targetY, float startX, float startY, float angle) {
+	//}
 
 	// shoot in position x,y with the angle=angle
 	public void shoot(float targetX, float targetY, float shootPosX, float shootPosY, float angle) {
@@ -74,11 +69,16 @@ public class Weapon extends MyObject {
 	 *            if not so - deletes it.
 	 */
 	public void updateBullets() {
-		for (int i = 0; i < bullets.length; ++i)
+		for (int i = 0; i < bullets.length; ++i) {
 			if (!bullets[i].checkHealth()) {
 				bullets[i] = bullets[bullets.length - 1];
 				bullets = (Bullet[]) (PApplet.shorten(bullets));
 			}
+			if (!bullets[i].checkPosition()) {
+				bullets[i] = bullets[bullets.length - 1];
+				bullets = (Bullet[]) (PApplet.shorten(bullets));
+			}			
+		}
 	}
 
 	/**
@@ -92,19 +92,20 @@ public class Weapon extends MyObject {
 		}
 	}
 
-	public Weapon(Main applet, float damage, float radius, float speed,
-			float jitter, int rackSize, int reloadTime, int timeBetweenShoots) {
+	//float damage, float radius, float speed,
+	//float jitter, int rackSize, int reloadTime, int timeBetweenShoots) 
+	public Weapon(Main applet) {
 		super(applet);
 
-		this.damage = damage;
-		this.caliber = radius;
+		this.damage = 0;
+		this.caliber = 0;
 		this.bullets = new Bullet[0];
-		this.bulletSpeed = speed;
-		this.jitter = jitter;
+		this.bulletSpeed = 0;
+		this.jitter = 0;
 		this.lastShotTime = 0;
-		this.reloadTime = reloadTime;
-		this.rackSize = rackSize;
-		this.timeBetweenShots = timeBetweenShoots;
+		this.reloadTime = 0;
+		this.rackSize = 0;
+		this.timeBetweenShots = 0;
 
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
