@@ -8,7 +8,7 @@ public class Bullet extends MovingObject {
 
 	public Bullet(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
-			Weapon weapon, PVector target) {
+			Weapon weapon, PVector target, PVector start) {
 
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
@@ -21,9 +21,12 @@ public class Bullet extends MovingObject {
 			bulletsTrail[i] = location;
 		}
 	}
+	public Bullet()	{
+		super(null,new PVector(),"",0,0,0,0,0,new Weapon(),new PVector());
+	}
 
-	//draw the bullet...
-	//use Animation class!
+	// draw the bullet...
+	// use Animation class!
 	public boolean display() {
 		for (int i = 0; i < bulletsTrail.length; i++) {
 			p.fill(100 + i * 3);
@@ -60,12 +63,13 @@ public class Bullet extends MovingObject {
 			bulletsTrail[bulletsTrail.length - 1] = location;
 		}
 	}
-	
-	//needless array... Animation owned u
-	public PVector[] bulletsTrail;
 
-	// should return an object, which was hit...and weapon should think WHAT to do with theM!!!! 
-	//maybe i should return an array of IHittable objects?
+	// needless array... Animation owned u
+	public PVector[] bulletsTrail; 
+	public PVector startPos;
+	// should return an object, which was hit...and weapon should think WHAT to
+	// do with theM!!!!
+	// maybe i should return an array of IHittable objects?
 	public int kill() {
 		for (int i = 0; i < p.level.beasts.length; i++) {
 			if (PApplet.dist(this.location.x, this.location.y,
@@ -74,6 +78,7 @@ public class Bullet extends MovingObject {
 				p.level.ground.addBlood(new PVector(this.location.x,
 						this.location.y), 0x88FF0000);
 				this.visible = false;
+				float ad=PConstants.TWO_PI;
 				// p.level.ground.dust.image(p.level.ground.blood,
 				// p.level.beasts[i].location.x, p.level.beasts[i].location.x);
 				return i;

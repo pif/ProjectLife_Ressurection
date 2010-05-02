@@ -5,33 +5,24 @@ import processing.core.*;
 /**
 */
 public class Weapon extends MyObject {
-	/**
-*/
+
 	public float damage;
-	/**
-*/
-	public float bulletSpeed;
-	/**
-*/
-	public float radius;
-	/**
-*/
 	public float jitter;
-	/**
-*/
+	public float weight;
+	public float bulletSpeed;
 	public int rackSize;
-	public int currentRackSize;
-	/**
-*/
-	public Bullet[] bullets;
-
-	public int lastShot;
-	public boolean canShoot;
 	public int reloadTime;
-	public int timeBetweenShoots;
+	public int timeBetweenShots;
+	public float caliber;	
+	
+	public Bullet[] bullets;
+	public int currentRackSize;
+	
+	public boolean canShoot;	
+	public int lastShotTime;
+	private int reloadStartTime;
 
-	private int reloadStart;
-
+	
 	/**
 	 * 
 	 * @param Return
@@ -42,35 +33,35 @@ public class Weapon extends MyObject {
 		// reload weapon
 		canShoot = false;
 		currentRackSize = rackSize;
-		reloadStart = p.millis();
+		reloadStartTime = p.millis();
 		return canShoot;
 	}
 
 	// classes should implement this method. it is called every time we can
 	// shoot...
-	public void generateBullet(int x, int y, float angle) {
+	public void generateBullet(float targetX, float targetY, float startX, float startY, float angle) {
 		//TODO weapon bullet stub. every weapon should have it's own...i suppose
-		Bullet b = new Bullet(p, new PVector(x, y), "sdf.sdf", angle
-				+ p.random(-jitter, jitter), 0xFFFFFFFF, radius, damage,
-				bulletSpeed, this, new PVector());
+		Bullet b = new Bullet(p, new PVector(startX, startY), "sdf.sdf", angle
+				+ p.random(-jitter, jitter), 0xFFFFFFFF, caliber, damage,
+				bulletSpeed, this, new PVector(), new PVector(startX, startY));
 		this.bullets = (Bullet[]) PApplet.append(this.bullets, b);
 		currentRackSize--;
-		lastShot = p.millis();
+		lastShotTime = p.millis();
 	}
 
 	// shoot in position x,y with the angle=angle
-	public void shoot(int x, int y, float angle) {
+	public void shoot(float targetX, float targetY, float shootPosX, float shootPosY, float angle) {
 		if (canShoot) {
-			if (p.millis() - lastShot >= timeBetweenShoots) {
+			if (p.millis() - lastShotTime >= timeBetweenShots) {
 				if (currentRackSize > 0) {
 					// you can shoot. you have bullets in rack.
-					generateBullet(x, y, angle);
+					generateBullet(targetX, targetY, shootPosX, shootPosY, angle);
 				} else {
 					reload();
 				}
 			}
 		} else {
-			if (p.millis() - reloadStart >= reloadTime) {
+			if (p.millis() - reloadStartTime >= reloadTime) {
 				canShoot = true;
 			}
 		}
@@ -105,21 +96,20 @@ public class Weapon extends MyObject {
 		super(applet);
 
 		this.damage = damage;
-		this.radius = radius;
+		this.caliber = radius;
 		this.bullets = new Bullet[0];
 		this.bulletSpeed = speed;
 		this.jitter = jitter;
-		this.lastShot = 0;
+		this.lastShotTime = 0;
 		this.reloadTime = reloadTime;
 		this.rackSize = rackSize;
-		this.timeBetweenShoots = timeBetweenShoots;
+		this.timeBetweenShots = timeBetweenShoots;
 
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
 	}
-
+	
 	public Weapon() {
-		super();
+	
 	}
-
 }

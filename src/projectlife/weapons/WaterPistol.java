@@ -1,7 +1,7 @@
 package projectlife.weapons;
 
 import projectlife.Weapon;
-
-public class WaterPistol extends Weapon{
+import projectlife.Bullet;
+public class WaterPistol extends Bullet{
 
 }

@@ -1,6 +1,7 @@
 package projectlife;
 
 import processing.core.*;
+import processing.xml.XMLElement;
 
 public class Animation {
 
@@ -47,5 +48,9 @@ public class Animation {
 		sprites = new Sprite[0];
 		currentSprite = 0;
 		paused = false;
+	}
+	
+	public Animation(XMLElement spriteInfo){
+		
 	}
 }

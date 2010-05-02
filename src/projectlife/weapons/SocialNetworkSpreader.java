@@ -1,7 +1,7 @@
 package projectlife.weapons;
 
 import projectlife.Weapon;
-
-public class SocialNetworkSpreader extends Weapon {
+import projectlife.Bullet;
+public class SocialNetworkSpreader extends Bullet {
 
 }

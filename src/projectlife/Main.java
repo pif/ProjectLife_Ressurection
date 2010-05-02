@@ -33,8 +33,8 @@ public class Main extends PApplet {
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
-		//System.out.println(dataPath+"main.xml");
-				
+		// System.out.println(dataPath+"main.xml");
+
 		XMLElement preferences = new XMLElement(this, dataPath + "main.xml");
 
 		if (Integer.parseInt(preferences.getChild("debug").getContent()) == 1) {
@@ -79,24 +79,37 @@ public class Main extends PApplet {
 		controller = new Controller(this, level.warrior, preferences
 				.getChild("controller"));
 		menu = new MenuManager(this, preferences.getChild("menu"));
-		
-	//	XMLElement locationByIpData = new XMLElement(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
-//		System.out.println(locationByIpData.getChild("City").getContent());
-		//System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather="+locationByIpData.getChild("City").getContent()));
-		
-//		System.out.println(sendGetRequest("http://www.google.com/ig/api", "weather=,,,50000000,24016667"));
-//		System.out.println(sendGetRequest("http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
+
+		try {
+			XMLElement locationByIpData = new XMLElement(sendGetRequest(
+					"http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
+			System.out
+					.println(sendGetRequest("http://www.google.com/ig/api",
+							"weather="
+									+ locationByIpData.getChild("City")
+											.getContent()));
+			//FIXME longitude, altitude!
+		} finally {
+			
+		}
+
+		// System.out.println(sendGetRequest("http://www.google.com/ig/api",
+		// "weather=,,,50000000,24016667"));
+		// System.out.println(sendGetRequest("http://ipinfodb.com/ip_query.php",
+		// "ip=&timezone=false"));
+
 	}
 
 	public void draw() {
 		// controller.controlMouse();
-		level.display();
-
-		menu.display();
 
 		if (mousePressed) {
 			controller.press(mouseButton);
 		}
+
+		level.display();
+
+		menu.display();
 
 		if (debug) {
 			text(((int) frameRate) + " " + level.beasts.length, 50, 50);

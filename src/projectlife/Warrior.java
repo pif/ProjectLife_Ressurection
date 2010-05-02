@@ -29,8 +29,8 @@ public class Warrior extends MovingObject {
 		target = new PVector(p.mouseX, p.mouseY);
 	}
 
-	public void shoot(int x, int y) {
-		weapon.shoot((int) location.x, (int) location.y, angle);
+	public void shoot(int targetX, int targetY) {
+		weapon.shoot(targetX,targetY, location.x, location.y, angle);
 	}
 
 	public boolean display() {

@@ -1,7 +1,7 @@
 package projectlife.weapons;
 
 import projectlife.Weapon;
-
-public class WebServiceBomber extends Weapon {
+import projectlife.Bullet;
+public class WebServiceBomber extends Bullet {
 
 }

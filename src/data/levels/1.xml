@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<level>
+	<name>In the shadows</name>
+	<difficulty>1</difficulty>
+	<weapons>
+		<weapon forWarrior="true" name="teeth" damage="10" radius="2" speed="10" jitter="7" rackSize="32" reloadTime="100" timeBeetweenShots="100" weight="0.01">
+			<bullet ></bullet>
+		</weapon>
+		RackSize, reloadTime, timeBetweenShoots)
+	</weapons>
+	<bonuses></bonuses>
+</game>

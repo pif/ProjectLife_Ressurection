@@ -16,6 +16,7 @@ public class Level extends MyObject {
 	public Beast[] beasts;
 	public Bonus[] bonuses;
 	public Overlay[] overlays;
+	public CloudsManager clouds;
 
 	public Level(String xmlPath, Main applet) {
 

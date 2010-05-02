@@ -14,7 +14,7 @@ public class CloudsManager extends OverlayManager implements IOverlayManager{
 	}
 
 	public void display() {
-		
+		super.display();
 		
 	}
 
