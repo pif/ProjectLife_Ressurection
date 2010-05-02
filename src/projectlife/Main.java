@@ -73,7 +73,7 @@ public class Main extends PApplet {
 				+ "/";
 
 		level = new Level("", this);
-		controller = new Controller(this, level.warrior, preferences
+		controller = new Controller(this, level.warriors[0], preferences
 				.getChild("controller"));
 		menu = new MenuManager(this, preferences.getChild("menu"));
 

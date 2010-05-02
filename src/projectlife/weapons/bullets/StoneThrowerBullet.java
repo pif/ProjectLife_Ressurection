@@ -11,6 +11,16 @@ public class StoneThrowerBullet extends Bullet{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	//move
+	
+	
+	@Override
+	public boolean checkPosition() {
+		if(p.level.isCoordianteOnBoard(this.location))
+			return true;
+		else return false;
+	}
 //	public StoneThrower(Main applet) {
 //		super(applet, position, img, angle, color, radius, health, maxSpeed, weapon, target)	
 //	}

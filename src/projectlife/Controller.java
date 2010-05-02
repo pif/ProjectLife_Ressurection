@@ -56,16 +56,16 @@ public class Controller extends MyObject {
 		keys[value] = true;
 
 		if (keys[up]) {
-			p.level.warrior.acceleration.y = -1;// --;
+			p.level.warriors[0].acceleration.y = -1;// --;
 		}
 		if (keys[down]) {
-			p.level.warrior.acceleration.y = +1;// --;
+			p.level.warriors[0].acceleration.y = +1;// --;
 		}
 		if (keys[left]) {
-			p.level.warrior.acceleration.x = -1;// --;
+			p.level.warriors[0].acceleration.x = -1;// --;
 		}
 		if (keys[right]) {
-			p.level.warrior.acceleration.x = +1;// ++;
+			p.level.warriors[0].acceleration.x = +1;// ++;
 		}
 		// cool input, check everything. Grrreat switch!/that was todo
 		// no switch available. instead i use a lot of (if) statements
@@ -73,7 +73,7 @@ public class Controller extends MyObject {
 			if (p.menu.visible) {
 				p.menu.click(new PVector(p.mouseX, p.mouseY));
 			} else {
-				p.level.warrior.shoot(p.mouseX, p.mouseY);
+				p.level.warriors[0].shoot(p.mouseX, p.mouseY);
 			}
 		}
 		if (keys[menu]) {
@@ -94,7 +94,7 @@ public class Controller extends MyObject {
 					new Beast(p, new PVector(p.random(100, 200), p.random(100,
 							200)), "beast.png", 0, 0, 32, 100, p.random(2, 8),
 							new Weapon(p, 20, 20, 0, 0, 1000, 1, 1),
-							p.level.warrior.location));
+							p.level.warriors[0].location));
 			if(p.menu.visible){
 				p.level.beasts[p.level.beasts.length-1].stop();
 			}
@@ -108,28 +108,28 @@ public class Controller extends MyObject {
 	public void release(int value) {
 		keys[value] = false;
 		if (!keys[up]) {
-			p.level.warrior.acceleration.y = 0;
+			p.level.warriors[0].acceleration.y = 0;
 		} else {
-			p.level.warrior.acceleration.y = -1;// --;
+			p.level.warriors[0].acceleration.y = -1;// --;
 		}
 		if (!keys[down]) {
-			p.level.warrior.acceleration.y = 0;
+			p.level.warriors[0].acceleration.y = 0;
 		} else {
-			p.level.warrior.acceleration.y = +1;// ++;
+			p.level.warriors[0].acceleration.y = +1;// ++;
 		}
 		if (!keys[left]) {
-			p.level.warrior.acceleration.x = 0;
+			p.level.warriors[0].acceleration.x = 0;
 		} else {
-			p.level.warrior.acceleration.x = -1;// --;
+			p.level.warriors[0].acceleration.x = -1;// --;
 		}
 		if (!keys[right]) {
-			p.level.warrior.acceleration.x = 0;
+			p.level.warriors[0].acceleration.x = 0;
 		} else {
-			p.level.warrior.acceleration.x = +1;// ++;
+			p.level.warriors[0].acceleration.x = +1;// ++;
 		}
 		if (!(keys[up] || keys[down] || keys[left] || keys[right])) {
-			p.level.warrior.acceleration = new PVector(0, 0);
-			p.level.warrior.velocity = new PVector(0, 0);
+			p.level.warriors[0].acceleration = new PVector(0, 0);
+			p.level.warriors[0].velocity = new PVector(0, 0);
 		}
 	}
 

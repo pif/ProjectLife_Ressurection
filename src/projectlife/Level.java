@@ -1,6 +1,7 @@
 package projectlife;
 
 import processing.core.*;
+import projectlife.weapons.StoneThrower;
 
 /**
  * 
@@ -12,20 +13,20 @@ public class Level extends MyObject {
 
 	public boolean passed; 
 	
-	public Warrior warrior;
+	public Warrior[] warriors;
 	public Ground ground;
 	public Beast[] beasts;
 	public Bonus[] bonuses;
 	public Overlay[] overlays;
 	public CloudsManager clouds;
-
+	
 	public Level(String xmlPath, Main applet) {
 
 		super(applet);
 
-		warrior = new Warrior(applet, new PVector(applet.width / 2,
-				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new Weapon(
-				applet)/*, 20, 10, 50, (float) 0.1, 30, 500, 100)*/, new PVector(),
+		warriors = new Warrior[1];
+		warriors[0] = new Warrior(applet, new PVector(applet.width / 2,
+				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new StoneThrower()/*, 20, 10, 50, (float) 0.1, 30, 500, 100)*/, new PVector(),
 				0);
 
 		ground = new Ground("1.png", true, applet);
@@ -56,22 +57,27 @@ public class Level extends MyObject {
 			bonuses[i].display();
 		}
 
-		warrior.display();
-
+		for (int i = 0; i < warriors.length; i++) {
+			warriors[i].display();
+		}
 	}
 
 	public void start() {
 		for (int i = 0; i < beasts.length; i++) {
 			beasts[i].letGo();
 		}
-		warrior.letGo();
+		for (int i = 0; i < warriors.length; i++) {
+			warriors[i].letGo();
+		}
 	}
 
 	public void suspend() {
 		for (int i = 0; i < beasts.length; i++) {
 			beasts[i].stop();
 		}
-		warrior.stop();
+		for (int i = 0; i < warriors.length; i++) {
+			warriors[i].stop();
+		}
 	}
 
 	public boolean isCoordianteOnBoard(PVector coordinates) {

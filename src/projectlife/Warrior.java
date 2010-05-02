@@ -62,7 +62,17 @@ public class Warrior extends MovingObject implements Harmable{
 	}
 
 	@Override
-	public void harm(int damage) {
+	public void harm(float damage) {
 		this.health-=damage;		
+	}
+
+	@Override
+	public PVector getLocation() {
+		return this.location;
+	}
+
+	@Override
+	public float getRadius() {
+		return this.radius;
 	}	
 }

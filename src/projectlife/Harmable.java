@@ -1,5 +1,9 @@
 package projectlife;
 
+import processing.core.PVector;
+
 public interface Harmable {
-	void harm(int damage);
+	void harm(float damage);
+	PVector getLocation();
+	float getRadius();
 }

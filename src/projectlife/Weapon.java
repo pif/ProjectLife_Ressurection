@@ -19,6 +19,7 @@ public abstract class Weapon extends MyObject implements IShootable{
 	
 	public Bullet[] bullets;
 	public int currentRackSize;
+	public Harmable[] targets;
 	
 	public boolean canShoot;	
 	public int lastShotTime;
@@ -109,6 +110,8 @@ public abstract class Weapon extends MyObject implements IShootable{
 
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
+		
+		this.targets = (Harmable[]) (applet.level.beasts);
 	}
 	
 	public Weapon() {

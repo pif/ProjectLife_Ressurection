@@ -6,6 +6,7 @@ import processing.core.*;
 
 public class BullsEye extends Weapon {
 
+	
 	@Override
 	public void generateBullet(float targetX, float targetY, float startX,
 			float startY, float angle) {

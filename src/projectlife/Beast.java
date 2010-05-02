@@ -51,7 +51,7 @@ public class Beast extends MovingObject implements Harmable{
 			PVector p2 = new PVector(p.random(-p.width, p.width), p.random(
 					-p.height, p.height));
 			PVector s = this.location;
-			PVector f = p.level.warrior.location;
+			PVector f = p.level.warriors[0].location;
 			p.curveTightness(p.random(-1, 2));
 			for (int i = 0; i < stepCount; ++i) {
 				float t = i / (float) stepCount;
@@ -70,8 +70,8 @@ public class Beast extends MovingObject implements Harmable{
 		super.move();
 		acceleration = new PVector(PApplet.cos(angle), PApplet.sin(angle));
 
-		if (location.dist(p.level.warrior.location) < (this.radius
-				+ p.level.warrior.radius + spotDistance)) {
+		if (location.dist(p.level.warriors[0].location) < (this.radius
+				+ p.level.warriors[0].radius + spotDistance)) {
 			followTargets = false;
 		} else {
 			followTargets = true;
@@ -87,7 +87,7 @@ public class Beast extends MovingObject implements Harmable{
 			}
 			target = targets[currentTarget];
 		} else {
-			target = p.level.warrior.location;
+			target = p.level.warriors[0].location;
 		}
 
 		if (p.debug) {
@@ -100,7 +100,17 @@ public class Beast extends MovingObject implements Harmable{
 	}
 
 	@Override
-	public void harm(int damage) {
+	public void harm(float damage) {
 		this.health-=damage;	
+	}
+
+	@Override
+	public PVector getLocation() {
+		return this.location;
+	}
+
+	@Override
+	public float getRadius() {
+		return this.radius;
 	}
 }

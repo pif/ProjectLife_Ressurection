@@ -1,6 +1,7 @@
 package projectlife;
 
 import processing.core.*;
+import processing.xml.XMLElement;
 
 import java.io.*;
 
@@ -50,6 +51,18 @@ public class StandingObject extends MyObject {
 		this.target = new PVector();
 		
 		this.sprite = new Animation(applet);
+	}
+	
+	public void setAnimation(XMLElement animation) {
+		sprite = new Animation(animation);
+	}
+	
+	public void setAnimation(Animation animation) {
+		sprite = new Animation(p);
+		for(int i=0;i<animation.sprites.length;++i) {
+			sprite.addSprite(animation.sprites[i].image, animation.sprites[i].time);
+		}
+		
 	}
 
 	/**
