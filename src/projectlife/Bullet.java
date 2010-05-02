@@ -5,7 +5,13 @@ import processing.core.*;
 /**
 */
 public abstract class Bullet extends MovingObject {
-
+	
+	public float caliber;//got from weapon
+	public float speed;
+	public float weight;
+	public float damage;//got from weapon
+	//public float radius...got it from Standing object
+	
 	public Bullet(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, PVector start) {
@@ -41,27 +47,13 @@ public abstract class Bullet extends MovingObject {
 	// bullets???
 	// that's the method which moves a bullet. for different weapons this should
 	// be quite different
-	public void move() {
+	public abstract void move();// {
 		// acceleration.normalize();
-		if (!stopped) {
-			velocity.add(acceleration);
-			velocity.limit(maxSpeed);
-			location.add(velocity);
-
-			if (location.x < 0 || location.x > p.width || location.y < 0
-					|| location.y > p.height) {
-				visible = false;
-			}
-			kill();
-			for (int i = 0; i < bulletsTrail.length - 2; i++) {
-				bulletsTrail[i] = bulletsTrail[i + 1];
-			}
-			bulletsTrail[bulletsTrail.length - 1] = location;
-		}
+	//}
+	public boolean collide() {
+		
 	}
 
-	// needless array... Animation owned u
-	public PVector[] bulletsTrail; 
 	public PVector startPos;
 	// should return an object, which was hit...and weapon should think WHAT to
 	// do with theM!!!!
