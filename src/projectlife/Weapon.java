@@ -14,6 +14,7 @@ public class Weapon extends MyObject {
 	public int reloadTime;
 	public int timeBetweenShots;
 	public float caliber;	
+	public float range;
 	
 	public Bullet[] bullets;
 	public int currentRackSize;

@@ -25,11 +25,8 @@ public class Main extends PApplet {
 
 	public void setup() {
 		// size(600, 300, P2D);
-		// int x=screen.width,y=screen.height;
-		// System.out.println(scr.width+"+"+scr.height);
-
-		// size(screen.width, screen.height, PGraphicsOpenGL.OPENGL);
-		size(800, 600, OPENGL);// PGraphicsOpenGL.OPENGL);
+		// size(screen.width, screen.height, OPENGL);
+		size(800, 600, OPENGL);
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";

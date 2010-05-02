@@ -3,7 +3,7 @@ package projectlife;
 import processing.core.*;
 import processing.xml.XMLElement;
 
-public class Animation {
+public class Animation extends MyObject{
 
 	public class Sprite {
 		PImage image;
@@ -44,13 +44,19 @@ public class Animation {
 		paused = false;
 	}
 
-	public Animation() {
+	public Animation(Main applet) {
 		sprites = new Sprite[0];
 		currentSprite = 0;
 		paused = false;
 	}
 	
 	public Animation(XMLElement spriteInfo){
+		sprites = new Sprite[0];
+		currentSprite = 0;
+		paused = false;
 		
+		for(int i=0;i<spriteInfo.getChildCount();++i) {
+			this.addSprite(p.loadImage(spriteInfo.getChild(i).getStringAttribute("image")), spriteInfo.getChild(i).getIntAttribute("time"));
+		}
 	}
 }

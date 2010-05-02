@@ -2,11 +2,35 @@
 <level>
 	<name>In the shadows</name>
 	<difficulty>1</difficulty>
+	<experience>100</experience>
 	<weapons>
-		<weapon forWarrior="true" name="teeth" damage="10" radius="2" speed="10" jitter="7" rackSize="32" reloadTime="100" timeBeetweenShots="100" weight="0.01">
-			<bullet ></bullet>
-		</weapon>
-		RackSize, reloadTime, timeBetweenShoots)
+		<weapon forWarrior="true" name="StoneThrower"/>
 	</weapons>
-	<bonuses></bonuses>
+	<bonuses>
+		<bonus name=""/>
+	</bonuses>
+	<warrior standardWeapon="StoneThrower">
+		<animation><!-- relative to datapath-->
+			<sprite image="images/warrior/1.png" time="50" />
+			<sprite image="images/warrior/2.png" time="50" />
+			<sprite image="images/warrior/3.png" time="50" />
+			<sprite image="images/warrior/4.png" time="50" />
+		</animation>
+	</warrior>
+	<beasts>
+		<beast standardWeapon="Teeth" value="50" name="Bart">
+			<animation>
+					<sprite image="images/beasts/ba1.png" time="9999" />
+			</animation>
+		</beast  standardWeapon="Teeth" value="50" name="Bart">
+		<beast>
+			<animation></animation>
+		</beast>
+		<beast>
+			<animation></animation>
+		</beast>
+		<beast>
+			<animation></animation>
+		</beast>
+	</beasts>
 </game>

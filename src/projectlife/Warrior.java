@@ -14,7 +14,7 @@ public class Warrior extends MovingObject {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
 		this.experience = experience;
-		// TODO Auto-generated constructor stub
+		// TODO warrior sprite
 		
 		for(int i=1;i<5;i++)
 			this.sprite.addSprite(p.loadImage(p.dataPath+"images/warrior/"+i+".png"), 50);

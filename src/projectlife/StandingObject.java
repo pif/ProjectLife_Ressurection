@@ -49,7 +49,7 @@ public class StandingObject extends MyObject {
 
 		this.target = new PVector();
 		
-		this.sprite = new Animation();
+		this.sprite = new Animation(applet);
 	}
 
 	/**

@@ -10,9 +10,10 @@ import processing.core.*;
  */
 public class Level extends MyObject {
 
+	public boolean passed; 
+	
 	public Warrior warrior;
 	public Ground ground;
-
 	public Beast[] beasts;
 	public Bonus[] bonuses;
 	public Overlay[] overlays;
@@ -32,6 +33,8 @@ public class Level extends MyObject {
 		beasts = new Beast[0];
 		bonuses = new Bonus[0];
 		overlays = new Overlay[0];
+		
+		passed=false;
 		// TODO bullet problem. if they'r too quick. the overjump bastards
 	}
 
