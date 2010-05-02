@@ -1,5 +1,7 @@
 package projectlife.weapons;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
+
 import projectlife.*;
 import processing.core.*;
 
@@ -9,11 +11,10 @@ public class StoneThrower extends Weapon {
 
 		public StoneThrowerBullet(Main applet, PVector position, String img,
 				float angle, int color, float radius, float health,
-				float maxSpeed, Weapon weapon, PVector target, PVector start,
-				Harmable[] targets) {
+				float maxSpeed, Weapon weapon, float weight) {
 			super(applet, position, img, angle, color, radius, health,
-					maxSpeed, weapon, target, start, targets);
-			// TODO Auto-generated constructor stub
+					maxSpeed, weapon, weight);
+			radius = caliber;
 		}
 
 		@Override
@@ -35,9 +36,9 @@ public class StoneThrower extends Weapon {
 
 		// update location.
 		// if(checkposition)
-		// 	if(collide()!=-1)
-		//	 kill();
-		//		 else deleteMe;
+		// if(collide()!=-1)
+		// kill();
+		// else deleteMe;
 		@Override
 		public void move() {
 			if (!stopped) {
@@ -58,7 +59,12 @@ public class StoneThrower extends Weapon {
 	@Override
 	public void generateBullet(float targetX, float targetY, float startX,
 			float startY, float angle) {
-		// TODO Auto-generated method stub
-
+		StoneThrowerBullet bullet = new StoneThrowerBullet(p, new PVector(
+				startX, startY), "sdf.sdf", angle + p.random(-jitter, jitter),
+				0xFFFFFFFF, caliber, 60, this.bulletSpeed, this, this.weight
+						/ rackSize);
+		this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);
+		currentRackSize--;
+		lastShotTime = p.millis();
 	}
 }

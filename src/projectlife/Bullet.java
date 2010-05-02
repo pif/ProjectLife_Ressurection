@@ -8,8 +8,9 @@ public abstract class Bullet extends MovingObject {
 
 	public float caliber;// got from weapon
 	public float speed;
-	public float weight;
 	public float damage;// got from weapon
+	public float weight;
+
 
 	// radius for radius of destruction;
 	// public float radius...got it from Standing object
@@ -24,7 +25,6 @@ public abstract class Bullet extends MovingObject {
 		this.caliber=weapon.caliber;
 		this.speed = weapon.bulletSpeed;
 		this.damage = weapon.damage;
-		
 		this.weight = weight;
 	}
 	
