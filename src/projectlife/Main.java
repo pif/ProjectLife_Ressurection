@@ -109,7 +109,7 @@ public class Main extends PApplet {
 		menu.display();
 
 		if (debug) {
-			text(((int) frameRate) + " " + level.beasts.length + " " + level.warriors[0].weapon.bullets.length, 50, 50);
+			text(((int) frameRate) + " " + level.beasts.length + " " + level.warriors[0].weapon.bullets.length + " " + level.warriors[0].weapon.getClass().getName(), 50, 50);
 		}
 
 	}

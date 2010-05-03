@@ -15,6 +15,7 @@ public class SimpsonsMinigun extends Weapon {
 					maxSpeed, weapon, weight);
 			
 			radius = caliber;
+			range = 50;
 			//caliber = ;
 			//speed = ;
 			//damage;// got from weapon
@@ -95,7 +96,7 @@ public class SimpsonsMinigun extends Weapon {
 		this.rackSize=30;
 		this.reloadTime=1500;
 		this.timeBetweenShots=50;
-		this.caliber=5;	
+		this.caliber=32;	
 		this.range=25;	
 		
 		this.bulletAnimation = new Animation(

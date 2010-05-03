@@ -1,6 +1,5 @@
 package projectlife;
 
-
 import java.util.ArrayList;
 
 import processing.core.*;
@@ -25,25 +24,33 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		warrior.weapons = new ArrayList<Weapon>();
 		warrior.weapons.add(new StoneThrower(applet, warrior));
 		warrior.weapons.add(new SimpsonsMinigun(applet, warrior));
-		
+		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);
 
 		return warrior;
 	}
+
 	public void setNextWeapon() {
-		currentWeapon=(currentWeapon+1)%weapons.size();
+		currentWeapon++;
+		if(currentWeapon>=weapons.size()) {
+			currentWeapon=weapons.size()-1;
+		}
 		weapon = weapons.get(currentWeapon);
 	}
+
 	public void setPrevWeapon() {
-		currentWeapon=(currentWeapon-1)%weapons.size();
+		currentWeapon--;
+		if (currentWeapon < 0) {
+			currentWeapon = 0;
+		}
 		weapon = weapons.get(currentWeapon);
 	}
-	
+
 	private void updateTargets(Level level) {
 		for (int i = 0; i < this.weapons.size(); ++i) {
 			this.weapons.get(i).targets = level.beasts;
-		}		
+		}
 	}
 
 	public Warrior(Main applet, PVector position, String img, float angle,
@@ -73,7 +80,7 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 	}
 
 	public boolean display() {
-		for(int i=0;i<weapons.size();++i) {
+		for (int i = 0; i < weapons.size(); ++i) {
 			weapons.get(i).displayBullets();
 		}
 

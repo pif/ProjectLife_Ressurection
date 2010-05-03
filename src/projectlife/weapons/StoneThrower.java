@@ -14,6 +14,7 @@ public class StoneThrower extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight);
 			radius = caliber;
+			range = 30;
 			acceleration = new PVector(speed * p.cos(angle), maxSpeed
 					* p.sin(angle));
 		}
@@ -25,7 +26,7 @@ public class StoneThrower extends Weapon {
 
 		@Override
 		public void harmTarget(Harmable target, float distance) {
-			target.harm(this.damage);
+			target.harm(this.damage*(1-PApplet.map(distance, 0, range, 0, 1)));
 		}
 
 		@Override

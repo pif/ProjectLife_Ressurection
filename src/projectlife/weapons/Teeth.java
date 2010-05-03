@@ -23,7 +23,7 @@ public class Teeth extends Weapon {
 					weight);
 			
 			caliber = weapon.owner.radius;
-			radius = caliber+10;
+			range = caliber+10;
 		}
 
 		@Override
@@ -34,6 +34,7 @@ public class Teeth extends Weapon {
 		@Override
 		public void harmTarget(Harmable target, float distance) {
 			target.harm(this.damage);
+			
 		}
 
 		@Override

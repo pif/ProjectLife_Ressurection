@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <game>
-	<debug>0</debug>
+	<debug>1</debug>
 	<fps>-1</fps>
 	<smooth>1</smooth>
 	<stroke>0</stroke>
@@ -9,7 +9,7 @@
 	<rect>3</rect><!-- CORNER=0 CORNERS=1 RADIUS=2 CENTER=3-->
 	<ellipse>3</ellipse>
 	<levelDir>level</levelDir>
-	<controller up="87" down="83" left="65" right="68" shoot="37" level="39" menu="27" next="101" prev="113" />
+	<controller up="87" down="83" left="65" right="68" shoot="37" level="39" menu="27" next="69" prev="81" />
 	<menu>
 		<item function="play" src="images/play.png" left="-1" top="50" angle="0" radius="-1"></item><!-- if left==-1 then left will be width/2-->
 		<item function="records" src="images/records.png" left="-1" top="100" angle="0" radius="-1"></item>
