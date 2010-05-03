@@ -78,7 +78,7 @@ public class MadShotgun extends Weapon {
 		for (int i = 0; i < 8; ++i) {
 			MadShotgunBullet bullet = new MadShotgunBullet(p, new PVector(
 					startX, startY), "sdf.sdf", angle
-					+ p.random(-jitter, jitter), 0xFFFFFFFF, caliber, 60,
+					+ p.random(-jitter, jitter)*p.random(0.5f,1.5f) , 0xFFFFFFFF, caliber, 60,
 					this.bulletSpeed*p.random(0.95f,0.98f), this, this.weight / rackSize);
 			bullet.sprite = new Animation(this.bulletAnimation);
 
@@ -92,9 +92,9 @@ public class MadShotgun extends Weapon {
 		super(applet, owner);
 
 		this.damage = 30;
-		this.jitter = 0.05f;
+		this.jitter = 0.25f;
 		this.weight = 10;
-		this.bulletSpeed = 20;
+		this.bulletSpeed = 10;
 		this.rackSize = 8;
 		this.reloadTime = 2000;
 		this.timeBetweenShots = 200;

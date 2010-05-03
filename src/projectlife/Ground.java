@@ -12,9 +12,19 @@ public class Ground extends StandingObject {
 */
 	public PGraphics dust;
 	public PImage blood;
-	public PVector[] bloodSplashes;
-	public int[] bloodColors;
-
+	public Splash[] splashes;
+	
+	public class Splash {
+		public PVector bloodSplash;
+		public int bloodColor;
+		public int bloodTint;
+		public Splash(PVector position, int color) {
+			bloodSplash=position;
+			bloodColor = color;
+			bloodTint = 255;
+		}
+	}
+	
 	/**
 	 * @param position
 	 * @param Return
@@ -22,8 +32,8 @@ public class Ground extends StandingObject {
 	 */
 	public void addBlood(PVector position, int color) {
 		position.z = p.random(PConstants.TWO_PI);
-		bloodSplashes = (PVector[]) PApplet.append(bloodSplashes, position);
-		bloodColors = (int[]) PApplet.append(bloodColors, color);
+		Splash s = new Splash(position, color);
+		splashes = (Splash[]) PApplet.append(splashes, s);
 		// dust.beginDraw();
 		// dust.tint(color);
 		// dust.pushMatrix();
@@ -46,12 +56,17 @@ public class Ground extends StandingObject {
 	public void drawBackground() {
 		p.image(picture, 0, 0);// p.background(sprite);
 
-		for (int i = 0; i < bloodSplashes.length; i++) {
+		for (int i = 0; i < splashes.length; i++) {
 			p.pushMatrix();
 			p.pushStyle();
-			p.translate(bloodSplashes[i].x, bloodSplashes[i].y);
-			p.rotate(bloodSplashes[i].z);
-			p.tint(bloodColors[i]);
+			p.translate(splashes[i].bloodSplash.x, splashes[i].bloodSplash.y);
+			p.rotate(splashes[i].bloodSplash.z);
+			p.tint(splashes[i].bloodColor, splashes[i].bloodTint);
+			splashes[i].bloodTint--;
+			if(splashes[i].bloodTint<=0) {
+				splashes[i]=splashes[splashes.length-1];
+				splashes = (Splash[])PApplet.shorten(splashes);
+			}
 			p.image(blood, 0, 0);
 			p.popStyle();
 			p.popMatrix();
@@ -103,8 +118,7 @@ public class Ground extends StandingObject {
 		}
 
 		blood = p.loadImage("blood.png");
-		bloodSplashes = new PVector[0];
-		bloodColors = new int[0];
+		splashes = new Splash[0];
 
 		dust = p.createGraphics(p.width, p.height, PConstants.P3D);
 		dust.beginDraw();

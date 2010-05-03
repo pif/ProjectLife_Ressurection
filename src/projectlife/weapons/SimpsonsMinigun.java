@@ -34,7 +34,7 @@ public class SimpsonsMinigun extends Weapon {
 
 		@Override
 		public void harmTarget(Harmable target, float distance) {
-			target.harm(this.damage);
+			target.harm(this.damage*(1-PApplet.map(distance, 0, range, 0, 1)));
 		}
 
 		@Override
