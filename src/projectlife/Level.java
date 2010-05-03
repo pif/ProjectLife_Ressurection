@@ -50,6 +50,7 @@ public class Level extends MyObject {
 			} else {
 				beasts[i] = beasts[beasts.length - 1];
 				beasts = (Beast[]) (PApplet.shorten(beasts));
+				--i;
 			}
 
 		}
@@ -60,6 +61,9 @@ public class Level extends MyObject {
 
 		for (int i = 0; i < warriors.length; i++) {
 			warriors[i].display();
+		}
+		if(warriors.length<=0) {
+			p.exit();
 		}
 	}
 
