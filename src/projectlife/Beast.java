@@ -20,7 +20,7 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 				health, maxSpeed, weapon, target);
 
 		beast.weapon.owner = beast;
-		beast.weapon.targets = (Harmable[]) level.warriors;
+		beast.weapon.targets = level.warriors;
 		return beast;
 	}
 
@@ -76,10 +76,17 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 			}
 		}
 	}
+	public boolean display() {
+		weapon.displayBullets();
+		
+		return super.display();
+	}
 
 	public void move() {
 		super.move();
+		
 		this.shoot(weapon.targets[0].getLocation());
+		
 		acceleration = new PVector(PApplet.cos(angle), PApplet.sin(angle));
 
 		if (location.dist(p.level.warriors[0].location) < (this.radius

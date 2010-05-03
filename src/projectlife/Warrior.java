@@ -16,7 +16,7 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 				 weapon,  target,  experience);
 		
 		warrior.weapon.owner=warrior;
-		warrior.weapon.targets=(Harmable[])level.beasts;
+		warrior.weapon.targets=level.beasts;
 		
 		return warrior;
 	}
@@ -48,7 +48,7 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 
 	public boolean display() {
 		weapon.displayBullets();
-
+		
 		p.pushMatrix();
 		p.fill(255, 100);
 		p.translate(location.x, location.y);

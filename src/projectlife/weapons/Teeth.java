@@ -73,7 +73,7 @@ public class Teeth extends Weapon {
 			float startY, float angle) {
 		//do nothing. we hav eone bullet. always...
 		if(bullets.length<1) {
-			TeethBullet bullet = new TeethBullet(this.p, owner.location, "sdf.sdf", 0, 0, caliber, 9999, 0, this, 1);
+			TeethBullet bullet = new TeethBullet(this.p, owner.location, "sdf.sdf", 0, 0, caliber, 1, 0, this, 1);
 			bullets = (Bullet[]) PApplet.append(bullets, bullet);			
 		}
 	}
@@ -81,14 +81,14 @@ public class Teeth extends Weapon {
 	public Teeth(Main applet, MovingObject owner) {
 		super(applet,owner);
 		
-		this.damage=20;
+		this.damage=1;
 		this.jitter=0;
 		this.weight=1;
 		this.bulletSpeed=0;
 		this.rackSize=1;
 		this.reloadTime=10;
 		this.timeBetweenShots=10;
-		this.caliber=64;	
+		this.caliber=32;	
 		this.range=0;	 
 	}
 	

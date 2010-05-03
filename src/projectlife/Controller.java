@@ -74,7 +74,7 @@ public class Controller extends MyObject {
 			if (p.menu.visible) {
 				p.menu.click(new PVector(p.mouseX, p.mouseY));
 			} else {
-				p.level.warriors[0].shoot(p.mouseX, p.mouseY);
+				p.level.warriors[0].shoot(new PVector(p.mouseX,p.mouseY));
 			}
 		}
 		if (keys[menu]) {
@@ -90,11 +90,15 @@ public class Controller extends MyObject {
 		}
 		if (value == ' ') {
 			// p.level.ground
-			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);  
+			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000); 
+			//FIXME if(forWarrior) weapon targets=p.level.beasts;
 			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
 					Beast.factory(p, new PVector(), "beast.png", 0, 0, 32, 100, p.random(2, 8),
 							new Teeth(p, null),
 							p.level.warriors[0].location, p.level));
+			
+			p.level.warriors[0].weapon.setTargets(p.level.beasts);
+			
 			if(p.menu.visible){
 				p.level.beasts[p.level.beasts.length-1].stop();
 			}

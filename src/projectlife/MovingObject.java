@@ -54,7 +54,7 @@ public class MovingObject extends StandingObject {
 		}
 	}
 
-	public boolean display() {
+	public boolean display() {		
 		if (checkHealth()) {
 			move();
 		}

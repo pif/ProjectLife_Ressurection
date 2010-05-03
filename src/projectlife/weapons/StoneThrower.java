@@ -38,11 +38,6 @@ public class StoneThrower extends Weapon {
 			location.add(velocity);
 		}
 
-		// update location.
-		// if(checkposition)
-		// if(collide()!=-1)
-		// kill();
-		// else deleteMe;
 		@Override
 		public void move() {
 			if (!stopped) {
@@ -86,8 +81,8 @@ public class StoneThrower extends Weapon {
 	public StoneThrower(Main applet, MovingObject owner) {
 		super(applet,owner);
 		
-		this.damage=60;
-		this.jitter=PApplet.QUARTER_PI;
+		this.damage=40;
+		this.jitter=0;
 		this.weight=10;
 		this.bulletSpeed=10;
 		this.rackSize=10;

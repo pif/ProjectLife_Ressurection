@@ -76,7 +76,11 @@ public abstract class Bullet extends MovingObject {
 			if (distToTrgt <= this.radius) {
 				harmTarget(weapon.targets[i], distToTrgt);
 				// p.level.beasts[i].health -= this.health;
-				p.level.ground.addBlood(weapon.targets[i].getLocation(), 0x88FF0000);
+				PVector harmedPos = new PVector();
+				harmedPos.x=weapon.targets[i].getLocation().x;
+				harmedPos.y=weapon.targets[i].getLocation().y;
+				
+				p.level.ground.addBlood(harmedPos, 0x88FF0000);
 				// this.visible = false;
 				// p.level.ground.dust.image(p.level.ground.blood,
 				// p.level.beasts[i].location.x, p.level.beasts[i].location.x);
