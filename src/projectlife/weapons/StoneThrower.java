@@ -89,7 +89,7 @@ public class StoneThrower extends Weapon {
 		this.reloadTime = 3000;
 		this.timeBetweenShots = 200;
 		this.caliber = 10;
-		this.range = 100;
+		this.range = 10;
 
 		this.bulletAnimation = new Animation(
 				new XMLElement(

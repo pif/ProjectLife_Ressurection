@@ -10,7 +10,7 @@ public abstract class Bullet extends MovingObject {
 	public float speed;
 	public float damage;// got from weapon
 	public float weight;
-
+	public float range;
 
 	// radius for radius of destruction;
 	// public float radius...got it from Standing object
@@ -73,7 +73,7 @@ public abstract class Bullet extends MovingObject {
 	public void kill() {
 		for (int i = 0; i < weapon.targets.length; i++) {
 			float distToTrgt = this.location.dist(weapon.targets[i].getLocation());
-			if (distToTrgt <= this.radius) {
+			if (distToTrgt <= this.weapon.range+radius+weapon.targets[i].getRadius()) {
 				harmTarget(weapon.targets[i], distToTrgt);
 				// p.level.beasts[i].health -= this.health;
 				PVector harmedPos = new PVector();

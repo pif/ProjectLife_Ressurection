@@ -24,17 +24,18 @@ public class Teeth extends Weapon {
 			
 			caliber = weapon.owner.radius;
 			range = caliber+10;
+			used = false;
 		}
-
+		private boolean used;
 		@Override
 		public boolean checkPosition() {
-			return (PVector.sub(this.location,weapon.owner.location).mag())<weapon.owner.radius+caliber;
+			return !used;//(PVector.sub(this.location,weapon.owner.location).mag())<weapon.owner.radius+caliber;
 		}
 
 		@Override
 		public void harmTarget(Harmable target, float distance) {
 			target.harm(this.damage);
-			
+			this.used=true;
 		}
 
 		@Override
@@ -93,7 +94,7 @@ public class Teeth extends Weapon {
 		this.reloadTime=200;
 		this.timeBetweenShots=100;
 		this.caliber=32;	
-		this.range=0;	 
+		this.range=10;	 
 	}
 	
 	public void displayBullets() {
