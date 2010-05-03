@@ -94,6 +94,6 @@ public class StoneThrower extends Weapon {
 		this.reloadTime=1000;
 		this.timeBetweenShots=100;
 		this.caliber=10;	
-		this.range=100;		
+		this.range=100;	
 	}
 }

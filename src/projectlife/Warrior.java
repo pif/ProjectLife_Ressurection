@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Warrior extends MovingObject implements Harmable{
+public class Warrior extends MovingObject implements Harmable,Shooter{
 
 	public int experience;
 	
@@ -42,8 +42,8 @@ public class Warrior extends MovingObject implements Harmable{
 		target = new PVector(p.mouseX, p.mouseY);
 	}
 
-	public void shoot(int targetX, int targetY) {
-		weapon.shoot(targetX,targetY, location.x, location.y, angle);
+	public void shoot(PVector target) {
+		weapon.shoot(target.x,target.y, location.x, location.y, angle);
 	}
 
 	public boolean display() {

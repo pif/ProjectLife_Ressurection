@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Beast extends MovingObject implements Harmable {
+public class Beast extends MovingObject implements Harmable,Shooter {
 
 	public static int spotDistance = 100;
 
@@ -79,6 +79,7 @@ public class Beast extends MovingObject implements Harmable {
 
 	public void move() {
 		super.move();
+		this.shoot(weapon.targets[0].getLocation());
 		acceleration = new PVector(PApplet.cos(angle), PApplet.sin(angle));
 
 		if (location.dist(p.level.warriors[0].location) < (this.radius
@@ -123,5 +124,10 @@ public class Beast extends MovingObject implements Harmable {
 	@Override
 	public float getRadius() {
 		return this.radius;
+	}
+
+	@Override
+	public void shoot(PVector target) {
+		weapon.shoot(target.x,target.y, location.x, location.y, angle);		
 	}
 }
