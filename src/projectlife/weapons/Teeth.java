@@ -71,13 +71,29 @@ public class Teeth extends Weapon {
 	@Override
 	public void generateBullet(float targetX, float targetY, float startX,
 			float startY, float angle) {
-		//do nothing. we hav eone bullet. always...		
+		//do nothing. we hav eone bullet. always...
+		if(bullets.length<1) {
+			TeethBullet bullet = new TeethBullet(this.p, owner.location, "sdf.sdf", 0, 0, caliber, 9999, 0, this, 1);
+			bullets = (Bullet[]) PApplet.append(bullets, bullet);			
+		}
 	}
 	
 	public Teeth(Main applet, MovingObject owner) {
 		super(applet,owner);
-		caliber=owner.radius;
-		TeethBullet bullet = new TeethBullet(applet, owner.location, "sdf.sdf", 0, 0, caliber, 9999, 0, this, 1);
-		bullets = (Bullet[]) PApplet.append(bullets, bullet); 
+		
+		this.damage=20;
+		this.jitter=0;
+		this.weight=1;
+		this.bulletSpeed=0;
+		this.rackSize=1;
+		this.reloadTime=10;
+		this.timeBetweenShots=10;
+		this.caliber=64;	
+		this.range=0;	 
+	}
+	
+	public void displayBullets() {
+		generateBullet(0, 0, 0, 0, 0);
+		super.displayBullets();		
 	}
 }

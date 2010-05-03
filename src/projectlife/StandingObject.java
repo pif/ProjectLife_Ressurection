@@ -36,7 +36,7 @@ public class StandingObject extends MyObject {
 			float angle, int color, float radius, PVector target) {
 		super(applet);
 		this.location = position;
-		File f = new File(applet.dataPath(img));
+		File f = new File(applet.dataPath+img);
 		if (f.exists()) {
 			this.picture = p.loadImage(img);
 		} else {

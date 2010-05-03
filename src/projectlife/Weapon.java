@@ -76,10 +76,12 @@ public abstract class Weapon extends MyObject implements IShootable{
 			if (!bullets[i].checkHealth()) {
 				bullets[i] = bullets[bullets.length - 1];
 				bullets = (Bullet[]) (PApplet.shorten(bullets));
+				--i; continue;
 			}
 			if (!bullets[i].checkPosition()) {
 				bullets[i] = bullets[bullets.length - 1];
 				bullets = (Bullet[]) (PApplet.shorten(bullets));
+				--i; continue;
 			}			
 		}
 	}
@@ -115,7 +117,11 @@ public abstract class Weapon extends MyObject implements IShootable{
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
 		
-		this.targets = (Harmable[]) (applet.level.beasts);
+		//this.targets = (Harmable[]) (applet.level.beasts);
+	}
+	
+	public void setTargets(Harmable[] targets) {
+		this.targets = targets;
 	}
 	
 	public Weapon() {

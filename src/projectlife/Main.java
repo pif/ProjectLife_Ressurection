@@ -26,7 +26,7 @@ public class Main extends PApplet {
 	public void setup() {
 		// size(600, 300, P2D);
 		// size(screen.width, screen.height, OPENGL);
-		size(800, 600, OPENGL);
+		size(screen.width, screen.height, OPENGL);
 
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
@@ -165,7 +165,7 @@ public class Main extends PApplet {
 	}
 
 	public static void main(String args[]) {
-		Main.main(new String[] { "--present", "--bgcolor=#000000",
-				"--present-stop-color=#000000", "Main" });
+		PApplet.main(new String[] { "--present", "--bgcolor=#000000",
+				"--present-stop-color=#000000", "projectlife.Main" });
 	}
 }

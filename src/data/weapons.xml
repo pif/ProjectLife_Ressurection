@@ -5,6 +5,16 @@
 		<sprite src="2.png" time="20" />
 		<sprite src="3.png" time="30" />
 	</weapon> 	
+
+	public float damage;
+	public float jitter;
+	public float weight;
+	public float bulletSpeed;
+	public int rackSize;
+	public int reloadTime;
+	public int timeBetweenShots;
+	public float caliber;	
+	public float range;
 	
 	public class Pan extends Weapon {
 

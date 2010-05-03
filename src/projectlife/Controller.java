@@ -92,11 +92,9 @@ public class Controller extends MyObject {
 			// p.level.ground
 			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000);  
 			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
-					new Beast(p, new PVector(p.random(100, 200), p.random(100,
-							200)), "beast.png", 0, 0, 32, 100, p.random(2, 8),
-							new Teeth(p,null),
-							p.level.warriors[0].location));
-			p.level.beasts[p.level.beasts.length-1].weapon.owner=p.level.beasts[p.level.beasts.length-1];
+					Beast.factory(p, new PVector(), "beast.png", 0, 0, 32, 100, p.random(2, 8),
+							new Teeth(p, null),
+							p.level.warriors[0].location, p.level));
 			if(p.menu.visible){
 				p.level.beasts[p.level.beasts.length-1].stop();
 			}

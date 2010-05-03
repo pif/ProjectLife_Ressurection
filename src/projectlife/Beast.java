@@ -4,7 +4,7 @@ import processing.core.*;
 
 /**
 */
-public class Beast extends MovingObject implements Harmable{
+public class Beast extends MovingObject implements Harmable {
 
 	public static int spotDistance = 100;
 
@@ -12,6 +12,17 @@ public class Beast extends MovingObject implements Harmable{
 	public int currentTarget;
 	public PVector[] targets;
 	public boolean followTargets;
+
+	public static Beast factory(Main applet, PVector position, String img,
+			float angle, int color, float radius, float health, float maxSpeed,
+			Weapon weapon, PVector target, Level level) {
+		Beast beast = new Beast(applet, position, img, angle, color, radius,
+				health, maxSpeed, weapon, target);
+
+		beast.weapon.owner = beast;
+		beast.weapon.targets = (Harmable[]) level.warriors;
+		return beast;
+	}
 
 	public Beast(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
@@ -101,7 +112,7 @@ public class Beast extends MovingObject implements Harmable{
 
 	@Override
 	public void harm(float damage) {
-		this.health-=damage;	
+		this.health -= damage;
 	}
 
 	@Override

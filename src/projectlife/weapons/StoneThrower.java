@@ -1,5 +1,7 @@
 package projectlife.weapons;
 
+import java.awt.print.Paper;
+
 import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
 import projectlife.*;
@@ -15,6 +17,8 @@ public class StoneThrower extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight);
 			radius = caliber;
+			acceleration = new PVector(speed* p.cos(angle), maxSpeed
+					* p.sin(angle));
 		}
 
 		@Override
@@ -81,5 +85,15 @@ public class StoneThrower extends Weapon {
 	
 	public StoneThrower(Main applet, MovingObject owner) {
 		super(applet,owner);
+		
+		this.damage=60;
+		this.jitter=PApplet.QUARTER_PI;
+		this.weight=10;
+		this.bulletSpeed=10;
+		this.rackSize=10;
+		this.reloadTime=1000;
+		this.timeBetweenShots=100;
+		this.caliber=10;	
+		this.range=100;		
 	}
 }

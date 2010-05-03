@@ -23,15 +23,16 @@ public class Level extends MyObject {
 	public Level(String xmlPath, Main applet) {
 
 		super(applet);
-
+		beasts = new Beast[0];
 		warriors = new Warrior[1];
-		warriors[0] = new Warrior(applet, new PVector(applet.width / 2,
+		
+		warriors[0] = Warrior.factory(applet, new PVector(applet.width / 2,
 				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new StoneThrower(applet, warriors[0])/*, 20, 10, 50, (float) 0.1, 30, 500, 100)*/, new PVector(),
-				0);
+				0, this);
 
 		ground = new Ground("1.png", true, applet);
 
-		beasts = new Beast[0];
+
 		bonuses = new Bonus[0];
 		overlays = new Overlay[0];
 		

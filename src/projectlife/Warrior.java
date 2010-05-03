@@ -7,7 +7,20 @@ import processing.core.*;
 public class Warrior extends MovingObject implements Harmable{
 
 	public int experience;
-
+	
+	public static Warrior factory(Main applet,PVector position, String img, float angle,
+			int color, float radius, float health, float maxSpeed,
+			Weapon weapon, PVector target, int experience, Level level) {
+		Warrior warrior = new Warrior(applet, position, img, angle,
+				color,  radius,  health,  maxSpeed,
+				 weapon,  target,  experience);
+		
+		warrior.weapon.owner=warrior;
+		warrior.weapon.targets=(Harmable[])level.beasts;
+		
+		return warrior;
+	}
+	
 	public Warrior(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, int experience) {
