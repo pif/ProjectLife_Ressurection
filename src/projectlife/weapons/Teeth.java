@@ -2,6 +2,7 @@ package projectlife.weapons;
 
 import processing.core.PApplet;
 import processing.core.PVector;
+import projectlife.Animation;
 import projectlife.Bullet;
 import projectlife.Harmable;
 import projectlife.Main;
@@ -71,9 +72,11 @@ public class Teeth extends Weapon {
 	@Override
 	public void generateBullet(float targetX, float targetY, float startX,
 			float startY, float angle) {
-		//do nothing. we hav eone bullet. always...
+		//do nothing. we have one bullet. always...
 		if(bullets.length<1) {
 			TeethBullet bullet = new TeethBullet(this.p, owner.location, "sdf.sdf", 0, 0, caliber, 1, 0, this, 1);
+			//bullet.sprite = new Animation(this.bulletAnimation);
+			
 			bullets = (Bullet[]) PApplet.append(bullets, bullet);			
 		}
 	}
@@ -86,8 +89,8 @@ public class Teeth extends Weapon {
 		this.weight=1;
 		this.bulletSpeed=0;
 		this.rackSize=1;
-		this.reloadTime=10;
-		this.timeBetweenShots=10;
+		this.reloadTime=200;
+		this.timeBetweenShots=100;
 		this.caliber=32;	
 		this.range=0;	 
 	}

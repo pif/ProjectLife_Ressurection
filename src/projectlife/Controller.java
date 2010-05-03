@@ -55,7 +55,14 @@ public class Controller extends MyObject {
 	 */
 	public void press(int value) {
 		keys[value] = true;
-
+		
+		if (keys[nextWeapon]) {
+			p.level.warriors[0].setNextWeapon();
+		}
+		if (keys[prevWeapon]) {
+			p.level.warriors[0].setPrevWeapon();
+		}
+		
 		if (keys[up]) {
 			p.level.warriors[0].acceleration.y = -1;// --;
 		}

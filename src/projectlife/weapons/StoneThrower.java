@@ -1,11 +1,8 @@
 package projectlife.weapons;
 
-import java.awt.print.Paper;
-
-import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
-
 import projectlife.*;
 import processing.core.*;
+import processing.xml.XMLElement;
 
 public class StoneThrower extends Weapon {
 
@@ -17,7 +14,7 @@ public class StoneThrower extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight);
 			radius = caliber;
-			acceleration = new PVector(speed* p.cos(angle), maxSpeed
+			acceleration = new PVector(speed * p.cos(angle), maxSpeed
 					* p.sin(angle));
 		}
 
@@ -54,7 +51,7 @@ public class StoneThrower extends Weapon {
 		}
 
 		@Override
-		public int collide()  {
+		public int collide() {
 			for (int i = 0; i < weapon.targets.length; ++i) {
 				if (this.location.dist(weapon.targets[i].getLocation()) < this.caliber
 						+ weapon.targets[i].getRadius()) {
@@ -73,22 +70,28 @@ public class StoneThrower extends Weapon {
 				startX, startY), "sdf.sdf", angle + p.random(-jitter, jitter),
 				0xFFFFFFFF, caliber, 60, this.bulletSpeed, this, this.weight
 						/ rackSize);
+		bullet.sprite = new Animation(this.bulletAnimation);
+
 		this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);
 		currentRackSize--;
 		lastShotTime = p.millis();
 	}
-	
+
 	public StoneThrower(Main applet, MovingObject owner) {
-		super(applet,owner);
-		
-		this.damage=40;
-		this.jitter=0;
-		this.weight=10;
-		this.bulletSpeed=10;
-		this.rackSize=10;
-		this.reloadTime=1000;
-		this.timeBetweenShots=100;
-		this.caliber=10;	
-		this.range=100;	
+		super(applet, owner);
+
+		this.damage = 40;
+		this.jitter = 0.1f;
+		this.weight = 10;
+		this.bulletSpeed = 10;
+		this.rackSize = 3;
+		this.reloadTime = 3000;
+		this.timeBetweenShots = 200;
+		this.caliber = 10;
+		this.range = 100;
+
+		this.bulletAnimation = new Animation(
+				new XMLElement(
+						"<weapon name=\"StoneThrower\" damage=\"80\" radius=\"40\" speed=\"100\" jitter=\"0\" rackSize=\"1\" reloadTime=\"0\" timeBetweenShoots=\"0\" image=\"images/weapons/st\"><sprite image=\"images/weapons/st/1.png\" time=\"100\" /><sprite image=\"images/weapons/st/2.png\" time=\"100\" /><sprite image=\"images/weapons/st/3.png\" time=\"100\" /></weapon>"),applet);
 	}
 }

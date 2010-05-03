@@ -1,9 +1,9 @@
 <?xml version="1.0" econding="UTF-8" standalone="yes"?>
 <weapons>
-	<weapon name="Pan" damage="80" radius="40" speed="100" jitter="0" rackSize="1" reloadTime="0" timeBetweenShoots="0" src="images/weapons/pan">
-		<sprite src="1.png" time="10" />
-		<sprite src="2.png" time="20" />
-		<sprite src="3.png" time="30" />
+	<weapon name="StoneThrower" damage="80" radius="40" speed="100" jitter="0" rackSize="1" reloadTime="0" timeBetweenShoots="0" src="images/weapons/st">
+		<sprite src="images/weapons/st/1.png" time="100" />
+		<sprite src="images/weapons/st/2.png" time="100" />
+		<sprite src="images/weapons/st/3.png" time="100" />
 	</weapon> 	
 
 	public float damage;

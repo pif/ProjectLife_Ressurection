@@ -1,26 +1,51 @@
 package projectlife;
 
+
+import java.util.ArrayList;
+
 import processing.core.*;
+import projectlife.weapons.SimpsonsMinigun;
+import projectlife.weapons.StoneThrower;
 
 /**
 */
-public class Warrior extends MovingObject implements Harmable,Shooter{
+public class Warrior extends MovingObject implements Harmable, Shooter {
 
 	public int experience;
-	
-	public static Warrior factory(Main applet,PVector position, String img, float angle,
-			int color, float radius, float health, float maxSpeed,
+	public ArrayList<Weapon> weapons;
+	public int currentWeapon;
+
+	public static Warrior factory(Main applet, PVector position, String img,
+			float angle, int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, int experience, Level level) {
-		Warrior warrior = new Warrior(applet, position, img, angle,
-				color,  radius,  health,  maxSpeed,
-				 weapon,  target,  experience);
+		Warrior warrior = new Warrior(applet, position, img, angle, color,
+				radius, health, maxSpeed, weapon, target, experience);
+
+		warrior.currentWeapon = 0;
+		warrior.weapons = new ArrayList<Weapon>();
+		warrior.weapons.add(new StoneThrower(applet, warrior));
+		warrior.weapons.add(new SimpsonsMinigun(applet, warrior));
 		
-		warrior.weapon.owner=warrior;
-		warrior.weapon.targets=level.beasts;
-		
+
+		warrior.updateTargets(level);
+
 		return warrior;
 	}
+	public void setNextWeapon() {
+		currentWeapon=(currentWeapon+1)%weapons.size();
+		weapon = weapons.get(currentWeapon);
+	}
+	public void setPrevWeapon() {
+		currentWeapon=(currentWeapon-1)%weapons.size();
+		weapon = weapons.get(currentWeapon);
+	}
 	
+	private void updateTargets(Level level) {
+		for (int i = 0; i < this.weapons.size(); ++i) {
+			this.weapons.get(i).targets = level.beasts;
+		}		
+	}
+
 	public Warrior(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, int experience) {
@@ -28,9 +53,10 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 				weapon, target);
 		this.experience = experience;
 		// TODO warrior sprite
-		
-		for(int i=1;i<5;i++)
-			this.sprite.addSprite(p.loadImage(p.dataPath+"images/warrior/"+i+".png"), 50);
+
+		for (int i = 1; i < 5; i++)
+			this.sprite.addSprite(p.loadImage(p.dataPath + "images/warrior/"
+					+ i + ".png"), 50);
 	}
 
 	public void move() {
@@ -43,12 +69,14 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 	}
 
 	public void shoot(PVector target) {
-		weapon.shoot(target.x,target.y, location.x, location.y, angle);
+		weapon.shoot(target.x, target.y, location.x, location.y, angle);
 	}
 
 	public boolean display() {
-		weapon.displayBullets();
-		
+		for(int i=0;i<weapons.size();++i) {
+			weapons.get(i).displayBullets();
+		}
+
 		p.pushMatrix();
 		p.fill(255, 100);
 		p.translate(location.x, location.y);
@@ -66,7 +94,7 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 			weapon.bullets[i].stop();
 		}
 	}
-	
+
 	public void letGo() {
 		super.letGo();
 		for (int i = 0; i < weapon.bullets.length; i++) {
@@ -76,7 +104,7 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 
 	@Override
 	public void harm(float damage) {
-		this.health-=damage;		
+		this.health -= damage;
 	}
 
 	@Override
@@ -87,5 +115,5 @@ public class Warrior extends MovingObject implements Harmable,Shooter{
 	@Override
 	public float getRadius() {
 		return this.radius;
-	}	
+	}
 }

@@ -50,13 +50,25 @@ public class Animation extends MyObject{
 		paused = false;
 	}
 	
-	public Animation(XMLElement spriteInfo){
+	public Animation(XMLElement spriteInfo, Main applet){
 		sprites = new Sprite[0];
 		currentSprite = 0;
 		paused = false;
 		
 		for(int i=0;i<spriteInfo.getChildCount();++i) {
-			this.addSprite(p.loadImage(spriteInfo.getChild(i).getStringAttribute("image")), spriteInfo.getChild(i).getIntAttribute("time"));
+			this.addSprite(applet.loadImage(applet.dataPath+spriteInfo.getChild(i).getStringAttribute("image")), spriteInfo.getChild(i).getIntAttribute("time"));
 		}
 	}
+	
+	public Animation(Animation animation){
+		this.p=animation.p;
+
+		sprites = new Sprite[0];
+		currentSprite = 0;
+		paused = false;
+		
+		for(int i=0;i<animation.sprites.length;++i) {
+			this.addSprite(animation.sprites[i].image,animation.sprites[i].time);
+		}
+	}	
 }

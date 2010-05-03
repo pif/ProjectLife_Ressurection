@@ -18,6 +18,7 @@ public abstract class Weapon extends MyObject implements IShootable{
 	public float range;
 	
 	public MovingObject owner; 
+	public Animation bulletAnimation;
 	
 	public Bullet[] bullets;
 	public int currentRackSize;

@@ -54,7 +54,7 @@ public class StandingObject extends MyObject {
 	}
 	
 	public void setAnimation(XMLElement animation) {
-		sprite = new Animation(animation);
+		sprite = new Animation(animation, p);
 	}
 	
 	public void setAnimation(Animation animation) {
