@@ -49,7 +49,7 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		weapon = weapons.get(currentWeapon);
 	}
 
-	private void updateTargets(Level level) {
+	public void updateTargets(Level level) {
 		for (int i = 0; i < this.weapons.size(); ++i) {
 			this.weapons.get(i).targets = level.beasts;
 		}
