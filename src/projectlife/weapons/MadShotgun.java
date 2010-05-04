@@ -94,13 +94,14 @@ public class MadShotgun extends Weapon {
 		this.damage = 30;
 		this.jitter = 0.25f;
 		this.weight = 10;
-		this.bulletSpeed = 10;
+		this.bulletSpeed = 20;
 		this.rackSize = 8;
 		this.reloadTime = 2000;
 		this.timeBetweenShots = 200;
 		this.caliber = 16;
 		this.range = 25;
 
+		this.currentRackSize=rackSize;
 		this.bulletAnimation = new Animation(
 				new XMLElement(
 						"<weapon name=\"MadShotgun\" damage=\"80\" radius=\"40\" speed=\"100\" jitter=\"0\" rackSize=\"1\" reloadTime=\"0\" timeBetweenShoots=\"0\" image=\"images/weapons/ms\"><sprite image=\"images/weapons/ms/1.png\" time=\"100\" /></weapon>"),

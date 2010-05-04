@@ -91,6 +91,7 @@ public class StoneThrower extends Weapon {
 		this.caliber = 10;
 		this.range = 10;
 
+		this.currentRackSize=rackSize;
 		this.bulletAnimation = new Animation(
 				new XMLElement(
 						"<weapon name=\"StoneThrower\" damage=\"80\" radius=\"40\" speed=\"100\" jitter=\"0\" rackSize=\"1\" reloadTime=\"0\" timeBetweenShoots=\"0\" image=\"images/weapons/st\"><sprite image=\"images/weapons/st/1.png\" time=\"100\" /><sprite image=\"images/weapons/st/2.png\" time=\"100\" /><sprite image=\"images/weapons/st/3.png\" time=\"100\" /></weapon>"),applet);
