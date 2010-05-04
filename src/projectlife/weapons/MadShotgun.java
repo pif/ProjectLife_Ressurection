@@ -88,15 +88,7 @@ public class MadShotgun extends Weapon {
 		lastShotTime = p.millis();
 	}
 
-	public MadShotgun(Main applet, MovingObject owner) {
-		super(applet, owner);
-
-		
-
-		this.currentRackSize=rackSize;
-		this.bulletAnimation = new Animation(
-				new XMLElement(
-						"<weapon name=\"MadShotgun\" damage=\"80\" radius=\"40\" speed=\"100\" jitter=\"0\" rackSize=\"1\" reloadTime=\"0\" timeBetweenShoots=\"0\" image=\"images/weapons/ms\"><sprite image=\"images/weapons/ms/1.png\" time=\"100\" /></weapon>"),
-				applet);
+	public MadShotgun(Main applet, MovingObject owner, XMLElement prefs) {
+		super(applet, owner, prefs);
 	}
 }

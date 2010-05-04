@@ -86,14 +86,7 @@ public class SimpsonsMinigun extends Weapon {
 		lastShotTime = p.millis();
 	}
 	
-	public SimpsonsMinigun(Main applet, MovingObject owner) {
-		super(applet,owner);
-		
-
-		
-		this.currentRackSize=rackSize;
-		this.bulletAnimation = new Animation(
-				new XMLElement(
-						"<weapon name=\"StoneThrower\" damage=\"80\" radius=\"40\" speed=\"100\" jitter=\"0\" rackSize=\"1\" reloadTime=\"0\" timeBetweenShoots=\"0\" image=\"images/weapons/st\"><sprite image=\"images/weapons/sm/1.png\" time=\"100\" /><sprite image=\"images/weapons/sm/2.png\" time=\"100\" /><sprite image=\"images/weapons/sm/3.png\" time=\"100\" /></weapon>"),applet);
+	public SimpsonsMinigun(Main applet, MovingObject owner, XMLElement prefs) {
+		super(applet,owner, prefs);
 	}
 }
