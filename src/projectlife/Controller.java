@@ -104,7 +104,9 @@ public class Controller extends MyObject {
 							new Teeth(p, null),
 							p.level.warriors[0].location, p.level));
 			
-			p.level.warriors[0].weapon.setTargets(p.level.beasts);
+			for(int q=0;q<p.level.warriors.length;++q) {
+				p.level.warriors[q].updateTargets(p.level);
+			}
 			
 			if(p.menu.visible){
 				p.level.beasts[p.level.beasts.length-1].stop();
