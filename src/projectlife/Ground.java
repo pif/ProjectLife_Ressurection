@@ -13,27 +13,34 @@ public class Ground extends StandingObject {
 	public PGraphics dust;
 	public PImage blood;
 	public Splash[] splashes;
-	
+
+	public static final int maxSplashes = 300;
+
 	public class Splash {
 		public PVector bloodSplash;
 		public int bloodColor;
 		public int bloodTint;
+		public boolean addSplash;
+		public int maxSplashes;
+
 		public Splash(PVector position, int color) {
-			bloodSplash=position;
+			bloodSplash = position;
 			bloodColor = color;
 			bloodTint = 255;
 		}
 	}
-	
+
 	/**
 	 * @param position
 	 * @param Return
 	 * @param int color
 	 */
 	public void addBlood(PVector position, int color) {
-		position.z = p.random(PConstants.TWO_PI);
-		Splash s = new Splash(position, color);
-		splashes = (Splash[]) PApplet.append(splashes, s);
+		if (splashes.length <= maxSplashes) {
+			position.z = p.random(PConstants.TWO_PI);
+			Splash s = new Splash(position, color);
+			splashes = (Splash[]) PApplet.append(splashes, s);
+		}
 		// dust.beginDraw();
 		// dust.tint(color);
 		// dust.pushMatrix();
@@ -63,9 +70,9 @@ public class Ground extends StandingObject {
 			p.rotate(splashes[i].bloodSplash.z);
 			p.tint(splashes[i].bloodColor, splashes[i].bloodTint);
 			splashes[i].bloodTint--;
-			if(splashes[i].bloodTint<=0) {
-				splashes[i]=splashes[splashes.length-1];
-				splashes = (Splash[])PApplet.shorten(splashes);
+			if (splashes[i].bloodTint <= 0) {
+				splashes[i] = splashes[splashes.length - 1];
+				splashes = (Splash[]) PApplet.shorten(splashes);
 			}
 			p.image(blood, 0, 0);
 			p.popStyle();
