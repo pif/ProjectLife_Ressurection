@@ -2,6 +2,7 @@ package projectlife.weapons;
 
 import processing.core.PApplet;
 import processing.core.PVector;
+import processing.xml.XMLElement;
 import projectlife.Animation;
 import projectlife.Bullet;
 import projectlife.Harmable;
@@ -83,18 +84,8 @@ public class Teeth extends Weapon {
 		}
 	}
 	
-	public Teeth(Main applet, MovingObject owner) {
-		super(applet,owner);
-		
-		this.damage=1;
-		this.jitter=0;
-		this.weight=1;
-		this.bulletSpeed=0;
-		this.rackSize=1;
-		this.reloadTime=200;
-		this.timeBetweenShots=100;
-		this.caliber=32;	
-		this.range=10;	 
+	public Teeth(Main applet, MovingObject owner, XMLElement prefs) {
+		super(applet,owner, prefs); 
 	}
 	
 	public void displayBullets() {

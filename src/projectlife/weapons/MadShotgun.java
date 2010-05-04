@@ -91,15 +91,7 @@ public class MadShotgun extends Weapon {
 	public MadShotgun(Main applet, MovingObject owner) {
 		super(applet, owner);
 
-		this.damage = 30;
-		this.jitter = 0.25f;
-		this.weight = 10;
-		this.bulletSpeed = 20;
-		this.rackSize = 8;
-		this.reloadTime = 2000;
-		this.timeBetweenShots = 200;
-		this.caliber = 16;
-		this.range = 25;
+		
 
 		this.currentRackSize=rackSize;
 		this.bulletAnimation = new Animation(

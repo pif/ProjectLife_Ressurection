@@ -78,22 +78,7 @@ public class StoneThrower extends Weapon {
 		lastShotTime = p.millis();
 	}
 
-	public StoneThrower(Main applet, MovingObject owner) {
-		super(applet, owner);
-
-		this.damage = 40;
-		this.jitter = 0.1f;
-		this.weight = 10;
-		this.bulletSpeed = 10;
-		this.rackSize = 3;
-		this.reloadTime = 3000;
-		this.timeBetweenShots = 200;
-		this.caliber = 10;
-		this.range = 10;
-
-		this.currentRackSize=rackSize;
-		this.bulletAnimation = new Animation(
-				new XMLElement(
-						"<weapon name=\"StoneThrower\" damage=\"80\" radius=\"40\" speed=\"100\" jitter=\"0\" rackSize=\"1\" reloadTime=\"0\" timeBetweenShoots=\"0\" image=\"images/weapons/st\"><sprite image=\"images/weapons/st/1.png\" time=\"100\" /><sprite image=\"images/weapons/st/2.png\" time=\"100\" /><sprite image=\"images/weapons/st/3.png\" time=\"100\" /></weapon>"),applet);
+	public StoneThrower(Main applet, MovingObject owner, XMLElement prefs) {
+		super(applet, owner, prefs);
 	}
 }

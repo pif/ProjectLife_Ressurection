@@ -67,13 +67,13 @@ public abstract class Bullet extends MovingObject {
 	// do with theM!!!!
 	// maybe i should return an array of IHittable objects?
 	/**
-	 * calls harmTarget(target,distance) for every target in the bullet's radius
+	 * calls harmTarget(target,distance) for every target in the bullet's range
 	 * of destruction
 	 */
 	public void kill() {
 		for (int i = 0; i < weapon.targets.length; i++) {
 			float distToTrgt = this.location.dist(weapon.targets[i].getLocation());
-			if (distToTrgt <= this.weapon.range+radius+weapon.targets[i].getRadius()) {
+			if (distToTrgt <= this.range+this.caliber+weapon.targets[i].getRadius()) {
 				harmTarget(weapon.targets[i], distToTrgt);
 				// p.level.beasts[i].health -= this.health;
 				PVector harmedPos = new PVector();

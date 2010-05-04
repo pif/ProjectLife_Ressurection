@@ -89,15 +89,7 @@ public class SimpsonsMinigun extends Weapon {
 	public SimpsonsMinigun(Main applet, MovingObject owner) {
 		super(applet,owner);
 		
-		this.damage=30;
-		this.jitter=0.1f;
-		this.weight=10;
-		this.bulletSpeed=30;
-		this.rackSize=30;
-		this.reloadTime=1500;
-		this.timeBetweenShots=50;
-		this.caliber=32;	
-		this.range=25;	
+
 		
 		this.currentRackSize=rackSize;
 		this.bulletAnimation = new Animation(

@@ -14,8 +14,10 @@ public abstract class Weapon extends MyObject implements IShootable{
 	public int rackSize;
 	public int reloadTime;
 	public int timeBetweenShots;
-	public float caliber;	
 	public float range;
+	
+	public float caliber;	
+	public float bulletRange;
 	
 	public MovingObject owner; 
 	public Animation bulletAnimation;
@@ -100,19 +102,24 @@ public abstract class Weapon extends MyObject implements IShootable{
 
 	//float damage, float radius, float speed,
 	//float jitter, int rackSize, int reloadTime, int timeBetweenShoots) 
-	public Weapon(Main applet, MovingObject owner) {
+	public Weapon(Main applet, MovingObject owner, XMLElement preferences) {
 		super(applet);
 
-		this.damage = 0;
-		this.caliber = 0;
+		this.damage = preferences.getFloatAttribute("damage");
+		this.jitter = preferences.getFloatAttribute("jitter");
+		this.weight = preferences.getFloatAttribute("weight");
+		this.bulletSpeed = preferences.getFloatAttribute("bulletSpeed");
+		this.rackSize = preferences.getIntAttribute("rackSize");		
+		this.reloadTime = preferences.getIntAttribute("reloadTime");
+		this.timeBetweenShots = preferences.getIntAttribute("timeBetweenShoots");
+		this.caliber = preferences.getFloatAttribute("caliber");
 		this.bullets = new Bullet[0];
-		this.bulletSpeed = 0;
-		this.jitter = 0;
-		this.lastShotTime = 0;
-		this.reloadTime = 0;
-		this.rackSize = 0;
-		this.timeBetweenShots = 0;
+		this.range = preferences.getFloatAttribute("range");
+		this.bulletRange = preferences.getFloatAttribute("bulletRange");
+
+		this.bulletAnimation = new Animation(preferences, applet);
 		
+		this.lastShotTime = 0;
 		this.owner = owner;
 		
 		this.currentRackSize = rackSize;
