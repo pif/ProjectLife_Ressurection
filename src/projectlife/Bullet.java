@@ -18,7 +18,7 @@ public abstract class Bullet extends MovingObject {
 	
 	public Bullet(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
-			Weapon weapon, float weight) {
+			Weapon weapon, float weight, PVector startPos) {
 		super(applet, position, img, angle, color, radius, health, maxSpeed, weapon,
 				new PVector());
 
@@ -26,6 +26,8 @@ public abstract class Bullet extends MovingObject {
 		this.speed = weapon.bulletSpeed;
 		this.damage = weapon.damage;
 		this.weight = weight;
+		
+		this.startPos = startPos;
 	}
 	
 	

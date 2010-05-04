@@ -10,9 +10,9 @@ public class SimpsonsMinigun extends Weapon {
 
 		public SimpsonsMinigunBullet(Main applet, PVector position, String img,
 				float angle, int color, float radius, float health,
-				float maxSpeed, Weapon weapon, float weight) {
+				float maxSpeed, Weapon weapon, float weight,PVector startPos) {
 			super(applet, position, img, angle, color, radius, health,
-					maxSpeed, weapon, weight);
+					maxSpeed, weapon, weight,startPos);
 			
 			radius = caliber;
 			range = 50;
@@ -78,7 +78,7 @@ public class SimpsonsMinigun extends Weapon {
 		SimpsonsMinigunBullet bullet = new SimpsonsMinigunBullet(p, new PVector(
 				startX, startY), "sdf.sdf", angle + p.random(-jitter, jitter),
 				0xFFFFFFFF, caliber, 60, this.bulletSpeed, this, this.weight
-						/ rackSize);
+						/ rackSize,new PVector(startX, startY));
 		bullet.sprite = new Animation(this.bulletAnimation);
 		
 		this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);

@@ -113,7 +113,7 @@ public class MenuManager extends OverlayManager {
 			p.fill(0, 0, 0, 140);
 			p.rect(p.width / 2, p.height / 2, p.width, p.height);
 			p.popStyle();
-			
+
 			super.display();
 			// for (int i = 0; i < overlays.length; i++) {
 			// overlays[i].display();
@@ -124,12 +124,16 @@ public class MenuManager extends OverlayManager {
 
 	public void show() {
 		super.show();
-		p.level.suspend();
+		if (p.level != null) {
+			p.level.suspend();
+		}
 	}
 
 	public void hide() {
 		super.hide();
-		p.level.start();
+		if (p.level != null) {
+			p.level.start();
+		}
 	}
 
 }

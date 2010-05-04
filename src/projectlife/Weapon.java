@@ -5,7 +5,7 @@ import processing.xml.XMLElement;
 
 /**
 */
-public abstract class Weapon extends MyObject implements IShootable{
+public abstract class Weapon extends MyObject implements IShootable {
 
 	public float damage;
 	public float jitter;
@@ -15,22 +15,21 @@ public abstract class Weapon extends MyObject implements IShootable{
 	public int reloadTime;
 	public int timeBetweenShots;
 	public float range;
-	
-	public float caliber;	
+
+	public float caliber;
 	public float bulletRange;
-	
-	public MovingObject owner; 
+
+	public MovingObject owner;
 	public Animation bulletAnimation;
-	
+
 	public Bullet[] bullets;
 	public int currentRackSize;
 	public Harmable[] targets;
-	
-	public boolean canShoot;	
+
+	public boolean canShoot;
 	public int lastShotTime;
 	private int reloadStartTime;
 
-	
 	/**
 	 * 
 	 * @param Return
@@ -47,17 +46,20 @@ public abstract class Weapon extends MyObject implements IShootable{
 
 	// classes should implement this method. it is called every time we can
 	// shoot...
-		//TODO weapon bullet stub. every weapon should have it's own...i suppose
-	//public void generateBullet(float targetX, float targetY, float startX, float startY, float angle) {
-	//}
+	// TODO weapon bullet stub. every weapon should have it's own...i suppose
+	// public void generateBullet(float targetX, float targetY, float startX,
+	// float startY, float angle) {
+	// }
 
 	// shoot in position x,y with the angle=angle
-	public void shoot(float targetX, float targetY, float shootPosX, float shootPosY, float angle) {
+	public void shoot(float targetX, float targetY, float shootPosX,
+			float shootPosY, float angle) {
 		if (canShoot) {
 			if (p.millis() - lastShotTime >= timeBetweenShots) {
 				if (currentRackSize > 0) {
 					// you can shoot. you have bullets in rack.
-					generateBullet(targetX, targetY, shootPosX, shootPosY, angle);
+					generateBullet(targetX, targetY, shootPosX, shootPosY,
+							angle);
 				} else {
 					reload();
 				}
@@ -79,13 +81,22 @@ public abstract class Weapon extends MyObject implements IShootable{
 			if (!bullets[i].checkHealth()) {
 				bullets[i] = bullets[bullets.length - 1];
 				bullets = (Bullet[]) (PApplet.shorten(bullets));
-				--i; continue;
+				--i;
+				continue;
 			}
 			if (!bullets[i].checkPosition()) {
 				bullets[i] = bullets[bullets.length - 1];
 				bullets = (Bullet[]) (PApplet.shorten(bullets));
-				--i; continue;
-			}			
+				--i;
+				continue;
+			}
+			if (bullets[i].startPos.dist(bullets[i].location) >= this.range) {
+				bullets[i].kill();
+				bullets[i] = bullets[bullets.length - 1];
+				bullets = (Bullet[]) (PApplet.shorten(bullets));
+				--i;
+				continue;
+			}
 		}
 	}
 
@@ -100,8 +111,8 @@ public abstract class Weapon extends MyObject implements IShootable{
 		}
 	}
 
-	//float damage, float radius, float speed,
-	//float jitter, int rackSize, int reloadTime, int timeBetweenShoots) 
+	// float damage, float radius, float speed,
+	// float jitter, int rackSize, int reloadTime, int timeBetweenShoots)
 	public Weapon(Main applet, MovingObject owner, XMLElement preferences) {
 		super(applet);
 
@@ -109,30 +120,31 @@ public abstract class Weapon extends MyObject implements IShootable{
 		this.jitter = preferences.getFloatAttribute("jitter");
 		this.weight = preferences.getFloatAttribute("weight");
 		this.bulletSpeed = preferences.getFloatAttribute("bulletSpeed");
-		this.rackSize = preferences.getIntAttribute("rackSize");		
+		this.rackSize = preferences.getIntAttribute("rackSize");
 		this.reloadTime = preferences.getIntAttribute("reloadTime");
-		this.timeBetweenShots = preferences.getIntAttribute("timeBetweenShoots");
+		this.timeBetweenShots = preferences
+				.getIntAttribute("timeBetweenShoots");
 		this.caliber = preferences.getFloatAttribute("caliber");
 		this.bullets = new Bullet[0];
 		this.range = preferences.getFloatAttribute("range");
 		this.bulletRange = preferences.getFloatAttribute("bulletRange");
 
 		this.bulletAnimation = new Animation(preferences, applet);
-		
+
 		this.lastShotTime = 0;
 		this.owner = owner;
-		
+
 		this.currentRackSize = rackSize;
 		this.canShoot = true;
-		
-		//this.targets = (Harmable[]) (applet.level.beasts);
+
+		// this.targets = (Harmable[]) (applet.level.beasts);
 	}
-	
+
 	public void setTargets(Harmable[] targets) {
 		this.targets = targets;
 	}
-	
+
 	public Weapon() {
-	
+
 	}
 }

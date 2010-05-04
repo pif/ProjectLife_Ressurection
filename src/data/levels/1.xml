@@ -3,34 +3,31 @@
 	<name>In the shadows</name>
 	<difficulty>1</difficulty>
 	<experience>100</experience>
-	<weapons>
-		<weapon forWarrior="true" name="StoneThrower"/>
-	</weapons>
 	<bonuses>
 		<bonus name=""/>
 	</bonuses>
-	<warrior standardWeapon="StoneThrower">
-		<animation><!-- relative to datapath-->
-			<sprite image="images/warrior/1.png" time="50" />
-			<sprite image="images/warrior/2.png" time="50" />
-			<sprite image="images/warrior/3.png" time="50" />
-			<sprite image="images/warrior/4.png" time="50" />
-		</animation>
-	</warrior>
+	<warriors>
+		<warrior>
+			<weapons>
+				<weapon name="SimpsonsMinigun"/>
+				<weapon name="MadShotgun"/>
+				<weapon name="StoneThrower" standard="true"/>
+			</weapons>
+			<animation><!-- relative to datapath-->
+				<sprite image="images/warrior/1.png" time="50" />
+				<sprite image="images/warrior/2.png" time="50" />
+				<sprite image="images/warrior/3.png" time="50" />
+				<sprite image="images/warrior/4.png" time="50" />
+			</animation>
+		</warrior>
+	</warriors>
 	<beasts>
 		<beast standardWeapon="Teeth" value="50" name="Bart">
 			<animation>
 					<sprite image="images/beasts/ba1.png" time="9999" />
 			</animation>
 		</beast  standardWeapon="Teeth" value="50" name="Bart">
-		<beast>
-			<animation></animation>
-		</beast>
-		<beast>
-			<animation></animation>
-		</beast>
-		<beast>
-			<animation></animation>
-		</beast>
 	</beasts>
+	<scenery>
+	</scenery>
 </game>

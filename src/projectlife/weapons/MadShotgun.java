@@ -10,9 +10,9 @@ public class MadShotgun extends Weapon {
 
 		public MadShotgunBullet(Main applet, PVector position, String img,
 				float angle, int color, float radius, float health,
-				float maxSpeed, Weapon weapon, float weight) {
+				float maxSpeed, Weapon weapon, float weight,PVector startPos) {
 			super(applet, position, img, angle, color, radius, health,
-					maxSpeed, weapon, weight);
+					maxSpeed, weapon, weight,startPos);
 
 			radius = caliber;
 			range = 50;
@@ -79,7 +79,7 @@ public class MadShotgun extends Weapon {
 			MadShotgunBullet bullet = new MadShotgunBullet(p, new PVector(
 					startX, startY), "sdf.sdf", angle
 					+ p.random(-jitter, jitter)*p.random(0.5f,1.5f) , 0xFFFFFFFF, caliber, 60,
-					this.bulletSpeed*p.random(0.95f,0.98f), this, this.weight / rackSize);
+					this.bulletSpeed*p.random(0.95f,0.98f), this, this.weight / rackSize, new PVector(startX, startY));
 			bullet.sprite = new Animation(this.bulletAnimation);
 
 			this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);

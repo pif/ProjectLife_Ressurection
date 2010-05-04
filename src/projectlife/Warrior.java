@@ -23,9 +23,9 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 
 		warrior.currentWeapon = 0;
 		warrior.weapons = new ArrayList<Weapon>();
-		warrior.weapons.add(new StoneThrower(applet, warrior));
-		warrior.weapons.add(new SimpsonsMinigun(applet, warrior));
-		warrior.weapons.add(new MadShotgun(applet, warrior));
+		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
+		warrior.weapons.add(new SimpsonsMinigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
+		warrior.weapons.add(new MadShotgun(applet, warrior, applet.availableWeapons.get("MadShotgun")));
 		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);

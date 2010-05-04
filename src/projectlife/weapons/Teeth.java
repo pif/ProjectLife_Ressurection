@@ -19,9 +19,9 @@ public class Teeth extends Weapon {
 
 		public TeethBullet(Main applet, PVector position, String img,
 				float angle, int color, float radius, float health,
-				float maxSpeed, Weapon weapon, float weight) {
+				float maxSpeed, Weapon weapon, float weight,PVector startPos) {
 			super(applet, position, img, angle, color, radius, health, maxSpeed, weapon,
-					weight);
+					weight, startPos);
 			
 			caliber = weapon.owner.radius;
 			range = caliber+10;
@@ -77,7 +77,7 @@ public class Teeth extends Weapon {
 			float startY, float angle) {
 		//do nothing. we have one bullet. always...
 		if(bullets.length<1) {
-			TeethBullet bullet = new TeethBullet(this.p, owner.location, "sdf.sdf", 0, 0, caliber, 1, 0, this, 1);
+			TeethBullet bullet = new TeethBullet(this.p, owner.location, "sdf.sdf", 0, 0, caliber, 1, 0, this, 1, owner.location);
 			//bullet.sprite = new Animation(this.bulletAnimation);
 			
 			bullets = (Bullet[]) PApplet.append(bullets, bullet);			

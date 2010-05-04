@@ -2,6 +2,7 @@ package projectlife;
 
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
 
 import processing.core.*;
 import processing.opengl.*;
@@ -16,7 +17,7 @@ public class Main extends PApplet {
 	public Level level;
 	public Controller controller;
 	public MenuManager menu;
-
+	public HashMap<String, XMLElement> availableWeapons;
 	public PFont debuggy;
 	public String runPath;
 	public String dataPath;
@@ -72,11 +73,20 @@ public class Main extends PApplet {
 		levelPath = dataPath + preferences.getChild("levelDir").getContent()
 				+ "/";
 
+		//load available weapons for the game
+		availableWeapons = new HashMap<String, XMLElement>();
+		XMLElement weapons = new XMLElement(this, dataPath+"weapons.xml");
+		for(int i=0;i<weapons.getChildCount();++i){
+			availableWeapons.put(weapons.getChild(i).getName(), weapons.getChild(i));
+		}
+
+		menu = new MenuManager(this, preferences.getChild("menu"));		
+		//TODO Load levels
+		
 		level = new Level("", this);
 		controller = new Controller(this, level.warriors[0], preferences
 				.getChild("controller"));
-		menu = new MenuManager(this, preferences.getChild("menu"));
-
+	
 		try {
 			XMLElement locationByIpData = new XMLElement(sendGetRequest(
 					"http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));

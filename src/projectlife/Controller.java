@@ -101,7 +101,7 @@ public class Controller extends MyObject {
 			//FIXME if(forWarrior) weapon targets=p.level.beasts;
 			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
 					Beast.factory(p, new PVector(), "beast.png", 0, 0, 32, 100, p.random(2, 8),
-							new Teeth(p, null),
+							new Teeth(p, null, p.availableWeapons.get("Teeth")),
 							p.level.warriors[0].location, p.level));
 			
 			for(int q=0;q<p.level.warriors.length;++q) {
