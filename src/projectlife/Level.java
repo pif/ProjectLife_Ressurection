@@ -64,8 +64,15 @@ public class Level extends MyObject {
 		}
 
 		for (int i = 0; i < warriors.length; i++) {
-			warriors[i].display();
+			if (warriors[i].visible) {
+				warriors[i].display();
+			} else {
+				warriors[i] = warriors[warriors.length - 1];
+				warriors = (Warrior[]) (PApplet.shorten(warriors));
+			}
+
 		}
+		
 		if(warriors.length<=0) {
 			p.exit();
 		}

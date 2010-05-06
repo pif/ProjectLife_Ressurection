@@ -119,6 +119,7 @@ public class Main extends PApplet {
 		menu.display();
 
 		if (debug) {
+			if(level.warriors.length>0)
 			text(((int) frameRate) + " " + level.beasts.length + " " + level.warriors[0].weapon.bullets.length + " " + level.warriors[0].weapon.getClass().getName(), 50, 50);
 		}
 

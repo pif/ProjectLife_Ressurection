@@ -26,7 +26,9 @@ public abstract class Bullet extends MovingObject {
 		this.speed = weapon.bulletSpeed;
 		this.damage = weapon.damage;
 		this.weight = weight;
-		
+		this.range = weapon.bulletRange;
+		this.health = weapon.damage;
+		this.radius = this.caliber;
 		this.startPos = startPos;
 	}
 	
@@ -73,10 +75,12 @@ public abstract class Bullet extends MovingObject {
 	 * of destruction
 	 */
 	public void kill() {
+		boolean harmed=false;
 		for (int i = 0; i < weapon.targets.length; i++) {
 			float distToTrgt = this.location.dist(weapon.targets[i].getLocation());
 			if (distToTrgt <= this.range+this.caliber+weapon.targets[i].getRadius()) {
 				harmTarget(weapon.targets[i], distToTrgt);
+				harmed=true;
 				// p.level.beasts[i].health -= this.health;
 				PVector harmedPos = new PVector();
 				harmedPos.x=weapon.targets[i].getLocation().x;
@@ -88,6 +92,9 @@ public abstract class Bullet extends MovingObject {
 				// p.level.beasts[i].location.x, p.level.beasts[i].location.x);
 
 			}
+		}
+		if(harmed){
+			this.health-=this.damage;
 		}
 	}
 

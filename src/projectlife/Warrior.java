@@ -3,9 +3,7 @@ package projectlife;
 import java.util.ArrayList;
 
 import processing.core.*;
-import projectlife.weapons.MadShotgun;
-import projectlife.weapons.SimpsonsMinigun;
-import projectlife.weapons.StoneThrower;
+import projectlife.weapons.*;
 
 /**
 */
@@ -26,6 +24,7 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
 		warrior.weapons.add(new SimpsonsMinigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
 		warrior.weapons.add(new MadShotgun(applet, warrior, applet.availableWeapons.get("MadShotgun")));
+		warrior.weapons.add(new BullsEye(applet, warrior, applet.availableWeapons.get("BullsEye")));
 		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);

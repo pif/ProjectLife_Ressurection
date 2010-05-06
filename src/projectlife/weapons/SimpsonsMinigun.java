@@ -14,15 +14,6 @@ public class SimpsonsMinigun extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight,startPos);
 			
-			radius = caliber;
-			range = 50;
-			//caliber = ;
-			//speed = ;
-			//damage;// got from weapon
-			//weight;
-			color = 0xFFFF0000;
-			health = damage+10;
-			
 			acceleration = new PVector(speed* p.cos(angle), maxSpeed
 					* p.sin(angle));
 		}
@@ -34,7 +25,7 @@ public class SimpsonsMinigun extends Weapon {
 
 		@Override
 		public void harmTarget(Harmable target, float distance) {
-			target.harm(this.damage*(1-PApplet.map(distance, 0, range, 0, 1)));
+			target.harm(this.damage);
 		}
 
 		@Override
@@ -77,10 +68,8 @@ public class SimpsonsMinigun extends Weapon {
 			float startY, float angle) {
 		SimpsonsMinigunBullet bullet = new SimpsonsMinigunBullet(p, new PVector(
 				startX, startY), "sdf.sdf", angle + p.random(-jitter, jitter),
-				0xFFFFFFFF, caliber, 60, this.bulletSpeed, this, this.weight
-						/ rackSize,new PVector(startX, startY));
-		bullet.sprite = new Animation(this.bulletAnimation);
-		
+				0xFFFFFFFF, caliber, this.damage, this.bulletSpeed, this, this.weight
+						/ rackSize,new PVector(startX, startY));		
 		this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);
 		currentRackSize--;
 		lastShotTime = p.millis();

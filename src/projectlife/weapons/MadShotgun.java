@@ -14,15 +14,6 @@ public class MadShotgun extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight,startPos);
 
-			radius = caliber;
-			range = 50;
-			// caliber = ;
-			// speed = ;
-			// damage;// got from weapon
-			// weight;
-			color = 0xFFFF0000;
-			health = damage + 10;
-
 			acceleration = new PVector(speed * p.cos(angle), maxSpeed
 					* p.sin(angle));
 		}
@@ -78,7 +69,7 @@ public class MadShotgun extends Weapon {
 		for (int i = 0; i < 8; ++i) {
 			MadShotgunBullet bullet = new MadShotgunBullet(p, new PVector(
 					startX, startY), "sdf.sdf", angle
-					+ p.random(-jitter, jitter)*p.random(0.5f,1.5f) , 0xFFFFFFFF, caliber, 60,
+					+ p.random(-jitter, jitter)*p.random(0.5f,1.5f) , 0xFFFFFFFF, caliber, this.damage,
 					this.bulletSpeed*p.random(0.95f,0.98f), this, this.weight / rackSize, new PVector(startX, startY));
 			bullet.sprite = new Animation(this.bulletAnimation);
 
