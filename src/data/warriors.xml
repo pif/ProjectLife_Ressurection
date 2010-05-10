@@ -1,0 +1,46 @@
+<?xml version="1.0" econding="UTF-8" standalone="yes"?>
+<beasts>
+	<Integral weapon="Teeth" speedBottom="2" speedTop="4" health="20" >
+		<sprite image="images/beasts/in/1.png" time="100" />
+	</Integral> 	
+	<Koshi damage="30" jitter="0.25" weight="20" bulletSpeed="20" rackSize="8" reloadTime="2000" timeBetweenShoots="200" caliber="16" range="9999" bulletRange="50">
+		<sprite image="images/weapons/ms/1.png" time="100" />
+	</MadShotgun> 	
+	<Koshi damage="10" jitter="0.1" weight="5" bulletSpeed="0" rackSize="1" reloadTime="200" timeBetweenShoots="0" caliber="42" range="60" bulletRange="42">
+		<sprite image="images/weapons/st/1.png" time="100" />
+		<sprite image="images/weapons/st/2.png" time="100" />
+		<sprite image="images/weapons/st/3.png" time="100" />
+	</Koshi> 	
+	<SimpsonsMinigun damage="20" jitter="0.1" weight="10" bulletSpeed="30" rackSize="30" reloadTime="1500" timeBetweenShoots="50" caliber="10" range="9999" bulletRange="10">
+		<sprite image="images/weapons/sm/1.png" time="100" />
+		<sprite image="images/weapons/sm/2.png" time="100" />
+		<sprite image="images/weapons/sm/3.png" time="100" />
+	</SimpsonsMinigun> 	
+	<SocialNetworkSpreader damage="20" jitter="0.1" weight="40" bulletSpeed="10" rackSize="4" reloadTime="2000" timeBetweenShoots="250" caliber="10" range="9999" bulletRange="10">
+		<sprite image="images/weapons/st/1.png" time="100" />
+		<sprite image="images/weapons/st/2.png" time="100" />
+		<sprite image="images/weapons/st/3.png" time="100" />
+	</SocialNetworkSpreader> 	
+	<StoneThrower damage="10" jitter="0.1" weight="10" bulletSpeed="5" rackSize="3" reloadTime="2000" timeBetweenShoots="200" caliber="10" range="250" bulletRange="10">
+		<sprite image="images/weapons/st/1.png" time="100" />
+		<sprite image="images/weapons/st/2.png" time="100" />
+		<sprite image="images/weapons/st/3.png" time="100" />
+	</StoneThrower> 	
+	<SuperAlienRifle damage="40" jitter="0.1" weight="20" bulletSpeed="20" rackSize="30" reloadTime="1500" timeBetweenShoots="10" caliber="10" range="9999" bulletRange="10">
+		<sprite image="images/weapons/st/1.png" time="100" />
+		<sprite image="images/weapons/st/2.png" time="100" />
+		<sprite image="images/weapons/st/3.png" time="100" />
+	</SuperAlienRifle> 	
+	<Teeth damage="3" jitter="0" weight="1" bulletSpeed="0" rackSize="1" reloadTime="200" timeBetweenShoots="200" caliber="32" range="10" bulletRange="42">
+	</Teeth> 	
+	<WaterPistol damage="15" jitter="0.2" weight="8" bulletSpeed="10" rackSize="50" reloadTime="1000" timeBetweenShoots="100" caliber="10" range="300" bulletRange="10">
+		<sprite image="images/weapons/st/1.png" time="100" />
+		<sprite image="images/weapons/st/2.png" time="100" />
+		<sprite image="images/weapons/st/3.png" time="100" />
+	</WaterPistol> 	
+	<WebServiceBomber damage="100" jitter="0.1" weight="80" bulletSpeed="8" rackSize="4" reloadTime="4000" timeBetweenShoots="1000" caliber="64" range="500" bulletRange="200">
+		<sprite image="images/weapons/st/1.png" time="100" />
+		<sprite image="images/weapons/st/2.png" time="100" />
+		<sprite image="images/weapons/st/3.png" time="100" />
+	</WebServiceBomber> 	
+</beasts>

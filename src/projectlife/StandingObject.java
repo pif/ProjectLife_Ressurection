@@ -17,6 +17,7 @@ public class StandingObject extends MyObject {
 	/**
 */
 	public Animation sprite;
+	public Animation hover;
 
 	public PVector target;
 
@@ -64,7 +65,10 @@ public class StandingObject extends MyObject {
 		}
 		
 	}
-
+	
+	public boolean mouseOver() {
+		return (PApplet.abs(p.mouseX-location.x) < this.radius) && (PApplet.abs(p.mouseY-location.y) < this.radius);
+	}
 	/**
 	 * turn object accoring to the rules defined
 	 * 
