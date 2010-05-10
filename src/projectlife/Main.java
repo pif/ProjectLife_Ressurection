@@ -87,18 +87,18 @@ public class Main extends PApplet {
 		controller = new Controller(this, level.warriors[0], preferences
 				.getChild("controller"));
 	
-		try {
-			XMLElement locationByIpData = new XMLElement(sendGetRequest(
-					"http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
-			System.out
-					.println(sendGetRequest("http://www.google.com/ig/api",
-							"weather="
-									+ locationByIpData.getChild("City")
-											.getContent()));
-			//FIXME longitude, altitude!
-		} finally {
-			
-		}
+//		try {
+//			XMLElement locationByIpData = new XMLElement(sendGetRequest(
+//					"http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
+//			System.out
+//					.println(sendGetRequest("http://www.google.com/ig/api",
+//							"weather="
+//									+ locationByIpData.getChild("City")
+//											.getContent()));
+//			//FIXME longitude, altitude!
+//		} finally {
+//			
+//		}
 
 		// System.out.println(sendGetRequest("http://www.google.com/ig/api",
 		// "weather=,,,50000000,24016667"));

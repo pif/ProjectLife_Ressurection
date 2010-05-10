@@ -91,6 +91,10 @@ public class StandingObject extends MyObject {
 
 			p.translate(location.x, location.y);
 			p.rotate(angle);
+//			if(p.debug) {
+//				p.fill(255);
+//				p.ellipse(0, 0, radius, radius);
+//			} else {
 			if (sprite.sprites.length > 0) {
 				PImage pic = sprite.getNext();
 				p.image(pic, 0 - pic.width / 2, 0 - pic.height / 2);
@@ -103,6 +107,7 @@ public class StandingObject extends MyObject {
 									0 - picture.height / 2);
 				}
 			}
+//			}
 
 			p.popMatrix();
 		}
