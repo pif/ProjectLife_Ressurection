@@ -15,14 +15,16 @@ public class Logon extends MyObject {
 			pic = applet.loadImage(p);
 			hover = applet.loadImage(h);
 			mouse = false;
-			hoverAlpha = 255;
+			hoverAlpha = 0;
 			pos = ps;
 		}
 
 		void update(PVector center) {
 			mouse = false;
-			if (p.mouseX >= center.x+pos.x && p.mouseX <= center.x+pos.x + pic.width) {
-				if (p.mouseY >= center.y+pos.y && p.mouseY <= center.y+pos.y + pic.height) {
+			if (p.mouseX >= center.x + pos.x
+					&& p.mouseX <= center.x + pos.x + pic.width) {
+				if (p.mouseY >= center.y + pos.y
+						&& p.mouseY <= center.y + pos.y + pic.height) {
 					mouse = true;
 				}
 			}
@@ -34,13 +36,15 @@ public class Logon extends MyObject {
 
 			if (mouse) {
 				hoverAlpha = 255;
+			} else {
+				hoverAlpha -= 10;
+			}
+			if (hoverAlpha > 0) {
 				p.pushStyle();
-			//	p.tint(255, hoverAlpha);
+				p.tint(255, hoverAlpha);
 				p.image(hover, pos.x + pic.width / 2 - hover.width / 2, pos.y
 						- hover.height);
 				p.popStyle();
-			} else {
-				hoverAlpha--;
 			}
 		}
 	}
@@ -53,7 +57,7 @@ public class Logon extends MyObject {
 	public Logon(Main applet) {
 		super(applet);
 		skyBg = p.loadImage(p.dataPath + "images/skybg.png");
-		skyBg.resize(p.width, p.height);
+
 		cossacs = p.loadImage(p.dataPath + "images/cossacs.png");
 		cossacsCenter = new PVector(p.width / 2, p.height - cossacs.height / 2);
 
@@ -70,6 +74,19 @@ public class Logon extends MyObject {
 						+ "images/tur_hov.png", new PVector(-187, 21)));
 	}
 
+	String getWarriorString(int i) {
+		switch (i) {
+		case 0:
+			return "Oko";
+		case 1:
+			return "Graj";
+		case 2:
+			return "Tur";
+		}
+
+		return "";
+	}
+
 	int getWarrior() {
 		for (int i = 0; i < warriors.length; ++i) {
 			if (warriors[i].mouse) {
@@ -80,8 +97,8 @@ public class Logon extends MyObject {
 	}
 
 	void display() {
-		p.ellipse(100,100,100,100);
-		p.image(skyBg,0,0);//background(skyBg);
+		p.ellipse(100, 100, 100, 100);
+		p.image(skyBg, 0, 0, p.width, p.height);// background(skyBg);
 		p.image(cossacs, p.width / 2 - cossacs.width / 2, p.height
 				- cossacs.height);
 

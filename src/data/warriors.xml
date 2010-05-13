@@ -1,16 +1,16 @@
 <?xml version="1.0" econding="UTF-8" standalone="yes"?>
 <warriors>
+	<Oko health="80" accuracy="0.9" speed="8" power="0.9" reload="0.7" weapon="StoneThrower">
+		<sprite image="images/warrior/oko1.png" time="50" />
+		<sprite image="images/warrior/oko2.png" time="50" />
+		<sprite image="images/warrior/oko3.png" time="50" />	
+	</Oko>
 	<Graj health="100" accuracy="1" speed="7" power="1" reload="1" weapon="StoneThrower">
 		<sprite image="images/warrior/graj1.png" time="50" />
 		<sprite image="images/warrior/graj2.png" time="50" />
 		<sprite image="images/warrior/graj3.png" time="50" />
 		<sprite image="images/warrior/graj4.png" time="50" />	
 	</Graj>
-	<Oko health="80" accuracy="0.9" speed="8" power="0.9" reload="0.7" weapon="StoneThrower">
-		<sprite image="images/warrior/oko1.png" time="50" />
-		<sprite image="images/warrior/oko2.png" time="50" />
-		<sprite image="images/warrior/oko3.png" time="50" />	
-	</Oko>
 	<Tur health="120" accuracy="0.8" speed="6" power="1.1" reload="1.1" weapon="StoneThrower">
 		<sprite image="images/warrior/tur1.png" time="50" />
 		<sprite image="images/warrior/tur2.png" time="50" />

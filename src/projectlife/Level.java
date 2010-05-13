@@ -40,6 +40,10 @@ public class Level extends MyObject {
 		// TODO bullet problem. if they'r too quick. the overjump bastards
 	}
 
+	public void setWarrior(String warrior) {
+		warriors[0] = Warrior.factory(p, p.availableWarriors.get(warrior), this);
+	}
+	
 	public void display() {
 		// draw level ground
 		ground.drawBackground();

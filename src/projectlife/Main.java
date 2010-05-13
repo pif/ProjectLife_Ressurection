@@ -26,7 +26,7 @@ public class Main extends PApplet {
 	public String dataPath;
 	public String levelPath;
 	public boolean debug;
-	boolean warriorSelected;
+	int warriorSelected;
 	public int currentLevel;
 
 	public void setup() {
@@ -87,13 +87,12 @@ public class Main extends PApplet {
 		}
 
 		availableWarriors = new HashMap<String, XMLElement>();
-		// XMLElement warriors = new XMLElement(this, dataPath +
-		// "warriors.xml");
-		// println(warriors);
-		// for (int i = 0; i < weapons.getChildCount(); ++i) {
-		// availableWarriors.put(warriors.getChild(i).getName(), warriors
-		// .getChild(i));
-		// }
+		XMLElement warriors = new XMLElement(this, dataPath + "warriors.xml");
+		println(warriors);
+		for (int i = 0; i < warriors.getChildCount(); ++i) {
+			availableWarriors.put(warriors.getChild(i).getName(), warriors
+					.getChild(i));
+		}
 		logon = new Logon(this);
 		menu = new MenuManager(this, preferences.getChild("pause"));
 
@@ -123,15 +122,15 @@ public class Main extends PApplet {
 		// "weather=,,,50000000,24016667"));
 		// System.out.println(sendGetRequest("http://ipinfodb.com/ip_query.php",
 		// "ip=&timezone=false"));
-		warriorSelected = false;
-		ellipse(100,100,100,100);
+		warriorSelected = -1;
+		ellipse(100, 100, 100, 100);
 	}
 
-	public void draw() {	
+	public void draw() {
 		fill(0);
-		ellipse(100,100,100,100);
+		ellipse(100, 100, 100, 100);
 		// controller.controlMouse();
-		if (warriorSelected) {
+		if (warriorSelected != -1) {
 			if (mousePressed) {
 				controller.press(mouseButton);
 			}
@@ -170,10 +169,13 @@ public class Main extends PApplet {
 	}
 
 	public void mousePressed() {
-		if (warriorSelected) {
+		if (warriorSelected != -1) {
 			controller.press(mouseButton);
 		} else {
-			println(logon.getWarrior());
+			warriorSelected = logon.getWarrior();
+			if (warriorSelected != -1) {
+				level.setWarrior(logon.getWarriorString(warriorSelected));
+			}
 		}
 	}
 

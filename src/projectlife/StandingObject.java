@@ -104,7 +104,7 @@ public class StandingObject extends MyObject {
 			// p.fill(255);
 			// p.ellipse(0, 0, radius, radius);
 			// } else {
-			if (this.mouseOver()) {
+			if (this.mouseOver() && hover.sprites.length>0) {
 				PImage pic = hover.getNext();
 				if (pic != null) {
 					p.image(pic, 0 - pic.width / 2, 0 - pic.height / 2);
