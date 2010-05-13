@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <game>
-	<debug>1</debug>
+	<debug>0</debug>
 	<fps>-1</fps>
 	<smooth>1</smooth>
 	<stroke>0</stroke>
@@ -10,10 +10,15 @@
 	<ellipse>3</ellipse>
 	<levelDir>level</levelDir>
 	<controller up="87" down="83" left="65" right="68" shoot="37" level="39" menu="27" next="69" prev="81" />
-	<menu>
+	<pause>
 		<item function="play" src="images/play.png" left="-1" top="50" angle="0" radius="-1"></item><!-- if left==-1 then left will be width/2-->
 		<item function="records" src="images/records.png" left="-1" top="100" angle="0" radius="-1"></item>
-		<item function="exit" src="images/exit.png" left="-1" top="150" angle="0" radius="-1"></item>
-	</menu>
+		<item function="exit" src="images/exit.png" left="-1" top="150" angle="0" radius="-1"></item>			
+	</pause>
+	<logon>
+		<item function="oko" src="images/exit.png" left="-1" top="150" angle="0" radius="-1"></item>
+		<item function="graj" src="images/exit.png" left="-1" top="150" angle="0" radius="-1"></item>
+		<item function="tur" src="images/exit.png" left="-1" top="150" angle="0" radius="-1"></item>
+	</logon>	
 	<records src="records.xml" />
 </game>
