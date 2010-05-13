@@ -8,9 +8,9 @@ import processing.xml.XMLElement;
 public class MenuManager extends OverlayManager {
 
 	// visible: true == game is on, false == menu is on fire!
-
 	public MenuManager(Main applet) {
 		super(applet);
+
 		overlays = new Overlay[] {
 				new Overlay(applet, new PVector(p.width / 2, 50), p.dataPath
 						+ "images/play.png", PApplet.radians(0), 100, 0,
@@ -28,7 +28,7 @@ public class MenuManager extends OverlayManager {
 
 	public MenuManager(Main applet, XMLElement preferences) {
 		super(applet);
-		overlays = new Overlay[3];
+		overlays = new Overlay[preferences.getChildCount()];
 		for (int i = 0; i < preferences.getChildCount(); i++) {
 			XMLElement item = preferences.getChild(i);
 			// 0=play button 1=records button 2=exit game

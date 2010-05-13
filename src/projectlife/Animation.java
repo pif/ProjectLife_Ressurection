@@ -3,7 +3,7 @@ package projectlife;
 import processing.core.*;
 import processing.xml.XMLElement;
 
-public class Animation extends MyObject{
+public class Animation extends MyObject {
 
 	public class Sprite {
 		PImage image;
@@ -25,21 +25,26 @@ public class Animation extends MyObject{
 	}
 
 	public PImage getNext() {
-		if (!paused) {
-			// System.out.println(System.currentTimeMillis()+"--"+sprites[currentSprite].startTime);
-			if (System.currentTimeMillis() - sprites[currentSprite].startTime >= sprites[currentSprite].time) {
-				currentSprite++;
-				currentSprite %= sprites.length;
-				sprites[currentSprite].startTime = System.currentTimeMillis();
+		if (sprites.length > 0) {
+			if (!paused) {
+				// System.out.println(System.currentTimeMillis()+"--"+sprites[currentSprite].startTime);
+				if (System.currentTimeMillis()
+						- sprites[currentSprite].startTime >= sprites[currentSprite].time) {
+					currentSprite++;
+					currentSprite %= sprites.length;
+					sprites[currentSprite].startTime = System
+							.currentTimeMillis();
+				}
 			}
-		}
-		return sprites[currentSprite].image;
+			return sprites[currentSprite].image;
+		} else
+			return null;
 	}
 
 	public void pause() {
 		paused = true;
 	}
-	
+
 	public void goOn() {
 		paused = false;
 	}
@@ -49,26 +54,29 @@ public class Animation extends MyObject{
 		currentSprite = 0;
 		paused = false;
 	}
-	
-	public Animation(XMLElement spriteInfo, Main applet){
+
+	public Animation(XMLElement spriteInfo, Main applet) {
 		sprites = new Sprite[0];
 		currentSprite = 0;
 		paused = false;
-		
-		for(int i=0;i<spriteInfo.getChildCount();++i) {
-			this.addSprite(applet.loadImage(applet.dataPath+spriteInfo.getChild(i).getStringAttribute("image")), spriteInfo.getChild(i).getIntAttribute("time"));
+
+		for (int i = 0; i < spriteInfo.getChildCount(); ++i) {
+			this.addSprite(applet.loadImage(applet.dataPath
+					+ spriteInfo.getChild(i).getStringAttribute("image")),
+					spriteInfo.getChild(i).getIntAttribute("time"));
 		}
 	}
-	
-	public Animation(Animation animation){
-		this.p=animation.p;
+
+	public Animation(Animation animation) {
+		this.p = animation.p;
 
 		sprites = new Sprite[0];
 		currentSprite = 0;
 		paused = false;
-		
-		for(int i=0;i<animation.sprites.length;++i) {
-			this.addSprite(animation.sprites[i].image,animation.sprites[i].time);
+
+		for (int i = 0; i < animation.sprites.length; ++i) {
+			this.addSprite(animation.sprites[i].image,
+					animation.sprites[i].time);
 		}
-	}	
+	}
 }

@@ -38,6 +38,7 @@ public class MovingObject extends StandingObject {
 */
 	public Weapon weapon;
 
+	public float power;
 	/**
 	 * execurtes a list of actions, which move object accordingly to the list of
 	 * predefined rules

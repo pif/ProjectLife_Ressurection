@@ -26,7 +26,7 @@ public class Level extends MyObject {
 		beasts = new Beast[0];
 		warriors = new Warrior[1];
 		
-		warriors[0] = Warrior.factory(applet, new PVector(applet.width / 2,
+		warriors[0] = Warrior.factory2(applet, new PVector(applet.width / 2,
 				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8, new StoneThrower(applet, warriors[0], applet.availableWeapons.get("StoneThrower"))/*, 20, 10, 50, (float) 0.1, 30, 500, 100)*/, new PVector(),
 				0, this);
 
@@ -100,6 +100,11 @@ public class Level extends MyObject {
 		if(coordinates.x>0 && coordinates.x<p.width)
 			if(coordinates.y>0 && coordinates.y<p.height)
 				return true;
+		return false;
+	}
+
+	public boolean won() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }

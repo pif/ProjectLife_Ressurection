@@ -3,6 +3,7 @@ package projectlife;
 import java.util.ArrayList;
 
 import processing.core.*;
+import processing.xml.XMLElement;
 import projectlife.weapons.*;
 
 /**
@@ -13,7 +14,41 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 	public ArrayList<Weapon> weapons;
 	public int currentWeapon;
 
-	public static Warrior factory(Main applet, PVector position, String img,
+	public static Warrior factory(Main applet, XMLElement prefs, Level level) {
+		Animation waranim = new Animation(prefs, applet);
+		
+		Warrior warrior = new Warrior(applet, 
+				new PVector(applet.width/2,applet.height/2),
+				"",
+				0, 
+				0,
+				0, 
+				prefs.getFloatAttribute("health"),
+				prefs.getFloatAttribute("speed"), 
+				new StoneThrower(applet, level.warriors[0], applet.availableWeapons.get("StoneThrower")), 
+				new PVector(0,0), 
+				0);
+		
+		warrior.sprite = waranim;
+		
+		if(warrior.sprite.sprites[0]!=null) {
+			warrior.radius = warrior.sprite.sprites[0].image.height;
+		}
+		
+		warrior.currentWeapon = 0;
+		warrior.weapons = new ArrayList<Weapon>();
+		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
+		warrior.weapons.add(new SimpsonsMinigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
+		warrior.weapons.add(new MadShotgun(applet, warrior, applet.availableWeapons.get("MadShotgun")));
+		warrior.weapons.add(new BullsEye(applet, warrior, applet.availableWeapons.get("BullsEye")));
+		warrior.setPrevWeapon();
+
+		warrior.updateTargets(level);
+
+		return warrior;
+	}
+	
+	public static Warrior factory2(Main applet, PVector position, String img,
 			float angle, int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, int experience, Level level) {
 		Warrior warrior = new Warrior(applet, position, img, angle, color,
@@ -61,10 +96,10 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 				weapon, target);
 		this.experience = experience;
 		// TODO warrior sprite
-
-		for (int i = 1; i < 5; i++)
-			this.sprite.addSprite(p.loadImage(p.dataPath + "images/warrior/"
-					+ i + ".png"), 50);
+//
+//		for (int i = 1; i < 5; i++)
+//			this.sprite.addSprite(p.loadImage(p.dataPath + "images/warrior/"
+//					+ i + ".png"), 50);
 	}
 
 	public void move() {

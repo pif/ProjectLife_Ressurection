@@ -99,7 +99,7 @@ public abstract class Weapon extends MyObject implements IShootable {
 			}
 		}
 	}
-
+	//FIXME bullets' damage=damage*owner.power
 	/**
 	 * @param Return
 	 *            calls every bullets' display method

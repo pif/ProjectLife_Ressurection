@@ -16,7 +16,7 @@ public class Tweaker {
 	/**
 */
 	public float speedFactor;
-	public float accurancyFactor;
+	public float accuracyFactor;
 	public float scaleFactor;
 
 	public boolean seeHealth;
@@ -25,7 +25,7 @@ public class Tweaker {
 		this.healthFactor = 1f;
 		this.reloadFactor = 1f;
 		this.speedFactor = 1f;
-		this.accurancyFactor = 1f;
+		this.accuracyFactor = 1f;
 		this.scaleFactor = 1f;
 	}
 

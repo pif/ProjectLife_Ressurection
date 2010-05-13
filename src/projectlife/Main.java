@@ -14,15 +14,20 @@ public class Main extends PApplet {
 	 */
 	private static final long serialVersionUID = -1886093456349654286L;
 
+	public Level[] levels;
 	public Level level;
 	public Controller controller;
 	public MenuManager menu;
+	public Logon logon;
 	public HashMap<String, XMLElement> availableWeapons;
+	public HashMap<String, XMLElement> availableWarriors;
 	public PFont debuggy;
 	public String runPath;
 	public String dataPath;
 	public String levelPath;
 	public boolean debug;
+	boolean warriorSelected;
+	public int currentLevel;
 
 	public void setup() {
 		// size(600, 300, P2D);
@@ -73,56 +78,87 @@ public class Main extends PApplet {
 		levelPath = dataPath + preferences.getChild("levelDir").getContent()
 				+ "/";
 
-		//load available weapons for the game
+		// load available weapons for the game
 		availableWeapons = new HashMap<String, XMLElement>();
-		XMLElement weapons = new XMLElement(this, dataPath+"weapons.xml");
-		for(int i=0;i<weapons.getChildCount();++i){
-			availableWeapons.put(weapons.getChild(i).getName(), weapons.getChild(i));
+		XMLElement weapons = new XMLElement(this, dataPath + "weapons.xml");
+		for (int i = 0; i < weapons.getChildCount(); ++i) {
+			availableWeapons.put(weapons.getChild(i).getName(), weapons
+					.getChild(i));
 		}
 
-		menu = new MenuManager(this, preferences.getChild("menu"));		
-		//TODO Load levels
-		
-		level = new Level("", this);
+		availableWarriors = new HashMap<String, XMLElement>();
+		// XMLElement warriors = new XMLElement(this, dataPath +
+		// "warriors.xml");
+		// println(warriors);
+		// for (int i = 0; i < weapons.getChildCount(); ++i) {
+		// availableWarriors.put(warriors.getChild(i).getName(), warriors
+		// .getChild(i));
+		// }
+		logon = new Logon(this);
+		menu = new MenuManager(this, preferences.getChild("pause"));
+
+		// TODO Load levels
+
+		levels = new Level[0];
+		levels = (Level[]) append(levels, new Level("", this));
+		currentLevel = 0;
+		level = levels[currentLevel];
 		controller = new Controller(this, level.warriors[0], preferences
 				.getChild("controller"));
-	
-//		try {
-//			XMLElement locationByIpData = new XMLElement(sendGetRequest(
-//					"http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
-//			System.out
-//					.println(sendGetRequest("http://www.google.com/ig/api",
-//							"weather="
-//									+ locationByIpData.getChild("City")
-//											.getContent()));
-//			//FIXME longitude, altitude!
-//		} finally {
-//			
-//		}
+
+		// try {
+		// XMLElement locationByIpData = new XMLElement(sendGetRequest(
+		// "http://ipinfodb.com/ip_query.php", "ip=&timezone=false"));
+		// System.out
+		// .println(sendGetRequest("http://www.google.com/ig/api",
+		// "weather="
+		// + locationByIpData.getChild("City")
+		// .getContent()));
+		// //FIXME longitude, altitude!
+		// } finally {
+		//			
+		// }
 
 		// System.out.println(sendGetRequest("http://www.google.com/ig/api",
 		// "weather=,,,50000000,24016667"));
 		// System.out.println(sendGetRequest("http://ipinfodb.com/ip_query.php",
 		// "ip=&timezone=false"));
-
+		warriorSelected = false;
+		ellipse(100,100,100,100);
 	}
 
-	public void draw() {
+	public void draw() {	
+		fill(0);
+		ellipse(100,100,100,100);
 		// controller.controlMouse();
+		if (warriorSelected) {
+			if (mousePressed) {
+				controller.press(mouseButton);
+			}
 
-		if (mousePressed) {
-			controller.press(mouseButton);
+			level.display();
+			if (level.won()) {
+				currentLevel++;
+				if (currentLevel < levels.length) {
+					level = levels[currentLevel];
+				} else {
+					// TODO winscreen
+					exit();
+				}
+			}
+
+			menu.display();
+
+			if (debug) {
+				if (level.warriors.length > 0)
+					text(((int) frameRate) + " " + level.beasts.length + " "
+							+ level.warriors[0].weapon.bullets.length + " "
+							+ level.warriors[0].weapon.getClass().getName(),
+							50, 50);
+			}
+		} else {
+			logon.display();
 		}
-
-		level.display();
-
-		menu.display();
-
-		if (debug) {
-			if(level.warriors.length>0)
-			text(((int) frameRate) + " " + level.beasts.length + " " + level.warriors[0].weapon.bullets.length + " " + level.warriors[0].weapon.getClass().getName(), 50, 50);
-		}
-
 	}
 
 	public void keyPressed() {
@@ -134,7 +170,11 @@ public class Main extends PApplet {
 	}
 
 	public void mousePressed() {
-		controller.press(mouseButton);
+		if (warriorSelected) {
+			controller.press(mouseButton);
+		} else {
+			println(logon.getWarrior());
+		}
 	}
 
 	public void mouseReleased() {
