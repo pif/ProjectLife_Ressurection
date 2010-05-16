@@ -1,7 +1,5 @@
 package projectlife;
 
-import processing.core.*;
-
 /**
 
 */

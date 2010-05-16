@@ -2,6 +2,7 @@ package projectlife;
 
 import processing.core.*;
 import processing.xml.XMLElement;
+import projectlife.weapons.*;
 
 /**
 */
@@ -46,10 +47,12 @@ public abstract class Weapon extends MyObject implements IShootable {
 
 	// classes should implement this method. it is called every time we can
 	// shoot...
-	// TODO weapon bullet stub. every weapon should have it's own...i suppose
+	// DONE weapon bullet stub. every weapon should have it's own...i suppose
 	// public void generateBullet(float targetX, float targetY, float startX,
 	// float startY, float angle) {
 	// }
+	// good idea. because weapons differ mostly in the way, they generate
+	// bullets
 
 	// shoot in position x,y with the angle=angle
 	public void shoot(float targetX, float targetY, float shootPosX,
@@ -59,7 +62,9 @@ public abstract class Weapon extends MyObject implements IShootable {
 				if (currentRackSize > 0) {
 					// you can shoot. you have bullets in rack.
 					generateBullet(targetX, targetY, shootPosX, shootPosY,
-							angle);
+							angle
+									+ p.random(-1 + owner.accuracy,
+											1 - owner.accuracy));
 				} else {
 					reload();
 				}
@@ -99,7 +104,9 @@ public abstract class Weapon extends MyObject implements IShootable {
 			}
 		}
 	}
-	//FIXME bullets' damage=damage*owner.power
+
+	// DONE bullets' damage=damage*owner.power. it's called in bullet's
+	// constructor
 	/**
 	 * @param Return
 	 *            calls every bullets' display method
@@ -111,17 +118,53 @@ public abstract class Weapon extends MyObject implements IShootable {
 		}
 	}
 
+	public static Weapon factory(Main applet, MovingObject owner, XMLElement prefs,
+			String type) {
+		if (type.equalsIgnoreCase("BullsEye")) {
+			return new BullsEye(applet, owner, applet.availableWeapons.get("BullsEye"));
+		}
+		if (type.equalsIgnoreCase("MadShotgun")) {
+			return new MadShotgun(applet, owner, applet.availableWeapons.get("MadShotgun"));
+		}
+		if (type.equalsIgnoreCase("Minigun")) {
+			return new Minigun(applet, owner, applet.availableWeapons.get("Minigun"));
+		}
+		if (type.equalsIgnoreCase("Pan")) {
+			return new Pan(applet, owner, applet.availableWeapons.get("Pan"));
+		}
+		if (type.equalsIgnoreCase("PlagueSpreader")) {
+			return new PlagueSpreader(applet, owner, applet.availableWeapons.get("PlagueSpreader"));
+		}
+		if (type.equalsIgnoreCase("StoneThrower")) {
+			return new StoneThrower(applet, owner, applet.availableWeapons.get("StoneThrower"));
+		}
+		if (type.equalsIgnoreCase("SuperAlienRifle")) {
+			return new SuperAlienRifle(applet, owner, applet.availableWeapons.get("SuperAlienRifle"));			
+		}
+		if (type.equalsIgnoreCase("Teeth")) {
+			return new Teeth(applet, owner, applet.availableWeapons.get("Teeth"));	
+		}
+		if (type.equalsIgnoreCase("WaterPistol")) {
+			return new WaterPistol(applet, owner, applet.availableWeapons.get("WaterPistol"));				
+		}
+		return null;
+	}
+
 	// float damage, float radius, float speed,
 	// float jitter, int rackSize, int reloadTime, int timeBetweenShoots)
 	public Weapon(Main applet, MovingObject owner, XMLElement preferences) {
 		super(applet);
+		this.owner = owner;
 
 		this.damage = preferences.getFloatAttribute("damage");
 		this.jitter = preferences.getFloatAttribute("jitter");
 		this.weight = preferences.getFloatAttribute("weight");
 		this.bulletSpeed = preferences.getFloatAttribute("bulletSpeed");
 		this.rackSize = preferences.getIntAttribute("rackSize");
-		this.reloadTime = preferences.getIntAttribute("reloadTime");
+		if (owner != null) {
+			this.reloadTime = (int) (preferences
+					.getFloatAttribute("reloadTime") * owner.reloadTime);
+		}
 		this.timeBetweenShots = preferences
 				.getIntAttribute("timeBetweenShoots");
 		this.caliber = preferences.getFloatAttribute("caliber");
@@ -132,7 +175,6 @@ public abstract class Weapon extends MyObject implements IShootable {
 		this.bulletAnimation = new Animation(preferences, applet);
 
 		this.lastShotTime = 0;
-		this.owner = owner;
 
 		this.currentRackSize = rackSize;
 		this.canShoot = true;

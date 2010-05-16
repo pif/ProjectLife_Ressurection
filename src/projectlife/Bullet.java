@@ -24,7 +24,7 @@ public abstract class Bullet extends MovingObject {
 
 		this.caliber=weapon.caliber;
 		this.speed = weapon.bulletSpeed;
-		this.damage = weapon.damage;
+		this.damage = weapon.damage * weapon.owner.power;
 		this.weight = weight;
 		this.range = weapon.bulletRange;
 		this.health = weapon.damage;
@@ -87,6 +87,7 @@ public abstract class Bullet extends MovingObject {
 				harmedPos.y=weapon.targets[i].getLocation().y;
 				
 				p.level.ground.addBlood(harmedPos, 0x88FF0000);
+				p.level.addBonus(harmedPos);
 				// this.visible = false;
 				// p.level.ground.dust.image(p.level.ground.blood,
 				// p.level.beasts[i].location.x, p.level.beasts[i].location.x);

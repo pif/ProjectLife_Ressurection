@@ -13,7 +13,7 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 	public int experience;
 	public ArrayList<Weapon> weapons;
 	public int currentWeapon;
-
+	
 	public static Warrior factory(Main applet, XMLElement prefs, Level level) {
 		Animation waranim = new Animation(prefs, applet);
 		
@@ -25,10 +25,14 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 				0, 
 				prefs.getFloatAttribute("health"),
 				prefs.getFloatAttribute("speed"), 
-				new StoneThrower(applet, level.warriors[0], applet.availableWeapons.get("StoneThrower")), 
+				new StoneThrower(applet, level.warriors[0], applet.availableWeapons.get(prefs.getStringAttribute("weapon"))), 
 				new PVector(0,0), 
 				0);
 		
+		warrior.accuracy = prefs.getFloatAttribute("accuracy");
+		warrior.power = prefs.getFloatAttribute("power");
+		warrior.reloadTime = prefs.getFloatAttribute("reload");
+			
 		warrior.sprite = waranim;
 		
 		if(warrior.sprite.sprites[0]!=null) {
@@ -38,9 +42,6 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		warrior.currentWeapon = 0;
 		warrior.weapons = new ArrayList<Weapon>();
 		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
-		warrior.weapons.add(new SimpsonsMinigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
-		warrior.weapons.add(new MadShotgun(applet, warrior, applet.availableWeapons.get("MadShotgun")));
-		warrior.weapons.add(new BullsEye(applet, warrior, applet.availableWeapons.get("BullsEye")));
 		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);
@@ -57,7 +58,7 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		warrior.currentWeapon = 0;
 		warrior.weapons = new ArrayList<Weapon>();
 		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
-		warrior.weapons.add(new SimpsonsMinigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
+		warrior.weapons.add(new Minigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
 		warrior.weapons.add(new MadShotgun(applet, warrior, applet.availableWeapons.get("MadShotgun")));
 		warrior.weapons.add(new BullsEye(applet, warrior, applet.availableWeapons.get("BullsEye")));
 		warrior.setPrevWeapon();
@@ -95,7 +96,7 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
 		this.experience = experience;
-		// TODO warrior sprite
+		// DONE warrior sprite. you choose warrior, and it's populated with the corresponding sprites
 //
 //		for (int i = 1; i < 5; i++)
 //			this.sprite.addSprite(p.loadImage(p.dataPath + "images/warrior/"

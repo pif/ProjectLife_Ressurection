@@ -1,9 +1,13 @@
 package projectlife.weapons;
 
 import processing.core.*;
+import processing.xml.XMLElement;
 import projectlife.*;
-import projectlife.Bullet;
 public class Pan extends Weapon {
+
+	public Pan(Main applet, MovingObject owner, XMLElement xmlElement) {
+		super(applet,owner,xmlElement);
+	}
 
 	@Override
 	public void generateBullet(float targetX, float targetY, float startX,

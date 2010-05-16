@@ -28,7 +28,7 @@ public class Controller extends MyObject {
 		shoot = PConstants.LEFT;
 		getLevel = PConstants.RIGHT;
 		menu = PConstants.ESC;
-		nextWeapon = (int) 'e';// TODO next, previous weapon
+		nextWeapon = (int) 'e';// DONE next, previous weapon
 		prevWeapon = (int) 'q';
 	}
 
