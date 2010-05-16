@@ -48,6 +48,8 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 		calcSteps(steps);
 		currentTarget = 0;
 		followTargets = true;
+		
+		this.power=1;
 	}
 
 	// optimise beasts. don't call turn() every frame better calculate
