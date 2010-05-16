@@ -70,7 +70,7 @@ public abstract class Weapon extends MyObject implements IShootable {
 				}
 			}
 		} else {
-			if (p.millis() - reloadStartTime >= reloadTime*owner.reloadTime) {
+			if (p.millis() - reloadStartTime >= reloadTime * owner.reloadTime) {
 				canShoot = true;
 			}
 		}
@@ -112,40 +112,50 @@ public abstract class Weapon extends MyObject implements IShootable {
 	 *            calls every bullets' display method
 	 */
 	public void displayBullets() {
-		updateBullets();
+		if (!owner.stopped) {
+			updateBullets();
+		}
 		for (int i = 0; i < bullets.length; i++) {
 			bullets[i].display();
 		}
 	}
 
-	public static Weapon factory(Main applet, MovingObject owner, XMLElement prefs,
-			String type) {
+	public static Weapon factory(Main applet, MovingObject owner,
+			XMLElement prefs, String type) {
 		if (type.equalsIgnoreCase("BullsEye")) {
-			return new BullsEye(applet, owner, applet.availableWeapons.get("BullsEye"));
+			return new BullsEye(applet, owner, applet.availableWeapons
+					.get("BullsEye"));
 		}
 		if (type.equalsIgnoreCase("MadShotgun")) {
-			return new MadShotgun(applet, owner, applet.availableWeapons.get("MadShotgun"));
+			return new MadShotgun(applet, owner, applet.availableWeapons
+					.get("MadShotgun"));
 		}
 		if (type.equalsIgnoreCase("Minigun")) {
-			return new Minigun(applet, owner, applet.availableWeapons.get("Minigun"));
+			return new Minigun(applet, owner, applet.availableWeapons
+					.get("Minigun"));
 		}
 		if (type.equalsIgnoreCase("Pan")) {
 			return new Pan(applet, owner, applet.availableWeapons.get("Pan"));
 		}
 		if (type.equalsIgnoreCase("PlagueSpreader")) {
-			return new PlagueSpreader(applet, owner, applet.availableWeapons.get("PlagueSpreader"));
+			return new PlagueSpreader(applet, owner, applet.availableWeapons
+					.get("PlagueSpreader"));
 		}
 		if (type.equalsIgnoreCase("StoneThrower")) {
-			return new StoneThrower(applet, owner, applet.availableWeapons.get("StoneThrower"));
+			return new StoneThrower(applet, owner, applet.availableWeapons
+					.get("StoneThrower"));
 		}
 		if (type.equalsIgnoreCase("SuperAlienRifle")) {
-			return new SuperAlienRifle(applet, owner, applet.availableWeapons.get("SuperAlienRifle"));			
+			return new SuperAlienRifle(applet, owner, applet.availableWeapons
+					.get("SuperAlienRifle"));
 		}
 		if (type.equalsIgnoreCase("Teeth")) {
-			return new Teeth(applet, owner, applet.availableWeapons.get("Teeth"));	
+			return new Teeth(applet, owner, applet.availableWeapons
+					.get("Teeth"));
 		}
 		if (type.equalsIgnoreCase("WaterPistol")) {
-			return new WaterPistol(applet, owner, applet.availableWeapons.get("WaterPistol"));				
+			return new WaterPistol(applet, owner, applet.availableWeapons
+					.get("WaterPistol"));
 		}
 		return null;
 	}

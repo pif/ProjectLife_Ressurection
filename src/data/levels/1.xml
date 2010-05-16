@@ -5,10 +5,13 @@
 	<experience>100</experience>
 	<bonuses>
 		<see />
+		<MadShotgun />
+		<kulish />
+		<kin /><PlagueSpreader />
 		<!--
-			<BullsEye /> <MadShotgun /> <Minigun /> <kulish /> <kin /> <reload />
-			<accuracy /> <Pan /> <PlagueSpreader /> <StoneThrower />
-			<SuperAlienRifle /> <Teeth /> <WaterPistol />
+			<BullsEye /> <Minigun />   <reload /> <accuracy />
+			<Pan />  <StoneThrower /> <SuperAlienRifle />
+			<Teeth /> <WaterPistol />
 		-->
 	</bonuses>
 	<beasts>

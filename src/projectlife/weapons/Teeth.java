@@ -62,8 +62,8 @@ public class Teeth extends Weapon {
 		@Override
 		public int collide() {
 			for (int i = 0; i < weapon.targets.length; ++i) {
-				if (this.location.dist(weapon.targets[i].getLocation()) < this.caliber
-						+ weapon.targets[i].getRadius()) {
+				if (this.location.dist(weapon.targets[i].getLocation()) < this.caliber/2
+						+ weapon.targets[i].getRadius()/2) {
 					return i;
 				}
 			}

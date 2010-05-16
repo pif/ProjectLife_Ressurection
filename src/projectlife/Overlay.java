@@ -13,16 +13,16 @@ public class Overlay extends StandingObject {
 	}
 
 	/**
-*/
+	 */
 	public boolean mouseOver;
 	/**
-*/
+	 */
 	public boolean mouseDown;
 	/**
-*/
+	 */
 	public PVector topLeft;
 	/**
-*/
+	 */
 	public PVector bottomRight;
 
 	/**
@@ -36,5 +36,9 @@ public class Overlay extends StandingObject {
 	public void act() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public boolean display() {
+		return super.display();
 	}
 }

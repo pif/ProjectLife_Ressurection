@@ -99,7 +99,8 @@ public class Main extends PApplet {
 		// TODO Load levels
 
 		levels = new Level[0];
-		levels = (Level[]) append(levels, new Level(dataPath+"levels/1.xml", this));
+		levels = (Level[]) append(levels, new Level(dataPath + "levels/1.xml",
+				this));
 		currentLevel = 0;
 		level = levels[currentLevel];
 		controller = new Controller(this, level.warriors[0], preferences
@@ -150,9 +151,15 @@ public class Main extends PApplet {
 
 			if (debug) {
 				if (level.warriors.length > 0)
-					text(((int) frameRate) + " " + level.beasts.length + " "
-							+ level.warriors[0].weapon.bullets.length + " "
-							+ level.warriors[0].weapon.getClass().getName(),
+					text(((int) frameRate) + " " + level.beasts.length + "\n"
+							+ level.warriors[0].weapon.bullets.length + "\n"
+							+ level.warriors[0].weapon.getClass().getName()+ "\npower \t"
+							+ level.warriors[0].power + "\naccuracy \t"
+							+ level.warriors[0].accuracy + "\nspeed \t"
+							+ level.warriors[0].maxSpeed + "\nhealth \t"
+							+ level.warriors[0].health + "\nreload \t"
+							+ level.warriors[0].reloadTime + "\nradius \t"
+							+ level.warriors[0].radius,
 							50, 50);
 			}
 		} else {
@@ -161,11 +168,15 @@ public class Main extends PApplet {
 	}
 
 	public void keyPressed() {
-		controller.press(keyCode);
+		if (warriorSelected != -1) {
+			controller.press(keyCode);
+		}
 	}
 
 	public void keyReleased() {
-		controller.release(keyCode);
+		if (warriorSelected != -1) {
+			controller.release(keyCode);
+		}
 	}
 
 	public void mousePressed() {
@@ -180,7 +191,9 @@ public class Main extends PApplet {
 	}
 
 	public void mouseReleased() {
-		controller.release(mouseButton);
+		if (warriorSelected != -1) {
+			controller.release(mouseButton);
+		}
 	}
 
 	public static String sendGetRequest(String endpoint,

@@ -46,7 +46,12 @@ public class StandingObject extends MyObject {
 
 		this.angle = angle;
 		this.color = color;
-		this.radius = radius;
+		
+		if(radius<=0 && this.picture!=null) {
+			this.radius = this.picture.width/2;
+		} else {
+			this.radius = radius;
+		}
 		this.visible = true;
 
 		this.target = new PVector();
@@ -124,7 +129,10 @@ public class StandingObject extends MyObject {
 				}
 			}
 			// }
-
+			if (p.debug) {
+			//	p.ellipse(0, 0, radius, radius);
+			//	p.text(this.radius, 40, 40);
+			}
 			p.popMatrix();
 		}
 		return visible;

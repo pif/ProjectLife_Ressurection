@@ -42,6 +42,8 @@ public class Tweaker extends MyObject {
 				this.set = true;
 				this.startTime = p.millis();
 				this.previous = previous;
+			} else {
+				this.startTime = p.millis();
 			}
 			return previous * value;
 		}
@@ -89,8 +91,7 @@ public class Tweaker extends MyObject {
 		if (p.availableWeapons.containsKey(command)) {
 			boolean hasWeapon = false;
 			for (int i = 0; i < warrior.weapons.size(); ++i) {
-				if (warrior.weapons.get(i).getClass().getName()
-						.equalsIgnoreCase(command)) {
+				if (warrior.weapons.get(i).getClass().getName().contains(command)) {
 					hasWeapon = true;
 					break;
 				}
@@ -98,6 +99,7 @@ public class Tweaker extends MyObject {
 			if (!hasWeapon) {
 				warrior.weapons.add(Weapon.factory(p, warrior,
 						p.availableWeapons.get(command), command));
+				warrior.updateTargets(p.level);
 			}
 		}
 		if (command.equals("kulish")) {
@@ -119,11 +121,11 @@ public class Tweaker extends MyObject {
 	}
 
 	public void update(Warrior warrior) {
-		if (reloadFactor.outdated())
+		if (reloadFactor.set && reloadFactor.outdated())
 			warrior.reloadTime = reloadFactor.remove();
-		if (speedFactor.outdated())
-			warrior.reloadTime = speedFactor.remove();
-		if (accuracyFactor.outdated())
-			warrior.reloadTime = accuracyFactor.remove();
+		if (speedFactor.set && speedFactor.outdated())
+			warrior.maxSpeed = speedFactor.remove();
+		if (accuracyFactor.set && accuracyFactor.outdated())
+			warrior.accuracy = accuracyFactor.remove();
 	}
 }

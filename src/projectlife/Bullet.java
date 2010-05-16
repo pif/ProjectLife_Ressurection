@@ -78,7 +78,7 @@ public abstract class Bullet extends MovingObject {
 		boolean harmed=false;
 		for (int i = 0; i < weapon.targets.length; i++) {
 			float distToTrgt = this.location.dist(weapon.targets[i].getLocation());
-			if (distToTrgt <= this.range+this.caliber+weapon.targets[i].getRadius()) {
+			if (distToTrgt <= this.range+this.caliber+weapon.targets[i].getRadius()/2) {
 				harmTarget(weapon.targets[i], distToTrgt);
 				harmed=true;
 				// p.level.beasts[i].health -= this.health;

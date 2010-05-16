@@ -13,42 +13,39 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 	public int experience;
 	public ArrayList<Weapon> weapons;
 	public int currentWeapon;
-	
+
 	public static Warrior factory(Main applet, XMLElement prefs, Level level) {
 		Animation waranim = new Animation(prefs, applet);
-		
-		Warrior warrior = new Warrior(applet, 
-				new PVector(applet.width/2,applet.height/2),
-				"",
-				0, 
-				0,
-				0, 
-				prefs.getFloatAttribute("health"),
-				prefs.getFloatAttribute("speed"), 
-				new StoneThrower(applet, level.warriors[0], applet.availableWeapons.get(prefs.getStringAttribute("weapon"))), 
-				new PVector(0,0), 
-				0);
-		
+
+		Warrior warrior = new Warrior(applet, new PVector(applet.width / 2,
+				applet.height / 2), "", 0, 0, 0, prefs
+				.getFloatAttribute("health"), prefs.getFloatAttribute("speed"),
+				new StoneThrower(applet, level.warriors[0],
+						applet.availableWeapons.get(prefs
+								.getStringAttribute("weapon"))), new PVector(0,
+						0), 0);
+
 		warrior.accuracy = prefs.getFloatAttribute("accuracy");
 		warrior.power = prefs.getFloatAttribute("power");
 		warrior.reloadTime = prefs.getFloatAttribute("reload");
-			
+
 		warrior.sprite = waranim;
-		
-		if(warrior.sprite.sprites[0]!=null) {
+
+		if (warrior.sprite.sprites[0] != null) {
 			warrior.radius = warrior.sprite.sprites[0].image.height;
 		}
-		
+
 		warrior.currentWeapon = 0;
 		warrior.weapons = new ArrayList<Weapon>();
-		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
+		warrior.weapons.add(new StoneThrower(applet, warrior,
+				applet.availableWeapons.get("StoneThrower")));
 		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);
 
 		return warrior;
 	}
-	
+
 	public static Warrior factory2(Main applet, PVector position, String img,
 			float angle, int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, int experience, Level level) {
@@ -57,10 +54,14 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 
 		warrior.currentWeapon = 0;
 		warrior.weapons = new ArrayList<Weapon>();
-		warrior.weapons.add(new StoneThrower(applet, warrior, applet.availableWeapons.get("StoneThrower")));
-		warrior.weapons.add(new Minigun(applet, warrior, applet.availableWeapons.get("SimpsonsMinigun")));
-		warrior.weapons.add(new MadShotgun(applet, warrior, applet.availableWeapons.get("MadShotgun")));
-		warrior.weapons.add(new BullsEye(applet, warrior, applet.availableWeapons.get("BullsEye")));
+		warrior.weapons.add(new StoneThrower(applet, warrior,
+				applet.availableWeapons.get("StoneThrower")));
+		warrior.weapons.add(new Minigun(applet, warrior,
+				applet.availableWeapons.get("SimpsonsMinigun")));
+		warrior.weapons.add(new MadShotgun(applet, warrior,
+				applet.availableWeapons.get("MadShotgun")));
+		warrior.weapons.add(new BullsEye(applet, warrior,
+				applet.availableWeapons.get("BullsEye")));
 		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);
@@ -70,8 +71,8 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 
 	public void setNextWeapon() {
 		currentWeapon++;
-		if(currentWeapon>=weapons.size()) {
-			currentWeapon=weapons.size()-1;
+		if (currentWeapon >= weapons.size()) {
+			currentWeapon = weapons.size() - 1;
 		}
 		weapon = weapons.get(currentWeapon);
 	}
@@ -96,11 +97,12 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		super(applet, position, img, angle, color, radius, health, maxSpeed,
 				weapon, target);
 		this.experience = experience;
-		// DONE warrior sprite. you choose warrior, and it's populated with the corresponding sprites
-//
-//		for (int i = 1; i < 5; i++)
-//			this.sprite.addSprite(p.loadImage(p.dataPath + "images/warrior/"
-//					+ i + ".png"), 50);
+		// DONE warrior sprite. you choose warrior, and it's populated with the
+		// corresponding sprites
+		//
+		// for (int i = 1; i < 5; i++)
+		// this.sprite.addSprite(p.loadImage(p.dataPath + "images/warrior/"
+		// + i + ".png"), 50);
 	}
 
 	public void move() {

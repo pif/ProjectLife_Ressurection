@@ -77,8 +77,7 @@ public class MovingObject extends StandingObject {
 			}
 		}
 		if (p.debug) {
-			p.rect(location.x, location.y - 64, health, 10);
-			p.ellipse(location.x, location.y, radius, radius);
+			p.rect(location.x, location.y +20, health, 10);
 			p.text(health, location.x - 20, location.y - radius - 20);
 		}
 		return super.display();
