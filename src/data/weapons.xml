@@ -5,7 +5,7 @@
 		<sprite image="images/weapons/st/2.png" time="100" />
 		<sprite image="images/weapons/st/3.png" time="100" />
 	</BullsEye> 	
-	<MadShotgun damage="30" jitter="0.25" weight="20" bulletSpeed="20" rackSize="8" reloadTime="2000" timeBetweenShoots="200" caliber="16" range="9999" bulletRange="50">
+	<MadShotgun damage="30" jitter="0.25" weight="20" bulletSpeed="20" rackSize="64" reloadTime="2000" timeBetweenShoots="200" caliber="16" range="9999" bulletRange="50">
 		<sprite image="images/weapons/ms/1.png" time="100" />
 	</MadShotgun> 	
 	<Pan damage="10" jitter="0.1" weight="5" bulletSpeed="0" rackSize="1" reloadTime="200" timeBetweenShoots="0" caliber="42" range="60" bulletRange="42">

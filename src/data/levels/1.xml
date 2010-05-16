@@ -1,10 +1,14 @@
 <?xml version="1.0"?>
 <level>
-	<name>In the shadows</name>
+	<name>Як козаки куліш варили</name>
 	<difficulty>1</difficulty>
 	<experience>100</experience>
 	<bonuses>
-		<bonus name=""/>
+		<kulish />
+		<tobacco />
+		<gorilka />
+		<kin />
+		<zbroja />
 	</bonuses>
 	<warriors>
 		<warrior>
