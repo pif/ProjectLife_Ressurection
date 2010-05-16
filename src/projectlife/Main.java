@@ -99,7 +99,7 @@ public class Main extends PApplet {
 		// TODO Load levels
 
 		levels = new Level[0];
-		levels = (Level[]) append(levels, new Level("", this));
+		levels = (Level[]) append(levels, new Level(dataPath+"levels/1.xml", this));
 		currentLevel = 0;
 		level = levels[currentLevel];
 		controller = new Controller(this, level.warriors[0], preferences

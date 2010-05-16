@@ -17,9 +17,10 @@ public class Bonus extends Overlay {
 
 	boolean warriorGotMe() {
 		for (int i = 0; i < p.level.warriors.length; ++i) {
-			if (p.level.warriors[i].location.dist(this.location) <= (this.radius + p.level.warriors[i].radius)) {
+			if (p.level.warriors[i].location.dist(this.location) <= (this.radius/2 + p.level.warriors[i].radius/2)) {
 				p.level.tweaker.tweak(p.level.warriors[i], action);
 				visible=false;
+				return true;
 			}
 		}
 		return false;

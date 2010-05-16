@@ -32,16 +32,17 @@ public class Level extends MyObject {
 	public Level(String xmlPath, Main applet) {
 
 		super(applet);
+		XMLElement levelFile = new XMLElement(applet, xmlPath);
 		beasts = new Beast[0];
 		warriors = new Warrior[1];
 
-		warriors[0] = Warrior.factory2(applet, new PVector(applet.width / 2,
-				applet.height / 2), "warrior.png", 0, 0, 0, 100, 8,
-				new StoneThrower(applet, warriors[0], applet.availableWeapons
-						.get("StoneThrower"))/*
-											 * , 20, 10, 50, (float) 0.1, 30,
-											 * 500, 100)
-											 */, new PVector(), 0, this);
+		// warriors[0] = Warrior.factory2(applet, new PVector(applet.width / 2,
+		// applet.height / 2), "warrior.png", 0, 0, 0, 100, 8,
+		// new StoneThrower(applet, warriors[0], applet.availableWeapons
+		// .get("StoneThrower"))/*
+		// * , 20, 10, 50, (float) 0.1, 30,
+		// * 500, 100)
+		// */, new PVector(), 0, this);
 
 		ground = new Ground("1.png", true, applet);
 
@@ -49,7 +50,7 @@ public class Level extends MyObject {
 		overlays = new Overlay[0];
 
 		tweaker = new Tweaker(applet);
-		availableBonuses = new String[0];
+		availableBonuses = levelFile.getChild("bonuses").listChildren();
 		availableBeasts = new HashMap<String, XMLElement>();
 		passed = false;
 		// DONE bullet problem. if they'r too quick. the overjump bastards.
@@ -62,6 +63,14 @@ public class Level extends MyObject {
 	}
 
 	public void display() {
+		for(int i=0;i<bonuses.length;++i) {
+			if(bonuses[i].warriorGotMe()) {
+			}
+		}
+		for (int i = 0; i < warriors.length; ++i) {
+			tweaker.update(warriors[i]);
+		}
+
 		// draw level ground
 		ground.drawBackground();
 
@@ -69,6 +78,7 @@ public class Level extends MyObject {
 			if (beasts[i].visible) {
 				beasts[i].display();
 			} else {
+				p.level.addBonus(beasts[i].location);
 				beasts[i] = beasts[beasts.length - 1];
 				beasts = (Beast[]) (PApplet.shorten(beasts));
 
@@ -138,8 +148,9 @@ public class Level extends MyObject {
 	public void addBonus(PVector pos) {
 		String command = availableBonuses[(int) p
 				.random(availableBonuses.length)];
-		bonuses = (Bonus[]) p.append(bonuses, new Bonus(p, pos, p.dataPath
-				+ "images/bonuses/" + command + ".png", 0, 0, 32, command));
+		p.println(command);
+		bonuses = (Bonus[]) p.append(bonuses, new Bonus(p, new PVector(pos.x,pos.y),
+				"images/bonuses/" + command + ".png", 0, 0, 32, command));
 
 	}
 }

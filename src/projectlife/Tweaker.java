@@ -4,24 +4,57 @@ import processing.core.*;
 
 /**
 */
-public class Tweaker extends MyObject{
+public class Tweaker extends MyObject {
 	public class Tweak {
 		float value;
-		
+		float previous;
+
 		long startTime;
+		boolean stable;
 		long lastingTime;
-		
-		Tweak(float value) {
-			this.value=value;
+		boolean set;
+
+		Tweak(float value, long last, boolean stable) {
+			this.value = value;
+			this.lastingTime = last;
+			this.stable = stable;
+			this.set = false;
 		}
-		
-		boolean isOn(){
-			if(value>0) {
+
+		Tweak(float value, boolean stable) {
+			this(value, 5000, stable);
+		}
+
+		boolean isOn() {
+			if (set) {
 				return true;
 			}
 			return false;
 		}
+
+		float remove() {
+			set = false;
+			return previous;
+		}
+
+		float set(float previous) {
+			if (!set) {
+				this.set = true;
+				this.startTime = p.millis();
+				this.previous = previous;
+			}
+			return previous * value;
+		}
+
+		boolean outdated() {
+			if (stable) {
+				return false;
+			} else {
+				return (p.millis() - startTime > lastingTime);
+			}
+		}
 	}
+
 	/**
 */
 	public Tweak healthFactor;
@@ -29,46 +62,68 @@ public class Tweaker extends MyObject{
 */
 	/**
 */
-	public Tweak  reloadFactor;
+	public Tweak reloadFactor;
 	/**
 */
-	public Tweak  speedFactor;
-	public Tweak  accuracyFactor;
-	public Tweak  scaleFactor;
+	public Tweak speedFactor;
+	public Tweak accuracyFactor;
 
-	public Tweak  seeHealth;
+	public Tweak seeHealth;
 
 	public Tweaker(Main applet) {
 		super(applet);
-		
-		this.healthFactor = new Tweak(1);
-		this.reloadFactor = new Tweak(1);
-		this.speedFactor = new Tweak(1);
-		this.accuracyFactor = new Tweak(1);
-		this.scaleFactor = new Tweak(1);
-		this.seeHealth= new Tweak(1);
+
+		this.healthFactor = new Tweak(1.2f, true);
+		this.reloadFactor = new Tweak(0.5f, false);
+		this.speedFactor = new Tweak(1.2f, false);
+		this.accuracyFactor = new Tweak(1f, false);
+		this.seeHealth = new Tweak(-1f, true);
 	}
-	
+
 	/**
 	 * @param warrior
 	 * @param Return
 	 */
 	public void tweak(Warrior warrior, String command) {
-		if(p.availableWeapons.containsKey(command)) {
-			//got weapon bonus
-			boolean hasWeapon=false;
-			for(int i=0;i<warrior.weapons.size();++i) {
-				if(warrior.weapons.get(i).getClass().getName().equalsIgnoreCase(command)){
-					hasWeapon=true;
+		// got weapon bonus
+		if (p.availableWeapons.containsKey(command)) {
+			boolean hasWeapon = false;
+			for (int i = 0; i < warrior.weapons.size(); ++i) {
+				if (warrior.weapons.get(i).getClass().getName()
+						.equalsIgnoreCase(command)) {
+					hasWeapon = true;
 					break;
 				}
 			}
-			if(!hasWeapon) {
-				warrior.weapons.add(Weapon.factory(p, warrior, p.availableWeapons.get(command), command));
+			if (!hasWeapon) {
+				warrior.weapons.add(Weapon.factory(p, warrior,
+						p.availableWeapons.get(command), command));
 			}
 		}
-		if(command.equals("kulish")) {
-			
+		if (command.equals("kulish")) {
+			warrior.health = healthFactor.set(warrior.health);
 		}
+		if (command.equals("kin")) {
+			warrior.maxSpeed = speedFactor.set(warrior.maxSpeed);
+		}
+		if (command.equals("reload")) {
+			warrior.reloadTime = reloadFactor.set(warrior.reloadTime);
+		}
+		if (command.equals("accuracy")) {
+			warrior.accuracy = reloadFactor.set(warrior.accuracy);
+		}
+		if (command.equals("see")) {
+			seeHealth.value = seeHealth.set(-1);
+		}
+
+	}
+
+	public void update(Warrior warrior) {
+		if (reloadFactor.outdated())
+			warrior.reloadTime = reloadFactor.remove();
+		if (speedFactor.outdated())
+			warrior.reloadTime = speedFactor.remove();
+		if (accuracyFactor.outdated())
+			warrior.reloadTime = accuracyFactor.remove();
 	}
 }

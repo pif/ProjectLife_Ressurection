@@ -70,7 +70,7 @@ public abstract class Weapon extends MyObject implements IShootable {
 				}
 			}
 		} else {
-			if (p.millis() - reloadStartTime >= reloadTime) {
+			if (p.millis() - reloadStartTime >= reloadTime*owner.reloadTime) {
 				canShoot = true;
 			}
 		}
@@ -163,7 +163,7 @@ public abstract class Weapon extends MyObject implements IShootable {
 		this.rackSize = preferences.getIntAttribute("rackSize");
 		if (owner != null) {
 			this.reloadTime = (int) (preferences
-					.getFloatAttribute("reloadTime") * owner.reloadTime);
+					.getFloatAttribute("reloadTime"));
 		}
 		this.timeBetweenShots = preferences
 				.getIntAttribute("timeBetweenShoots");

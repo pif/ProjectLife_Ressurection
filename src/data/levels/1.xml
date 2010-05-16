@@ -4,36 +4,22 @@
 	<difficulty>1</difficulty>
 	<experience>100</experience>
 	<bonuses>
-		<kulish />
-		<tobacco />
-		<gorilka />
-		<kin />
-		<zbroja />
+		<see />
+		<!--
+			<BullsEye /> <MadShotgun /> <Minigun /> <kulish /> <kin /> <reload />
+			<accuracy /> <Pan /> <PlagueSpreader /> <StoneThrower />
+			<SuperAlienRifle /> <Teeth /> <WaterPistol />
+		-->
 	</bonuses>
-	<warriors>
-		<warrior>
-			<weapons>
-				<weapon name="SimpsonsMinigun"/>
-				<weapon name="MadShotgun"/>
-				<weapon name="StoneThrower" standard="true"/>
-			</weapons>
-			<animation><!-- relative to datapath-->
-				<sprite image="images/warrior/1.png" time="50" />
-				<sprite image="images/warrior/2.png" time="50" />
-				<sprite image="images/warrior/3.png" time="50" />
-				<sprite image="images/warrior/4.png" time="50" />
-			</animation>
-		</warrior>
-	</warriors>
 	<beasts>
 		<beast standardWeapon="Teeth" value="50" name="Bart">
 			<animation>
-					<sprite image="images/beasts/ba1.png" time="9999" />
+				<sprite image="images/beasts/ba1.png" time="9999" />
 			</animation>
-		</beast standardWeapon="Teeth" value="50" name="Bart">
+		</beast>
 	</beasts>
 	<scenery>
 		<!-- type== bonus beast-->
-		<event time="10000" type="beast"/>
+		<event time="10000" type="beast" />
 	</scenery>
-</game>
+</level>
