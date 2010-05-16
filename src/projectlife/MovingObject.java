@@ -6,7 +6,6 @@ import processing.core.*;
 */
 public class MovingObject extends StandingObject {
 
-	private PVector stopAcceleration;
 	public MovingObject(Main applet, PVector position, String img, float angle,
 			int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target) {
@@ -18,7 +17,6 @@ public class MovingObject extends StandingObject {
 		this.angle = angle;
 		this.health = health;
 		this.weapon = weapon;
-		this.stopAcceleration = new PVector();
 		this.stopped = false;
 	}
 
@@ -39,6 +37,9 @@ public class MovingObject extends StandingObject {
 	public Weapon weapon;
 
 	public float power;
+	public float accuracy;
+	public float reloadTime;
+
 	/**
 	 * execurtes a list of actions, which move object accordingly to the list of
 	 * predefined rules
@@ -55,7 +56,7 @@ public class MovingObject extends StandingObject {
 		}
 	}
 
-	public boolean display() {		
+	public boolean display() {
 		if (checkHealth()) {
 			move();
 		}
@@ -67,10 +68,18 @@ public class MovingObject extends StandingObject {
 		// p.rect(-5, -40, 5, -50);
 		// p.popMatrix();
 
+		if (p.level.tweaker.seeHealth.isOn()) {
+			if (!this.getClass().getName().contains("Bullet")) {
+				p.pushStyle();
+				p.fill(0,255,0);
+				p.rect(location.x, location.y + 64, health, 4);
+				p.popStyle();
+			}
+		}
 		if (p.debug) {
 			p.rect(location.x, location.y - 64, health, 10);
 			p.ellipse(location.x, location.y, radius, radius);
-			p.text(health,location.x-20,location.y-radius-20);
+			p.text(health, location.x - 20, location.y - radius - 20);
 		}
 		return super.display();
 	}
