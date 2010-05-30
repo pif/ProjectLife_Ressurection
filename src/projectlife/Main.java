@@ -33,7 +33,6 @@ public class Main extends PApplet {
 		// size(600, 300, P2D);
 		// size(screen.width, screen.height, OPENGL);
 		size(screen.width, screen.height, OPENGL);
-
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
 		// System.out.println(dataPath+"main.xml");
