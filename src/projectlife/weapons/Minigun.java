@@ -70,6 +70,7 @@ public class Minigun extends Weapon {
 				startX, startY), "sdf.sdf", angle + p.random(-jitter, jitter),
 				0xFFFFFFFF, caliber, this.damage, this.bulletSpeed, this, this.weight
 						/ rackSize,new PVector(startX, startY));		
+		
 		this.bullets = (Bullet[]) PApplet.append(this.bullets, bullet);
 		currentRackSize--;
 		lastShotTime = p.millis();

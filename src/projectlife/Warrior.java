@@ -39,6 +39,9 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		warrior.weapons = new ArrayList<Weapon>();
 		warrior.weapons.add(new StoneThrower(applet, warrior,
 				applet.availableWeapons.get("StoneThrower")));
+		warrior.weapons.add(new Pan(applet, warrior,
+				applet.availableWeapons.get("Pan")));
+		
 		warrior.setPrevWeapon();
 
 		warrior.updateTargets(level);

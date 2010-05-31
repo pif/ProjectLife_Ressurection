@@ -76,7 +76,7 @@ public class Tweaker extends MyObject {
 		super(applet);
 
 		this.healthFactor = new Tweak(1.2f, true);
-		this.reloadFactor = new Tweak(0.5f, false);
+		this.reloadFactor = new Tweak(0.333f, false);
 		this.speedFactor = new Tweak(1.2f, false);
 		this.accuracyFactor = new Tweak(1f, false);
 		this.seeHealth = new Tweak(-1f, true);

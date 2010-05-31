@@ -30,6 +30,8 @@ public abstract class Bullet extends MovingObject {
 		this.health = weapon.damage;
 		this.radius = this.caliber;
 		this.startPos = startPos;
+		
+		this.sprite = new Animation(weapon.bulletAnimation);
 	}
 	
 	
