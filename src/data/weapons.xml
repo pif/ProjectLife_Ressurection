@@ -1,9 +1,18 @@
 <?xml version="1.0" econding="UTF-8" standalone="yes"?>
 <weapons>
-	<BullsEye damage="80" jitter="0" weight="40" bulletSpeed="50" rackSize="10" reloadTime="2000" timeBetweenShoots="200" caliber="10" range="9999" bulletRange="10">
-		<sprite image="images/weapons/st/1.png" time="100" />
-		<sprite image="images/weapons/st/2.png" time="100" />
-		<sprite image="images/weapons/st/3.png" time="100" />
+	<BullsEye damage="80" jitter="0" weight="200" bulletSpeed="6" rackSize="10" reloadTime="2000" timeBetweenShoots="200" caliber="10" range="9999" bulletRange="10">
+		<sprite image="images/weapons/be/1.png" time="100" />
+		<sprite image="images/weapons/be/2.png" time="100" />
+		<sprite image="images/weapons/be/3.png" time="100" />
+		<sprite image="images/weapons/be/4.png" time="100" />
+		<sprite image="images/weapons/be/5.png" time="100" />
+		<sprite image="images/weapons/be/6.png" time="100" />
+		<sprite image="images/weapons/be/7.png" time="100" />
+		<sprite image="images/weapons/be/8.png" time="100" />
+		<sprite image="images/weapons/be/9.png" time="100" />
+		<sprite image="images/weapons/be/10.png" time="100" />
+		<sprite image="images/weapons/be/11.png" time="100" />
+		<sprite image="images/weapons/be/12.png" time="100" />		
 	</BullsEye> 	
 	<MadShotgun damage="30" jitter="0.25" weight="20" bulletSpeed="20" rackSize="32" reloadTime="2000" timeBetweenShoots="200" caliber="16" range="9999" bulletRange="50">
 		<sprite image="images/weapons/ms/1.png" time="100" />
@@ -19,20 +28,27 @@
 		<sprite image="images/weapons/sm/2.png" time="100" />
 		<sprite image="images/weapons/sm/3.png" time="100" />
 	</Minigun> 	
-	<PlagueSpreader damage="20" jitter="0.1" weight="40" bulletSpeed="10" rackSize="4" reloadTime="2000" timeBetweenShoots="250" caliber="10" range="9999" bulletRange="5">
-		<sprite image="images/weapons/st/1.png" time="100" />
-		<sprite image="images/weapons/st/2.png" time="100" />
-		<sprite image="images/weapons/st/3.png" time="100" />
+	<PlagueSpreader damage="20" jitter="0.1" weight="20" bulletSpeed="10" rackSize="4" reloadTime="2000" timeBetweenShoots="250" caliber="10" range="9999" bulletRange="5">
+		<sprite image="images/weapons/ps/1.png" time="20" />
+		<sprite image="images/weapons/ps/2.png" time="20" />
+		<sprite image="images/weapons/ps/3.png" time="20" />
+		<sprite image="images/weapons/ps/4.png" time="20" />
+		<sprite image="images/weapons/ps/5.png" time="20" />
+		<sprite image="images/weapons/ps/6.png" time="20" />
+		<sprite image="images/weapons/ps/7.png" time="20" />
+		<sprite image="images/weapons/ps/8.png" time="20" />
 	</PlagueSpreader> 	
-	<StoneThrower damage="100" jitter="0.1" weight="10" bulletSpeed="5" rackSize="3" reloadTime="2000" timeBetweenShoots="200" caliber="10" range="250" bulletRange="10">
+	<StoneThrower damage="100" jitter="0.1" weight="50" bulletSpeed="5" rackSize="3" reloadTime="2000" timeBetweenShoots="200" caliber="10" range="250" bulletRange="10">
 		<sprite image="images/weapons/st/1.png" time="100" />
 		<sprite image="images/weapons/st/2.png" time="100" />
 		<sprite image="images/weapons/st/3.png" time="100" />
 	</StoneThrower> 	
-	<SuperAlienRifle damage="40" jitter="0.1" weight="20" bulletSpeed="20" rackSize="30" reloadTime="1500" timeBetweenShoots="10" caliber="10" range="9999" bulletRange="10">
-		<sprite image="images/weapons/st/1.png" time="100" />
-		<sprite image="images/weapons/st/2.png" time="100" />
-		<sprite image="images/weapons/st/3.png" time="100" />
+	<SuperAlienRifle damage="200" jitter="0.1" weight="20" bulletSpeed="0" rackSize="4" reloadTime="1500" timeBetweenShoots="1000" caliber="10" range="9999" bulletRange="200">
+		<sprite image="images/weapons/bmb/1.png" time="400" />
+		<sprite image="images/weapons/bmb/2.png" time="400" />
+		<sprite image="images/weapons/bmb/3.png" time="400" />
+		<sprite image="images/weapons/bmb/4.png" time="400" />
+		<sprite image="images/weapons/bmb/5.png" time="400" />
 	</SuperAlienRifle> 	
 	<Teeth damage="3" jitter="0" weight="1" bulletSpeed="0" rackSize="1" reloadTime="200" timeBetweenShoots="200" caliber="32" range="10" bulletRange="42">
 	</Teeth> 	

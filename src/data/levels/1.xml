@@ -4,17 +4,17 @@
 	<difficulty>1</difficulty>
 	<experience>100</experience>
 	<bonuses>
-		<reload />
+	<PlagueSpreader /> <SuperAlienRifle />
 		<!--
 			not tested
-			 <accuracy />
-			<SuperAlienRifle />
+			 
+			
 			
 			nunafig
 			<Teeth />
-			
+					<accuracy />
 			checked
-			<see /><kulish /><kin />
+			<see /><kulish /><kin /><reload />
 			<MadShotgun /><PlagueSpreader /><WaterPistol /><Minigun /><BullsEye /><Pan /><StoneThrower /> 
 		-->
 	</bonuses>
