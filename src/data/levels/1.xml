@@ -4,12 +4,8 @@
 	<difficulty>1</difficulty>
 	<experience>100</experience>
 	<bonuses>
-	<PlagueSpreader /> <SuperAlienRifle />
-		<!--
-			not tested
-			 
-			
-			
+	<PlagueSpreader /> <SuperAlienRifle /><see /><kulish /><kin /><reload />
+		<!--			
 			nunafig
 			<Teeth />
 					<accuracy />
