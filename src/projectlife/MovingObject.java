@@ -69,7 +69,7 @@ public class MovingObject extends StandingObject {
 		// p.popMatrix();
 
 		if (p.level.tweaker.seeHealth.isOn()) {
-			if (!this.getClass().getName().contains("Bullet")) {
+			if (!(this.getClass().getName().contains("Bullet") || this.getClass().getName().contains("Warrior"))) {
 				p.pushStyle();
 				p.fill(0,255,0);
 				p.rect(location.x, location.y + 64, health, 4);

@@ -51,6 +51,7 @@
 		<sprite image="images/weapons/bmb/5.png" time="400" />
 	</SuperAlienRifle> 	
 	<Teeth damage="3" jitter="0" weight="1" bulletSpeed="0" rackSize="1" reloadTime="200" timeBetweenShoots="200" caliber="32" range="10" bulletRange="42">
+		<sprite image="images/weapons/tth/1.png" time="400" />
 	</Teeth> 	
 	<WaterPistol damage="15" jitter="0.2" weight="8" bulletSpeed="10" rackSize="50" reloadTime="1000" timeBetweenShoots="10" caliber="10" range="600" bulletRange="10">
 		<sprite image="images/weapons/wp/1.png" time="100" />

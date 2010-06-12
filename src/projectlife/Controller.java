@@ -99,14 +99,8 @@ public class Controller extends MyObject {
 			// p.level.ground
 			// .addBlood(new PVector(p.mouseX, p.mouseY), 0xFFFF0000); 
 			//FIXME if(forWarrior) weapon targets=p.level.beasts;
-			p.level.beasts = (Beast[]) PApplet.append(p.level.beasts,
-					Beast.factory(p, new PVector(), "beast.png", 0, 0, 32, 100, p.random(2, 8),
-							new Teeth(p, null, p.availableWeapons.get("Teeth")),
-							p.level.warriors[0].location, p.level));
-			
-			for(int q=0;q<p.level.warriors.length;++q) {
-				p.level.warriors[q].updateTargets(p.level);
-			}
+			 
+			p.level.addBeast();
 			
 			if(p.menu.visible){
 				p.level.beasts[p.level.beasts.length-1].stop();

@@ -29,7 +29,7 @@ public abstract class Weapon extends MyObject implements IShootable {
 
 	public boolean canShoot;
 	public int lastShotTime;
-	private int reloadStartTime;
+	public int reloadStartTime;
 
 	/**
 	 * 

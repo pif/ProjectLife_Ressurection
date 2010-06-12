@@ -1,13 +1,6 @@
 <uml>
    <greenVersion="30500"/>
    <type>
-      <name="=ProjectLife_Ressurection/src<projectlife{Tweaker.java[Tweakerrs"/>
-      <height="-1"/>
-      <width="-1"/>
-      <x="98"/>
-      <y="944"/>
-   </type>
-   <type>
       <name="=ProjectLife_Ressurection/src<projectlife{Main.java[Main"/>
       <height="-1"/>
       <width="-1"/>
@@ -92,16 +85,9 @@
       <y="938"/>
    </type>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.dependency.DependencyIPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Beast.java[Beast"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -113,13 +99,6 @@
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Warrior.java[Warrior"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
       <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
@@ -127,16 +106,16 @@
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.dependency.DependencyIPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Controller.java[Controller"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
+      <class="edu.buffalo.cse.green.relationship.association.AssociationPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Main.java[Main"/>
       <bendpoints>
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Ground.java[Ground"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -155,23 +134,16 @@
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.dependency.DependencyLPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Bullet.java[Bullet"/>
+      <class="edu.buffalo.cse.green.relationship.dependency.DependencyIPart"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Bonus.java[Bonus"/>
       <bendpoints>
       </bendpoints>
    </relationship>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.dependency.DependencyIPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Weapon.java[Weapon"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.association.AssociationPart"/>
-      <sourceType="=ProjectLife_Ressurection/src<projectlife{MyObject.java[MyObject"/>
-      <targetType="=ProjectLife_Ressurection/src<projectlife{Main.java[Main"/>
+      <sourceType="=ProjectLife_Ressurection/src<projectlife{Main.java[Main"/>
+      <targetType="=ProjectLife_Ressurection/src<projectlife{Level.java[Level"/>
       <bendpoints>
       </bendpoints>
    </relationship>

@@ -53,6 +53,7 @@ public class Logon extends MyObject {
 	PImage cossacs;
 	PVector cossacsCenter;
 	HoverPic[] warriors;
+	public PImage logo;
 
 	public Logon(Main applet) {
 		super(applet);
@@ -72,6 +73,8 @@ public class Logon extends MyObject {
 		warriors = (HoverPic[]) p.append(warriors, new HoverPic(applet,
 				p.dataPath + "images/tur_pic.png", p.dataPath
 						+ "images/tur_hov.png", new PVector(-187, 21)));
+		
+		logo = p.loadImage(p.dataPath+"images/logo.png");
 	}
 
 	String getWarriorString(int i) {
@@ -107,6 +110,8 @@ public class Logon extends MyObject {
 		for (int i = 0; i < warriors.length; ++i) {
 			warriors[i].display();
 		}
+		
+		p.image(logo, -logo.width/2, -350);
 		p.popMatrix();
 	}
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" econding="UTF-8" standalone="yes"?>
 <warriors>
-	<Oko health="80" accuracy="0.9" speed="8" power="0.9" reload="0.7" weapon="StoneThrower">
+	<Oko health="800" accuracy="0.9" speed="12" power="0.9" reload="0.7" weapon="StoneThrower">
 		<sprite image="images/warrior/oko1.png" time="50" />
 		<sprite image="images/warrior/oko2.png" time="50" />
 		<sprite image="images/warrior/oko3.png" time="50" />	

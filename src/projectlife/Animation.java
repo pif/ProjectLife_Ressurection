@@ -14,6 +14,10 @@ public class Animation extends MyObject {
 			this.image = image;
 			this.time = time;
 		}
+		
+		public long getTime() {
+			return time;
+		}
 	}
 
 	public Sprite[] sprites;

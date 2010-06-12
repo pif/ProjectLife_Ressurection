@@ -10,6 +10,7 @@ import projectlife.weapons.*;
 */
 public class Warrior extends MovingObject implements Harmable, Shooter {
 
+	public float maxHealth;
 	public int experience;
 	public ArrayList<Weapon> weapons;
 	public int currentWeapon;
@@ -24,7 +25,8 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 						applet.availableWeapons.get(prefs
 								.getStringAttribute("weapon"))), new PVector(0,
 						0), 0);
-
+		warrior.maxHealth = warrior.health;
+		
 		warrior.accuracy = prefs.getFloatAttribute("accuracy");
 		warrior.power = prefs.getFloatAttribute("power");
 		warrior.reloadTime = prefs.getFloatAttribute("reload");
@@ -115,6 +117,12 @@ public class Warrior extends MovingObject implements Harmable, Shooter {
 		location.y = PApplet.constrain(location.y, 0, p.height);
 
 		target = new PVector(p.mouseX, p.mouseY);
+		
+		if(this.health>this.maxHealth){
+			this.health=this.maxHealth;
+		}
+		
+		
 	}
 
 	public void shoot(PVector target) {

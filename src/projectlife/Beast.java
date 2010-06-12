@@ -1,10 +1,16 @@
 package projectlife;
 
+import java.util.ArrayList;
+
 import processing.core.*;
+import processing.xml.XMLElement;
+import projectlife.weapons.Pan;
+import projectlife.weapons.StoneThrower;
+import projectlife.weapons.Teeth;
 
 /**
 */
-public class Beast extends MovingObject implements Harmable,Shooter {
+public class Beast extends MovingObject implements Harmable, Shooter {
 
 	public static int spotDistance = 100;
 
@@ -13,6 +19,39 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 	public PVector[] targets;
 	public boolean followTargets;
 
+	
+	public int exp;
+	public static Beast factoryXML(Main applet, XMLElement prefs, Level level) {
+		Animation beastAnim = new Animation(prefs.getChild("animation"), applet);
+
+		Beast beast = Beast.factory(applet, new PVector(), "beast.png", 0, 0, 32,
+				prefs.getFloatAttribute("health"), applet.random(prefs.getFloatAttribute("minSpeed"), prefs
+						.getFloatAttribute("maxSpeed")), new Teeth(applet,
+						null, applet.availableWeapons.get(prefs
+								.getAttribute("weapon"))),
+				level.warriors[0].location, level);
+
+		// <Six health="160" accuracy="1" reload="0.7" weapon="Teeth"
+		// minSpeed="3" maxSpeed="8">
+		beast.accuracy = prefs.getFloatAttribute("accuracy");
+		beast.power = prefs.getFloatAttribute("power");
+		beast.reloadTime = prefs.getFloatAttribute("reload");
+		
+		beast.exp = prefs.getIntAttribute("exp");
+		
+		beast.sprite = beastAnim;
+
+		if (beast.sprite.sprites[0] != null) {
+			beast.radius = beast.sprite.sprites[0].image.height;
+		} 
+//		else if (beast.picture != null) {
+//			beast.radius = beast.picture.width;
+//		}
+
+		return beast;
+	}
+
+	// /outdated
 	public static Beast factory(Main applet, PVector position, String img,
 			float angle, int color, float radius, float health, float maxSpeed,
 			Weapon weapon, PVector target, Level level) {
@@ -48,8 +87,8 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 		calcSteps(steps);
 		currentTarget = 0;
 		followTargets = true;
-		
-		this.power=1;
+
+		this.power = 1;
 	}
 
 	// optimise beasts. don't call turn() every frame better calculate
@@ -78,17 +117,18 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 			}
 		}
 	}
+
 	public boolean display() {
 		weapon.displayBullets();
-		
+
 		return super.display();
 	}
 
 	public void move() {
 		super.move();
-		
+
 		this.shoot(weapon.targets[0].getLocation());
-		
+
 		acceleration = new PVector(PApplet.cos(angle), PApplet.sin(angle));
 
 		if (location.dist(p.level.warriors[0].location) < (this.radius
@@ -137,6 +177,6 @@ public class Beast extends MovingObject implements Harmable,Shooter {
 
 	@Override
 	public void shoot(PVector target) {
-		weapon.shoot(target.x,target.y, location.x, location.y, angle);		
+		weapon.shoot(target.x, target.y, location.x, location.y, angle);
 	}
 }

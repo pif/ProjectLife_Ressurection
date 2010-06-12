@@ -60,6 +60,15 @@ public class BullsEye extends Weapon {
 			}
 			return -1;
 		}
+		
+//		public boolean display() {
+//			p.pushMatrix();
+//			p.translate(location.x, location.y);
+//			p.rotate(this.angle-p.HALF_PI);
+//			super.display();
+//			p.popMatrix();
+//			return visible;
+//		}
 
 	}
 

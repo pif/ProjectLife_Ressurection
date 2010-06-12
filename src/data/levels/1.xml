@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <level>
 	<name>Як козаки куліш варили</name>
+	<background>images/grounds/grass2.png</background>
 	<difficulty>1</difficulty>
 	<experience>100</experience>
 	<bonuses>
-	<PlagueSpreader /> <SuperAlienRifle /><see /><kulish /><kin /><reload />
+	<see /><kulish /><kin /><reload />
+			<MadShotgun /><PlagueSpreader /><WaterPistol /><Minigun /><BullsEye /><Pan /><StoneThrower /> 
 		<!--			
 			nunafig
 			<Teeth />
@@ -15,14 +17,44 @@
 		-->
 	</bonuses>
 	<beasts>
-		<beast standardWeapon="Teeth" value="50" name="Bart">
+		<Green health="80" accuracy="0.9" reload="0.7" weapon="Teeth" minSpeed="2" maxSpeed="4" power="1" exp="100">
 			<animation>
 				<sprite image="images/beasts/ba1.png" time="9999" />
 			</animation>
-		</beast>
+		</Green>
+		<Six health="160" accuracy="1" reload="0.7" weapon="Teeth" minSpeed="3" maxSpeed="8" power="1" exp="200">
+			<animation>
+				<sprite image="images/beasts/6ka/1.png" time="100" />
+				<sprite image="images/beasts/6ka/2.png" time="100" />
+				<sprite image="images/beasts/6ka/3.png" time="100" />
+				<sprite image="images/beasts/6ka/4.png" time="100" />
+			</animation>moon
+		</Six>
+		<Moon health="120" accuracy="1" reload="0.5" weapon="Teeth" minSpeed="6" maxSpeed="10" power="1" exp="400">
+			<animation>
+				<sprite image="images/beasts/moon/1.png" time="100" />
+				<sprite image="images/beasts/moon/2.png" time="100" />
+				<sprite image="images/beasts/moon/3.png" time="100" />
+				<sprite image="images/beasts/moon/4.png" time="100" />
+			</animation>
+		</Moon>	
+		<Sprm health="110" accuracy="1" reload="0.5" weapon="Teeth" minSpeed="6" maxSpeed="10" power="1" exp="600">
+			<animation>
+				<sprite image="images/beasts/spr/1.png" time="100" />
+				<sprite image="images/beasts/spr/2.png" time="100" />
+				<sprite image="images/beasts/spr/3.png" time="100" />
+				<sprite image="images/beasts/spr/4.png" time="100" />
+				<sprite image="images/beasts/spr/5.png" time="100" />
+				<sprite image="images/beasts/spr/6.png" time="100" />
+				<sprite image="images/beasts/spr/7.png" time="100" />
+				<sprite image="images/beasts/spr/8.png" time="100" />
+			</animation>
+		</Sprm>	
 	</beasts>
 	<scenery>
 		<!-- type== bonus beast-->
-		<event time="10000" type="beast" />
+		<event startTime="6000" times="10" interval="1000" type="1" value="Six" coords="0" x="0" y="0"/>
+		<event startTime="5000" times="1" interval="0" type="0" value="see" coords="1" x="100" y="100" />
+		<event startTime="3000" times="1" interval="0" type="0" value="Minigun" coords="2" x="50" y="50" />		
 	</scenery>
 </level>

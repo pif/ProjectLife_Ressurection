@@ -6,6 +6,7 @@ import java.util.HashMap;
 import processing.core.*;
 import processing.xml.XMLElement;
 import projectlife.weapons.StoneThrower;
+import projectlife.weapons.Teeth;
 
 /**
  * 
@@ -23,11 +24,15 @@ public class Level extends MyObject {
 	public Bonus[] bonuses;
 	public Overlay[] overlays;
 	public CloudsManager clouds;
-
+	public WarriorOverlay warriorOverlay;
+	public EventManager eventManager;
 	public Tweaker tweaker;
 
 	public String[] availableBonuses;
 	public HashMap<String, XMLElement> availableBeasts;
+	
+	public int killed;
+	public long exp;
 
 	public Level(String xmlPath, Main applet) {
 
@@ -44,27 +49,38 @@ public class Level extends MyObject {
 		// * 500, 100)
 		// */, new PVector(), 0, this);
 
-		ground = new Ground("1.png", true, applet);
+		ground = new Ground(levelFile.getChild("background").getContent(),
+				true, applet);
 
 		bonuses = new Bonus[0];
 		overlays = new Overlay[0];
 
 		tweaker = new Tweaker(applet);
 		availableBonuses = levelFile.getChild("bonuses").listChildren();
+
 		availableBeasts = new HashMap<String, XMLElement>();
+		XMLElement bbeast = levelFile.getChild("beasts");
+		for (int i = 0; i < bbeast.getChildCount(); ++i) {
+			availableBeasts.put(bbeast.getChild(i).getName(), bbeast
+					.getChild(i));
+		}
+
+		warriorOverlay = new WarriorOverlay(p);
+		eventManager = new EventManager(applet, levelFile.getChild("scenery"));
 		passed = false;
 		// DONE bullet problem. if they'r too quick. the overjump bastards.
 		// that's ok.
 	}
 
 	public void setWarrior(String warrior) {
+		// here we set our warrior for the level;
 		warriors[0] = Warrior
 				.factory(p, p.availableWarriors.get(warrior), this);
 	}
 
 	public void display() {
-		for(int i=0;i<bonuses.length;++i) {
-			if(bonuses[i].warriorGotMe()) {
+		for (int i = 0; i < bonuses.length; ++i) {
+			if (bonuses[i].warriorGotMe()) {
 			}
 		}
 		for (int i = 0; i < warriors.length; ++i) {
@@ -73,22 +89,6 @@ public class Level extends MyObject {
 
 		// draw level ground
 		ground.drawBackground();
-
-		for (int i = 0; i < beasts.length; i++) {
-			if (beasts[i].visible) {
-				beasts[i].display();
-			} else {
-				p.level.addBonus(beasts[i].location);
-				beasts[i] = beasts[beasts.length - 1];
-				beasts = (Beast[]) (PApplet.shorten(beasts));
-
-				for (int q = 0; q < warriors.length; ++q) {
-					warriors[q].updateTargets(this);
-				}
-				--i;
-			}
-
-		}
 
 		for (int i = 0; i < bonuses.length; i++) {
 			if (bonuses[i].visible) {
@@ -99,7 +99,26 @@ public class Level extends MyObject {
 				--i;
 			}
 
+		}		
+		
+		for (int i = 0; i < beasts.length; i++) {
+			if (beasts[i].visible) {
+				beasts[i].display();
+			} else {
+				p.level.addBonus(beasts[i].location);
+				beasts[i] = beasts[beasts.length - 1];
+				exp+=beasts[i].exp;
+				beasts = (Beast[]) (PApplet.shorten(beasts));
+
+				for (int q = 0; q < warriors.length; ++q) {
+					warriors[q].updateTargets(this);
+				}
+				--i;
+			}
+
 		}
+
+
 		for (int i = 0; i < warriors.length; i++) {
 			if (warriors[i].visible) {
 				warriors[i].display();
@@ -113,6 +132,10 @@ public class Level extends MyObject {
 		if (warriors.length <= 0) {
 			p.exit();
 		}
+
+		warriorOverlay.display();
+		
+		eventManager.act();
 	}
 
 	public void start() {
@@ -149,8 +172,68 @@ public class Level extends MyObject {
 		String command = availableBonuses[(int) p
 				.random(availableBonuses.length)];
 		p.println(command);
-		bonuses = (Bonus[]) p.append(bonuses, new Bonus(p, new PVector(pos.x,pos.y),
-				"images/bonuses/" + command + ".png", 0, 0, 32, command));
+		bonuses = (Bonus[]) p.append(bonuses,
+				new Bonus(p, new PVector(pos.x, pos.y), "images/bonuses/"
+						+ command + ".png", 0, 0, 32, command));
 
+	}
+
+	public void addBonus(PVector pos, String c) {
+		String command = c;
+		p.println(command);
+		bonuses = (Bonus[]) p.append(bonuses,
+				new Bonus(p, new PVector(pos.x, pos.y), "images/bonuses/"
+						+ command + ".png", 0, 0, 32, command));
+
+	}
+	
+	public Beast addBeast() {
+		String name = "";
+		String[] names = (String[]) availableBeasts.keySet().toArray(
+				new String[availableBeasts.keySet().size()]);
+		return addBeast(names[(int) p.random(names.length)]);
+	}
+	
+	public Beast addBeast(String name) {
+		if (availableBeasts.containsKey(name)) {
+			Beast b = Beast.factoryXML(p, availableBeasts.get(name), this);
+			beasts = (Beast[]) PApplet.append(beasts, b);
+			
+			
+			for (int q = 0; q < warriors.length; ++q) {
+				warriors[q].updateTargets(this);
+			}
+			
+			return b;
+		} else {
+			Beast b = Beast.factory(p,
+					new PVector(), "beast.png", 0, 0, 32, 100, p.random(2, 8),
+					new Teeth(p, null, p.availableWeapons.get("Teeth")),
+					warriors[0].location, p.level);
+			beasts = (Beast[]) PApplet.append(beasts, b);
+
+			for (int q = 0; q < warriors.length; ++q) {
+				warriors[q].updateTargets(this);
+			}
+			
+			return b;
+		}
+	}
+
+	public Beast addBeast(String name, float x, float y) {
+		if (availableBeasts.containsKey(name)) {
+			
+			Beast b = addBeast(name);
+//			(p, new PVector(x, y), "beast.png", 0, 0,
+//					32, 100, p.random(2, 8), new Teeth(p, null,
+//							p.availableWeapons.get("Teeth")),
+//					warriors[0].location, p.level);
+
+			b.location.set(x, y, 0);
+			return b;
+		} else {
+			Beast b = addBeast();
+			return b;
+		}
 	}
 }

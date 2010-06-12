@@ -26,7 +26,7 @@ public class Main extends PApplet {
 	public String dataPath;
 	public String levelPath;
 	public boolean debug;
-	int warriorSelected;
+	public int warriorSelected;
 	public int currentLevel;
 
 	public void setup() {
@@ -134,32 +134,38 @@ public class Main extends PApplet {
 			if (mousePressed) {
 				controller.press(mouseButton);
 			}
+			if (level.warriors[0].visible) {
+				level.display();
 
-			level.display();
-			if (level.won()) {
-				currentLevel++;
-				if (currentLevel < levels.length) {
-					level = levels[currentLevel];
-				} else {
-					// TODO winscreen
-					exit();
+				if (level.won()) {
+					currentLevel++;
+					if (currentLevel < levels.length) {
+						level = levels[currentLevel];
+					} else {
+						// TODO winscreen
+						exit();
+					}
 				}
+			} else {
+				pushStyle();
+				fill(255);
+				textAlign(CENTER);
+				text((int)level.exp,width/2,height/2);
+				popStyle();
 			}
-
 			menu.display();
 
 			if (debug) {
 				if (level.warriors.length > 0)
 					text(((int) frameRate) + " " + level.beasts.length + "\n"
 							+ level.warriors[0].weapon.bullets.length + "\n"
-							+ level.warriors[0].weapon.getClass().getName()+ "\npower \t"
-							+ level.warriors[0].power + "\naccuracy \t"
-							+ level.warriors[0].accuracy + "\nspeed \t"
-							+ level.warriors[0].maxSpeed + "\nhealth \t"
-							+ level.warriors[0].health + "\nreload \t"
-							+ level.warriors[0].reloadTime + "\nradius \t"
-							+ level.warriors[0].radius,
-							50, 50);
+							+ level.warriors[0].weapon.getClass().getName()
+							+ "\npower \t" + level.warriors[0].power
+							+ "\naccuracy \t" + level.warriors[0].accuracy
+							+ "\nspeed \t" + level.warriors[0].maxSpeed
+							+ "\nhealth \t" + level.warriors[0].health
+							+ "\nreload \t" + level.warriors[0].reloadTime
+							+ "\nradius \t" + level.warriors[0].radius, 50, 50);
 			}
 		} else {
 			logon.display();
