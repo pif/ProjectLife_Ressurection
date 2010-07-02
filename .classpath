@@ -5,12 +5,12 @@
 	<classpathentry kind="lib" path="lib/core.jar"/>
 	<classpathentry kind="lib" path="lib/gluegen-rt.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ProjectLife_Ressurection/libNative"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ProjectLife_Ressurection"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/jogl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ProjectLife_Ressurection/libNative"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ProjectLife_Ressurection"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/opengl.jar"/>
