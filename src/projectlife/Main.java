@@ -30,8 +30,7 @@ public class Main extends PApplet {
 	public int currentLevel;
 
 	public void setup() {
-		// size(600, 300, P2D);
-		// size(screen.width, screen.height, OPENGL);
+		// size(1024, 600, OPENGL);
 		size(screen.width, screen.height, OPENGL);
 		runPath = Main.class.getResource("./").getPath().substring(1);// toString();
 		dataPath = runPath + "../data/";
@@ -208,7 +207,7 @@ public class Main extends PApplet {
 			// Send a GET request to the servlet
 			try {
 				// Construct data
-				StringBuffer data = new StringBuffer();
+				//StringBuffer data = new StringBuffer();
 
 				// Send data
 				String urlStr = endpoint;

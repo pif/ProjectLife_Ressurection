@@ -3,7 +3,6 @@ package projectlife.weapons;
 import processing.core.*;
 import processing.xml.XMLElement;
 import projectlife.*;
-import projectlife.weapons.Pan.PanBullet;
 public class Pan extends Weapon {
 	public class PanBullet extends Bullet {
 
@@ -45,8 +44,8 @@ public class Pan extends Weapon {
 		@Override
 		public void updateLocation() {
 			location=weapon.owner.location.get();
-			location.x+=p.cos(weapon.owner.angle)*32+4;
-			location.y+=p.sin(weapon.owner.angle)*32-16;
+			location.x+=PApplet.cos(weapon.owner.angle)*32+4;
+			location.y+=PApplet.sin(weapon.owner.angle)*32-16;
 		}
 
 		@Override

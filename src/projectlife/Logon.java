@@ -64,13 +64,13 @@ public class Logon extends MyObject {
 
 		warriors = new HoverPic[0];
 
-		warriors = (HoverPic[]) p.append(warriors, new HoverPic(applet,
+		warriors = (HoverPic[]) PApplet.append(warriors, new HoverPic(applet,
 				p.dataPath + "images/oko_pic.png", p.dataPath
 						+ "images/oko_hov.png", new PVector(66, 29)));
-		warriors = (HoverPic[]) p.append(warriors, new HoverPic(applet,
+		warriors = (HoverPic[]) PApplet.append(warriors, new HoverPic(applet,
 				p.dataPath + "images/graj_pic.png", p.dataPath
 						+ "images/graj_hov.png", new PVector(-53, -49)));
-		warriors = (HoverPic[]) p.append(warriors, new HoverPic(applet,
+		warriors = (HoverPic[]) PApplet.append(warriors, new HoverPic(applet,
 				p.dataPath + "images/tur_pic.png", p.dataPath
 						+ "images/tur_hov.png", new PVector(-187, 21)));
 		

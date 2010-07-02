@@ -32,7 +32,7 @@ public class SuperAlienRifle extends Weapon {
 		@Override
 		public void harmTarget(Harmable target, float distance) {
 			target.harm(this.damage
-					* p.map(distance, 0, this.range, -1f, -0.5f) * (-1f));
+					* PApplet.map(distance, 0, this.range, -1f, -0.5f) * (-1f));
 		}
 
 		@Override

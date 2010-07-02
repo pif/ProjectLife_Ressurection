@@ -2,7 +2,6 @@ package projectlife;
 
 import processing.core.*;
 import processing.xml.XMLElement;
-import projectlife.weapons.Teeth;
 
 /**
 */

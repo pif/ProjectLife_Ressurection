@@ -1,6 +1,7 @@
 package projectlife.weapons;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PVector;
 import processing.xml.XMLElement;
 import projectlife.Animation;
@@ -9,7 +10,6 @@ import projectlife.Main;
 import projectlife.MovingObject;
 import projectlife.Weapon;
 import projectlife.Bullet;
-import projectlife.weapons.PlagueSpreader.PlagueSpreaderBullet;
 public class PlagueSpreader extends Weapon {
 	
 	public class PlagueSpreaderBullet extends Bullet {
@@ -20,8 +20,8 @@ public class PlagueSpreader extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight,startPos);		
 			
-			acceleration = new PVector(speed* p.cos(angle), maxSpeed
-					* p.sin(angle));
+			acceleration = new PVector(speed* PApplet.cos(angle), maxSpeed
+					* PApplet.sin(angle));
 		}
 
 		@Override
@@ -61,8 +61,8 @@ public class PlagueSpreader extends Weapon {
 			for (int i = 0; i < weapon.targets.length; ++i) {
 				if (this.location.dist(weapon.targets[i].getLocation()) < this.caliber/2
 						+ weapon.targets[i].getRadius()/2) {
-					weapon.generateBullet(this.target.x, this.target.y, this.location.x+32*p.cos(angle), this.location.y+ 32*p.sin(angle), this.angle-p.QUARTER_PI);
-					weapon.generateBullet(this.target.x, this.target.y, this.location.x+32*p.cos(angle), this.location.y+ 32*p.sin(angle), this.angle+p.QUARTER_PI);
+					weapon.generateBullet(this.target.x, this.target.y, this.location.x+32*PApplet.cos(angle), this.location.y+ 32*PApplet.sin(angle), this.angle-PConstants.QUARTER_PI);
+					weapon.generateBullet(this.target.x, this.target.y, this.location.x+32*PApplet.cos(angle), this.location.y+ 32*PApplet.sin(angle), this.angle+PConstants.QUARTER_PI);
 					this.visible=false;
 					return i;
 				}

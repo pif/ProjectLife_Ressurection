@@ -1,9 +1,10 @@
 package projectlife;
 
 import java.util.HashMap;
-import java.util.Set;
+
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PVector;
 
@@ -58,10 +59,10 @@ public class WarriorOverlay extends OverlayManager {
 						- overlays[0].picture.width && p.level.warriors[0].location.y > overlays[0].location.y)) {
 
 			alpha -= 5;
-			alpha = p.constrain(alpha, 125, 255);
+			alpha = PApplet.constrain(alpha, 125, 255);
 		} else {
 			alpha += 5;
-			alpha = p.constrain(alpha, 125, 255);
+			alpha = PApplet.constrain(alpha, 125, 255);
 		}
 		p.tint(255, alpha);
 		super.display();
@@ -74,12 +75,12 @@ public class WarriorOverlay extends OverlayManager {
 		p.translate(overlays[0].location.x - overlays[0].picture.width / 2
 				+ 1015 / 2, overlays[0].location.y - overlays[0].picture.height
 				/ 2 + 611 / 2);
-		p.rectMode(p.CORNER);
+		p.rectMode(PConstants.CORNER);
 		p.noStroke();
 		p.fill(255, 0, 0, 255 / 2);
 		p.rect(0, 0, 418 / 2, 9);
 		p.fill(255, 0, 0);
-		p.rect(0, 0, p.map(p.level.warriors[0].health, 0,
+		p.rect(0, 0, PApplet.map(p.level.warriors[0].health, 0,
 				p.level.warriors[0].maxHealth, 0, 418 / 2), 9);
 		p.popMatrix();
 
@@ -88,17 +89,17 @@ public class WarriorOverlay extends OverlayManager {
 		p.translate(overlays[0].location.x - overlays[0].picture.width / 2
 				+ 360 / 2, overlays[0].location.y - overlays[0].picture.height
 				/ 2 + 611 / 2);
-		p.rectMode(p.CORNER);
+		p.rectMode(PConstants.CORNER);
 		p.noStroke();
 		p.fill(0, 0, 255, 255 / 2);
 		p.rect(0, 0, 259 / 2, 9);
 		p.fill(0, 0, 255);
 		if (p.level.warriors[0].weapon.canShoot) {
-			p.rect(0, 0, p.map(p.level.warriors[0].weapon.currentRackSize, 0,
+			p.rect(0, 0, PApplet.map(p.level.warriors[0].weapon.currentRackSize, 0,
 					p.level.warriors[0].weapon.rackSize, 0, 259 / 2), 9);
 		} else {
 
-			p.rect(0, 0, p.constrain(p.map(p.millis()
+			p.rect(0, 0, PApplet.constrain(PApplet.map(p.millis()
 					- p.level.warriors[0].weapon.reloadStartTime, 0,
 					p.level.warriors[0].weapon.reloadTime, 0, 259 / 2), 0,
 					259 / 2), 9);
@@ -182,7 +183,7 @@ public class WarriorOverlay extends OverlayManager {
 		
 		p.pushMatrix();
 		p.pushStyle();
-		p.textAlign(p.RIGHT);
+		p.textAlign(PConstants.RIGHT);
 		p.translate(overlays[0].location.x - overlays[0].picture.width / 2
 				+ 602-20 , overlays[0].location.y - overlays[0].picture.height
 				/ 2 + 183-70);

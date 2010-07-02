@@ -1,11 +1,9 @@
 package projectlife;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import processing.core.*;
 import processing.xml.XMLElement;
-import projectlife.weapons.StoneThrower;
 import projectlife.weapons.Teeth;
 
 /**
@@ -171,8 +169,8 @@ public class Level extends MyObject {
 	public void addBonus(PVector pos) {
 		String command = availableBonuses[(int) p
 				.random(availableBonuses.length)];
-		p.println(command);
-		bonuses = (Bonus[]) p.append(bonuses,
+		PApplet.println(command);
+		bonuses = (Bonus[]) PApplet.append(bonuses,
 				new Bonus(p, new PVector(pos.x, pos.y), "images/bonuses/"
 						+ command + ".png", 0, 0, 32, command));
 
@@ -180,15 +178,14 @@ public class Level extends MyObject {
 
 	public void addBonus(PVector pos, String c) {
 		String command = c;
-		p.println(command);
-		bonuses = (Bonus[]) p.append(bonuses,
+		PApplet.println(command);
+		bonuses = (Bonus[]) PApplet.append(bonuses,
 				new Bonus(p, new PVector(pos.x, pos.y), "images/bonuses/"
 						+ command + ".png", 0, 0, 32, command));
 
 	}
 	
 	public Beast addBeast() {
-		String name = "";
 		String[] names = (String[]) availableBeasts.keySet().toArray(
 				new String[availableBeasts.keySet().size()]);
 		return addBeast(names[(int) p.random(names.length)]);

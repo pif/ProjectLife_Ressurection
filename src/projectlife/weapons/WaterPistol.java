@@ -1,10 +1,8 @@
 package projectlife.weapons;
 
-import processing.core.PApplet;
-import processing.core.PVector;
+import processing.core.*;
 import processing.xml.XMLElement;
 import projectlife.*;
-import projectlife.weapons.*;
 
 public class WaterPistol extends Weapon {
 	
@@ -17,8 +15,8 @@ public class WaterPistol extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight,startPos);		
 			
-			acceleration = new PVector(speed* p.cos(angle), maxSpeed
-					* p.sin(angle));
+			acceleration = new PVector(speed* PApplet.cos(angle), maxSpeed
+					* PApplet.sin(angle));
 			this.start = 0;
 		}
 
@@ -37,7 +35,7 @@ public class WaterPistol extends Weapon {
 			velocity.add(acceleration);
 			//velocity.limit(maxSpeed);
 			location.add(velocity);
-			acceleration.set(p.cos(start)*start, p.sin(start)*start, 0);
+			acceleration.set(PApplet.cos(start)*start, PApplet.sin(start)*start, 0);
 			++start;
 		}
 

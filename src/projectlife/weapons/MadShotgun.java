@@ -14,8 +14,8 @@ public class MadShotgun extends Weapon {
 			super(applet, position, img, angle, color, radius, health,
 					maxSpeed, weapon, weight,startPos);
 
-			acceleration = new PVector(speed * p.cos(angle), maxSpeed
-					* p.sin(angle));
+			acceleration = new PVector(speed * PApplet.cos(angle), maxSpeed
+					* PApplet.sin(angle));
 		}
 
 		@Override

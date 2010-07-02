@@ -1,11 +1,7 @@
 package projectlife;
 
-import java.util.ArrayList;
-
 import processing.core.*;
 import processing.xml.XMLElement;
-import projectlife.weapons.Pan;
-import projectlife.weapons.StoneThrower;
 import projectlife.weapons.Teeth;
 
 /**

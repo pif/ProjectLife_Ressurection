@@ -3,7 +3,6 @@ package projectlife.weapons;
 import processing.core.PApplet;
 import processing.core.PVector;
 import processing.xml.XMLElement;
-import projectlife.Animation;
 import projectlife.Bullet;
 import projectlife.Harmable;
 import projectlife.Main;

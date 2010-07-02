@@ -1,5 +1,6 @@
 package projectlife;
 
+import processing.core.PApplet;
 import processing.core.PVector;
 import processing.xml.XMLElement;
 
@@ -42,7 +43,7 @@ public class EventManager extends MyObject {
 				pos.set(x, y, 0);
 				break;
 			case 2:
-				pos.set(p.map(x, 0, 100, 0, p.width), p.map(y, 0, 100, 0,
+				pos.set(PApplet.map(x, 0, 100, 0, p.width), PApplet.map(y, 0, 100, 0,
 						p.height), 0);
 				break;
 			}
@@ -85,7 +86,7 @@ public class EventManager extends MyObject {
 
 		for (int i = 0; i < prefs.getChildCount(); ++i) {
 			XMLElement event = prefs.getChildAtIndex(i);
-			events = (Event[]) p.append(events, new Event(event
+			events = (Event[]) PApplet.append(events, new Event(event
 					.getIntAttribute("startTime"), event
 					.getIntAttribute("times"), event
 					.getIntAttribute("interval"),
